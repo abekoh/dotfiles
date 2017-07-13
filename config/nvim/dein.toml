@@ -1,0 +1,137 @@
+# ------------------------------------------------------------------------------
+# plugin manager
+# ------------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# ------------------------------------------------------------------------------
+# color
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'rhysd/vim-color-spring-night'
+hook_add = '''
+set t_Co=256
+au MyAutoCmd VimEnter * nested colorscheme spring-night
+colorscheme spring-night
+highlight CursorLine cterm=NONE
+'''
+
+# ------------------------------------------------------------------------------
+# basic
+# ------------------------------------------------------------------------------
+
+# yankを遡れる
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/yankround.rc.vim
+'''
+
+# 自動閉じカッコ
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
+repo = 'tpope/vim-surround'
+
+[[plugins]]
+repo = 'kana/vim-textobj-user'
+
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+hook_add = '''
+source ~/.config/nvim/plugins/tcomment.rc.vim
+'''
+
+[[plugins]]
+repo = 't9md/vim-quickhl'
+hook_add = '''
+source ~/.config/nvim/plugins/vim-quickhl.rc.vim
+'''
+
+[[plugins]]
+repo = 'soramugi/auto-ctags.vim'
+hook_add = '''
+let g:auto_ctags = 1
+let g:auto_ctags_directory_list = ['.git']
+'''
+
+[[plugins]]
+repo = 'fuenor/JpFormat.vim'
+hook_add = '''
+let g:JpKinsoku = '[-}>）―～－ｰ］！？゛゜ゝゞ｡｣､･ﾞﾟ,)\]｝、〕〉》」』】〟’”ヽヾーァィゥェォッャュョヮヵヶぁぃぅぇぉっゃゅょゎ々‐?!・:;。.…‥，．]'
+'''
+
+# ------------------------------------------------------------------------------
+# linter
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'vim-syntastic/syntastic'
+hook_add = '''
+source ~/.config/nvim/plugins/syntastic.rc.vim
+'''
+
+# ------------------------------------------------------------------------------
+# filer
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/unite.rc.vim
+'''
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+depends = ['unite.vim']
+
+[[plugins]]
+repo = 'Shougo/vimfiler.vim'
+hook_add = '''
+source ~/.config/nvim/plugins/vimfiler.rc.vim
+'''
+
+# ------------------------------------------------------------------------------
+# powerline
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+let g:airline_theme = 'spring_night'
+'''
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+source ~/.config/nvim/plugins/vim-indent-guides.rc.vim
+'''
+
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# ------------------------------------------------------------------------------
+# terminal
+# ------------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/vimshell'
+if = "!has('nvim')"
+hook_add = '''
+nnoremap <silent> <Leader>s :VimShell()<CR>
+'''
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+if = "!has('nvim')"
+build = 'make'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = '''
+source ~/.config/nvim/plugins/vim-quickrun.rc.vim
+'''
