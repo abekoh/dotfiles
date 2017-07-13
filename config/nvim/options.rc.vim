@@ -1,7 +1,7 @@
 " Tabの設定
-set tabstop=4
-set shiftwidth=4
+set ts=4 sts=0 sw=4
 set autoindent
+set smartindent
 " expandtabでスペースに
 set expandtab
 " 行の最後まで表示
@@ -54,3 +54,5 @@ set notitle
 set splitbelow
 " highlighting zenkaku space
 autocmd MyAutoCmd BufRead,BufNew * match Error /　/
+" アンダーラインをオフに
+highlight CursorLine cterm=NONE

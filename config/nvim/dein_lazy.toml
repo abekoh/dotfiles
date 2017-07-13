@@ -6,7 +6,7 @@ repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
 on_i = 1
 hook_source = '''
-source ~/.config/nvim/plugins/deoplete.rc.vim
+source ~/.config/nvim/plugin/deoplete.rc.vim
 '''
 
 [[plugins]]
@@ -14,48 +14,56 @@ repo = 'Shougo/neocomplete.vim'
 if = "has('lua')"
 on_i = 1
 hook_source = '''
-source ~/.config/nvim/plugins/neocomplete.rc.vim
+source ~/.config/nvim/plugin/neocomplete.rc.vim
 '''
 
-" [[plugins]]
-" repo = 'davidhalter/jedi-vim'
-" on_ft = ['python']
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = ['vim']
+
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# [[plugins]]
+# repo = 'davidhalter/jedi-vim'
+# on_ft = 'python'
 
 [[plugins]]
 repo = 'andviro/flake8-vim'
-on_ft = ['python']
+on_ft = 'python'
 
-" [[plugins]]
-" repo = 'jmcantrell/vim-virtualenv'
-" on_ft = ['python']
+# [[plugins]]
+# repo = 'jmcantrell/vim-virtualenv'
+# on_ft = 'python'
 
 [[plugins]]
 repo = 'bps/vim-textobj-python'
-on_ft = ['python']
+on_ft = 'python'
 depends = ['vim-textobj-user']
 
 [[plugins]]
 repo = 'tpope/vim-endwise'
-on_ft = ['ruby']
+on_ft = 'ruby'
 
 [[plugins]]
 repo = 'nikvdp/ejs-syntax'
-on_ft = ['ejs']
+on_ft = 'ejs'
 
 [[plugins]]
 repo = 'kchmck/vim-coffee-script'
-on_ft = ['coffee']
+on_ft = 'coffee'
 
 [[plugins]]
 repo = 'fatih/vim-go'
-on_ft = ['go']
+on_ft = 'go'
 
-" [[plugins]]
-" repo = 'nsf/gocode'
-" rtp = 'vim'
-" build = 'sh vim/symlink.sh'
-" on_ft = ['go']
+# [[plugins]]
+# repo = 'nsf/gocode'
+# rtp = 'vim'
+# build = 'sh vim/symlink.sh'
+# on_ft = 'go'
 
 [[plugins]]
 repo = 'lervag/vimtex'
-on_ft = ['tex']
+on_ft = 'tex'
