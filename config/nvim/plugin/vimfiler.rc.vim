@@ -1,8 +1,8 @@
 " open
-nnoremap <Leader>e :VimFilerExplore -split -winwidth=30 -find -no-quit -buffer-name=vimfiler<CR>
+nnoremap <Leader>e :VimFilerExplore -split -winwidth=30 -find -no-quit -auto-cd -buffer-name=vimfiler<CR>
 " set as default filer
 let g:vimfiler_as_default_explorer = 1
-let g:vimfiler_enable_auto_cd = 1
+" let g:vimfiler_enable_auto_cd = 1
 " Open filer
 au FileType vimfiler nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
 " ウィンドウを分割して開く
