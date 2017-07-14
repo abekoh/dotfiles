@@ -1,5 +1,9 @@
+" encode
+set fileencodings=utf-8,euc-jp,ucs-bom,iso-2022-jp,sjis,cp932,latin1
 " Tabの設定
-set ts=4 sts=0 sw=4
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
 set autoindent
 set smartindent
 " expandtabでスペースに
@@ -22,8 +26,6 @@ set showmatch
 set matchtime=1
 " 対応付けるカッコの種類を追加
 set matchpairs& matchpairs+=<:>
-" エンコード
-set encoding=utf8
 " スクロール時，下が見えるように
 set scrolloff=5
 " .swapファイルやバックアップを作らない
@@ -48,6 +50,8 @@ set title
 set hlsearch
 " 検索ワードの途中でも検索
 set incsearch
+" 検索時大小区別なし
+set ignorecase
 " タイトルなし
 set notitle
 " 下に分割
@@ -56,3 +60,8 @@ set splitbelow
 autocmd MyAutoCmd BufRead,BufNew * match Error /　/
 " アンダーラインをオフに
 highlight CursorLine cterm=NONE
+if has('nvim')
+  set clipboard+=unnamedplus
+else
+  set clipboard=unnamed,autoselect
+endif

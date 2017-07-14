@@ -8,7 +8,7 @@ vnoremap v $h
 " Dでヤンクしない
 nnoremap D "_D
 " 検索結果をESC2回で解除
-nnoremap <silent><ESC><ESC> :noh<CR>
+" nnoremap <silent><ESC><ESC> :noh<CR>
 " s+hjklで移動
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
@@ -35,6 +35,9 @@ nnoremap sq :q<CR>
 " 記録機能を無効化
 nnoremap q <nop>
 " Leader = Space
-nmap <Space> <Leader>
+" nmap <Space> <Leader>
 " ctags検索
 nnoremap <Leader>t :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
+if has('nvim')
+    tnoremap <silent> <ESC> <C-\><C-n>
+endif

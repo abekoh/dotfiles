@@ -9,8 +9,8 @@ let g:quickrun_config._ = {
       \ 'outputter/buffer/close_on_empty' : 1,
       \ }
 " ESC2回でquickfix閉じる
-au FileType qf nnoremap <silent><buffer><ESC><ESC> :quit<CR>
-au FileType quickrun nnoremap <silent><buffer><ESC><ESC> :quit<CR>
+autocmd MyAutoCmd FileType qf nnoremap <silent><buffer><ESC><ESC> :quit<CR>
+autocmd MyAutoCmd FileType quickrun nnoremap <silent><buffer><ESC><ESC> :quit<CR>
 " quickfix閉じて，保存して実行
 let g:quickrun_no_default_key_mappings = 1
 nnoremap <Leader>r :cclose<CR>:write<CR>:QuickRun -mode n<CR>

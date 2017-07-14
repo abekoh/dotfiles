@@ -6,7 +6,7 @@ repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
 on_i = 1
 hook_source = '''
-source ~/.config/nvim/plugin/deoplete.rc.vim
+  source ~/.config/nvim/plugin/deoplete.rc.vim
 '''
 
 [[plugins]]
@@ -14,7 +14,7 @@ repo = 'Shougo/neocomplete.vim'
 if = "has('lua')"
 on_i = 1
 hook_source = '''
-source ~/.config/nvim/plugin/neocomplete.rc.vim
+  source ~/.config/nvim/plugin/neocomplete.rc.vim
 '''
 
 [[plugins]]
@@ -28,6 +28,22 @@ on_ft = 'toml'
 # [[plugins]]
 # repo = 'davidhalter/jedi-vim'
 # on_ft = 'python'
+
+[[plugins]]
+repo = 'zchee/deoplete-jedi'
+depends = 'deoplete.nvim'
+if = "has('nvim')"
+on_ft = 'python'
+hook_source = '''
+  if has('unix')
+    let g:python_host_prog = '/usr/bin/python2'
+    let g:python3_host_prog = '/usr/bin/python3'
+  endif
+  if has('mac')
+    let g:python_host_prog = '/usr/local/bin/python2'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+  endif
+'''
 
 [[plugins]]
 repo = 'andviro/flake8-vim'

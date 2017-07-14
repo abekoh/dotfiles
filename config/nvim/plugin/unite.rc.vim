@@ -14,16 +14,11 @@ nnoremap <silent> [unite]h :<C-u>Unite<Space>history/yank<CR>
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]c :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,vr :UniteResume<CR>
-" vinarise
-let g:vinarise_enable_auto_detect = 1 
-" unite-build map
-nnoremap <silent> ,vb :Unite build<CR>
-nnoremap <silent> ,vcb :Unite build:!<CR>
-nnoremap <silent> ,vch :UniteBuildClearHighlight<CR>
-let g:unite_source_grep_command = 'ag'
-let g:unite_source_grep_default_opts = '--nocolor --nogroup'
-let g:unite_source_grep_max_candidates = 200
-let g:unite_source_grep_recursive_opt = ''
+" grep
+" let g:unite_source_grep_command = 'ag'
+" let g:unite_source_grep_default_opts = '--nocolor --nogroup'
+" let g:unite_source_grep_max_candidates = 200
+" let g:unite_source_grep_recursive_opt = ''
 " 挿入モードで開始
 " let g:unite_enable_start_insert=1
 " unite-grepの便利キーマップ

@@ -11,7 +11,8 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'rhysd/vim-color-spring-night'
 hook_add = '''
-  colorscheme spring-night
+  au MyAutoCmd VimEnter * nested colorscheme spring-night
+  au MyAutoCmd VimEnter * highlight CursorLine cterm=none
 '''
 
 # ------------------------------------------------------------------------------
@@ -19,12 +20,26 @@ hook_add = '''
 # ------------------------------------------------------------------------------
 
 [[plugins]]
-repo = 'LeafCage/yankround.vim'
+repo = 'osyo-manga/vim-anzu'
 hook_add = '''
-  source ~/.config/nvim/plugin/yankround.rc.vim
+  nmap n <Plug>(anzu-n-with-echo)
+  nmap N <Plug>(anzu-N-with-echo)
+  nmap * <Plug>(anzu-star-with-echo)
+  nmap # <Plug>(anzu-sharp-with-echo)
+  nmap <silent> <Esc><Esc> :nohlsearch<CR><Plug>(anzu-clear-search-status)
 '''
 
-# 自動閉じカッコ
+[[plugins]]
+repo = 'LeafCage/yankround.vim'
+hook_add = '''
+  nmap p <Plug>(yankround-p)
+  nmap P <Plug>(yankround-P)
+  nmap gp <Plug>(yankround-gp)
+  nmap gP <Plug>(yankround-gP)
+  nmap <C-p> <Plug>(yankround-prev)
+  nmap <C-n> <Plug>(yankround-next)
+'''
+
 [[plugins]]
 repo = 'cohama/lexima.vim'
 
@@ -35,18 +50,25 @@ repo = 'tpope/vim-surround'
 repo = 'kana/vim-textobj-user'
 
 [[plugins]]
+repo = 'kana/vim-operator-user'
+
+[[plugins]]
+repo = 'kana/vim-textobj-function'
+
+[[plugins]]
 repo = 'tomtom/tcomment_vim'
 hook_add = '''
-  nmap \c :TComment<CR>
-  vmap \c :TComment<CR>
+  nmap <Leader>c :TComment<CR>
+  vmap <Leader>c :TComment<CR>
   " vim-textobj-pythonとの競合消す
-  let g:tcommentTextObjectInlineComment = 'im'
+  let g:tcommentTextObjectInlineComment = ""
 '''
 
 [[plugins]]
 repo = 't9md/vim-quickhl'
 hook_add = '''
-  source ~/.config/nvim/plugin/vim-quickhl.rc.vim
+  nmap <Space>h <Plug>(quickhl-manual-this)
+  nmap <Space>H <Plug>(quickhl-manual-reset)
 '''
 
 [[plugins]]
@@ -67,7 +89,15 @@ hook_add = '''
 # ------------------------------------------------------------------------------
 
 [[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+  source ~/.config/nvim/plugin/neomake.rc.vim
+'''
+
+[[plugins]]
 repo = 'vim-syntastic/syntastic'
+if = "!has('nvim')"
 hook_add = '''
   source ~/.config/nvim/plugin/syntastic.rc.vim
 '''
@@ -84,10 +114,11 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-depends = ['unite.vim']
+depends = 'unite.vim'
 
 [[plugins]]
 repo = 'Shougo/vimfiler.vim'
+depends = 'unite.vim'
 hook_add = '''
   source ~/.config/nvim/plugin/vimfiler.rc.vim
 '''
@@ -108,7 +139,11 @@ hook_add = '''
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 hook_add = '''
-  source ~/.config/nvim/plugin/vim-indent-guides.rc.vim
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_auto_colors = 0
+  au VimEnter,ColorScheme * hi IndentGuidesOdd ctermbg=237
+  au VimEnter,ColorScheme * hi IndentGuidesEven ctermbg=240
 '''
 
 [[plugins]]
@@ -120,9 +155,6 @@ repo = 'airblade/vim-gitgutter'
 [[plugins]]
 repo = 'Shougo/vimshell'
 if = "!has('nvim')"
-hook_add = '''
-  nnoremap <silent> <Leader>s :VimShell()<CR>
-'''
 
 [[plugins]]
 repo = 'Shougo/vimproc.vim'
@@ -132,5 +164,5 @@ build = 'make'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 hook_add = '''
-  source ~/.config/nvim/plugin/vim-quickrun.rc.vim
+  source ~/.config/nvim/plugin/quickrun.rc.vim
 '''
