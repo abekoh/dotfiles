@@ -1,3 +1,4 @@
+# path
 set -x PATH /usr/local/bin $PATH
 set -x WORKON_HOME ~/.virtualenvs
 
@@ -11,7 +12,11 @@ switch (uname)
     set -x PATH /usr/local/cuda/bin $PATH
 end
 
+# alias
 alias rm='rmtrash'
 
+# complete
+complete -c workon -a "(ls $WORKON_HOME)"
+
+# run
 eval (python -m virtualfish)
-. $HOME/.config/fish/virtualenvwrapper.fish
