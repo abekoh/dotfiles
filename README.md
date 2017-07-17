@@ -18,6 +18,8 @@ sudo apt-get install neovim
 sudo apt-get install python-dev python-pip python3-dev python3-pip
 pip2 install neovim
 pip3 install neovim
+git clone https://github.com/abekoh/dotfiles.git
+python3 dotfiles/setup.py
 ```
 
 ### Mac
@@ -28,4 +30,6 @@ brew install neovim
 brew install python3
 pip2 install neovim
 pip3 install neovim
+git clone https://github.com/abekoh/dotfiles.git
+python3 dotfiles/setup.py
 ```
