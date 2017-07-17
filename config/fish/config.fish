@@ -1,6 +1,7 @@
-# path
+# environment vars
 set -x PATH /usr/local/bin $PATH
 set -x WORKON_HOME ~/.virtualenvs
+set -x EDITOR nvim
 
 switch (uname)
   case Darwin

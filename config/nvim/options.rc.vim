@@ -65,3 +65,7 @@ if has('nvim')
 else
   set clipboard=unnamed,autoselect
 endif
+" :terminalでのgit commitのエディタを内部で
+if has('nvim')
+  let $VISUAL = 'nvr -cc split --remote-wait'
+endif
