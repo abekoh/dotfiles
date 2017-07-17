@@ -15,6 +15,7 @@ end
 
 # alias
 alias rm='rmtrash'
+alias vi='vim -u NONE -N'
 
 # key-bind
 bind \cl accept-autosuggestion
