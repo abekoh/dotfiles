@@ -14,3 +14,7 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 
 " <BS>: close popup and delete backword char.
 inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+if !exists('g:deoplete#omni_patterns')
+  let g:deoplete#omni_patterns = {}
+endif
+let g:deoplete#omni_patterns.r = '[[:alnum:].\\]\+'

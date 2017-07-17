@@ -15,6 +15,9 @@ end
 # alias
 alias rm='rmtrash'
 
+# key-bind
+bind \cl accept-autosuggestion
+
 # complete
 complete -c workon -a "(ls $WORKON_HOME)"
 
