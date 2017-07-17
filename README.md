@@ -25,6 +25,7 @@ pip3 install neovim
 brew install fish
 brew tap neovim/homebrew-neovim
 brew install neovim
+brew install python3
 pip2 install neovim
 pip3 install neovim
 ```
