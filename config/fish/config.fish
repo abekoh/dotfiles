@@ -14,8 +14,11 @@ switch (uname)
 end
 
 # alias
-alias rm='rmtrash'
 alias vi='vim -u NONE -N'
+switch (uname)
+  case Darwin
+    alias rm='rmtrash'
+end
 
 # key-bind
 bind \cl accept-autosuggestion

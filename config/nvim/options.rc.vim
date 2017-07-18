@@ -69,3 +69,7 @@ endif
 if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
 endif
+" color
+if !has('nvim')
+  set t_Co=256
+endif
