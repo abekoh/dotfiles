@@ -11,8 +11,8 @@ function workon -d "Activate virtual environment in $WORKON_HOME"
 
     # unset PYTHONHOME if set
     if set -q PYTHONHOME
-       set -gx _OLD_VIRTUAL_PYTHONHOME $PYTHONHOME
-       set -e PYTHONHOME
+      set -gx _OLD_VIRTUAL_PYTHONHOME $PYTHONHOME
+      set -e PYTHONHOME
     end
   else
     echo "$tgt not found"
