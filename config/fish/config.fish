@@ -7,8 +7,7 @@ switch (uname)
 case Darwin
   set -x PYENV_ROOT $HOME/.pyenv
 case Linux
-  set -x LD_LIBRARY_PATH /usr/local/cuda/lib64 $LD_LIBRARY_PATH
-  set -x LD_LIBRARY_PATH /usr/local/lib $LD_LIBRARY_PATH
+  set -x LD_LIBRARY_PATH /usr/local/cuda/lib64:/usr/local/lib
   set -x CUDA_HOME /usr/local/cuda
   set -x PATH /usr/local/cuda/bin $PATH
 end
