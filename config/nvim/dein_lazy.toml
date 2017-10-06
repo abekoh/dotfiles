@@ -97,16 +97,9 @@ repo = 'dag/vim-fish'
 on_ft = 'fish'
 
 [[plugins]]
-repo = 'jalvesaq/Nvim-R'
-if = "has('nvim')"
-on_ft = 'r'
-hook_add = '''
-  " let g:R_vsplit = 1
-  " let g:R_min_editor_width = 18
-  let g:R_assign = 0
-   
-  let g:R_nvimpager = "horizontal"
-   
-  let g:R_objbr_place = "console,right"
-  let g:R_objbr_opendf = 0
-'''
+repo = 'posva/vim-vue'
+on_ft = 'vue'
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'vue']
