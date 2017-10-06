@@ -17,4 +17,4 @@ let g:neomake_message_sign = {
      \ }
 let g:neomake_info_sign = {'text': 'ℹ➤', 'texthl': 'NeomakeInfoSign'}
 " for Python
-let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pep8']
+let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pycodestyle']

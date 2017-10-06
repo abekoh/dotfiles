@@ -43,8 +43,14 @@ def tmux():
     subprocess.run('ln -sf ~/dotfiles/config/tmux/.tmux.conf ~/.tmux.conf', shell=True)
 
 
+def python_utils():
+    print('setup python-utils')
+    subprocess.run('ln -sf ~/dotfiles/config/python-utils/pycodestyle ~/.config/', shell=True)
+
+
 if __name__ == '__main__':
     neovim()
     vim()
     fish()
     tmux()
+    python_utils()
