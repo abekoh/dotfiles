@@ -38,7 +38,13 @@ def fish():
             subprocess.run(['ln', '-sf', dotfiles_file_path, config_file_path])
 
 
+def tmux():
+    print('setup tmux')
+    subprocess.run('ln -sf ~/dotfiles/config/tmux/.tmux.conf ~/.tmux.conf', shell=True)
+
+
 if __name__ == '__main__':
     neovim()
     vim()
     fish()
+    tmux()

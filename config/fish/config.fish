@@ -2,10 +2,12 @@
 set -x PATH /usr/local/bin $PATH
 set -x WORKON_HOME ~/.virtualenvs
 set -x EDITOR nvim
+set -x TERM xterm-256color
 
 switch (uname)
 case Darwin
   set -x PYENV_ROOT $HOME/.pyenv
+  set -x PATH $HOME/.nodebrew/current/bin $PATH
 case Linux
   set -x LD_LIBRARY_PATH /usr/local/cuda/lib64:/usr/local/lib
   set -x CUDA_HOME /usr/local/cuda
