@@ -49,3 +49,9 @@ brew insatll tmux reattach-to-user-namespace
 # config
 python3 dotfiles/setup.py
 ```
+
+## Setup lint
+```
+# json lint
+npm install -g jsonlint
+```

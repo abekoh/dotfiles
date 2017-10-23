@@ -107,3 +107,7 @@ on_ft = ['html', 'vue']
 [[plugins]]
 repo = 'leafgarland/typescript-vim'
 on_ft = ['typescript']
+
+[[plugins]]
+repo = 'leshill/vim-json'
+on_ft = ['json']

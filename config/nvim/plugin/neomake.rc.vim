@@ -18,3 +18,4 @@ let g:neomake_message_sign = {
 let g:neomake_info_sign = {'text': 'ℹ➤', 'texthl': 'NeomakeInfoSign'}
 " for Python
 let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pycodestyle']
+let g:neomake_json_enabled_makers = ['jsonlint']
