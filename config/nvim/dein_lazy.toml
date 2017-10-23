@@ -103,3 +103,7 @@ on_ft = 'vue'
 [[plugins]]
 repo = 'alvan/vim-closetag'
 on_ft = ['html', 'vue']
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = ['typescript']
