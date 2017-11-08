@@ -1,7 +1,8 @@
 # vi mode
-fish_vi_key_bindings
-function fish_mode_prompt 
-end
+# fish_vi_key_bindings
+# function fish_mode_prompt 
+# end
+set -g fish_key_bindings fish_default_key_bindings
 
 # environment vars
 set -x PATH /usr/local/bin $PATH
