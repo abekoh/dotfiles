@@ -36,7 +36,8 @@ python3 dotfiles/setup.py
 ```
 # install fish
 brew install fish
-chsh # path of fish
+sudo vi /etc/shells #input path of fish
+chsh # input path of fish
 # restart terminal
 curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
 fisher
