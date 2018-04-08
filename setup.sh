@@ -1,13 +1,15 @@
 #!/bin/bash
 if [ "$(uname)" == 'Darwin' ]; then
-    brew update
     brew tap neovim/homebrew-neovim
+    brew update
     brew install fish neovim python3 tmux reattach-to-user-namespace
+    brew install vim --with-override-system-vi
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     yes | sudo apt-add-repository ppa:fish-shell/release-2
     yes | sudo apt-add-repository ppa:neovim-ppa/unstable
+    yes | sudo apt-add-repository ppa:jonathonf/vim
     yes | sudo apt update
-    yes | sudo apt install fish mercurial software-properties-common neovim python-dev python-pip python3-dev python3-pip tmux
+    yes | sudo apt install fish mercurial software-properties-common vim neovim python-dev python-pip python3-dev python3-pip tmux
 else
     echo "Your platform is not supported."
     exit 1
