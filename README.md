@@ -8,16 +8,26 @@
 ## Setup
 
 ### Ubuntu
+Run .sh file
 ```
 git clone https://github.com/abekoh/dotfiles.git
 cd dotfiles
 chmod +x setup_ubuntu.sh
 ./setup_ubuntu.sh
+```
+Change default shell
+```
+# Native
 which fish # check fish's path
 chsh -s /usr/bin/fish # input fish's path
-# logout and login
+# Windows Subsystem for Linux
+echo -e "\n# launch fish\nif [ -t 1 ]; then\nexec fish\nfi" >> ~/.bashrc
+```
+Install plugins for fish
+```
 fisher
 ```
+
 
 ### Mac
 ```
