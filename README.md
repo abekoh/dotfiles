@@ -21,7 +21,7 @@ Change default shell
 which fish # check fish's path
 chsh -s /usr/bin/fish # input fish's path
 # Windows Subsystem for Linux
-echo -e "\n# launch fish\nif [ -t 1 ]; then\nexec fish\nfi" >> ~/.bashrc
+C:\Windows\System32\bash.exe ~ -s /usr/bin/fish # change shortcut's link
 ```
 Install plugins for fish
 ```
