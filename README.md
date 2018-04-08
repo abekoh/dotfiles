@@ -16,11 +16,10 @@
 
 Run .sh file.
 ```
-# if you use CentOS, run as superuser
 git clone https://github.com/abekoh/dotfiles.git
 cd dotfiles
 chmod +x setup_ubuntu.sh
-./setup.sh
+./setup.sh # if you use CentOS, run as superuser
 ```
 Change default shell.
 ```
