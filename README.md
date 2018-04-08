@@ -2,8 +2,9 @@
 
 ## Environments
 - Mac
-- Ubuntu
-- Windows subsystem for Linux (Ubuntu)
+- Ubuntu 16.04
+- CentOS 7
+- Windows subsystem for Linux (Ubuntu 16.04)
 
 ## Installed softwares
 - fish
@@ -15,6 +16,7 @@
 
 Run .sh file.
 ```
+# if you use CentOS, run as superuser
 git clone https://github.com/abekoh/dotfiles.git
 cd dotfiles
 chmod +x setup_ubuntu.sh
@@ -34,5 +36,10 @@ C:\Windows\System32\bash.exe ~ -s /usr/bin/fish # change shortcut's link
 ```
 Install plugins for fish.
 ```
+curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs git.io/fisherman
 fisher
+```
+Make symbolic links.
+```
+python3 make_links.py
 ```
