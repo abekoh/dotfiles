@@ -2,9 +2,9 @@
 
 ## Environments
 - Mac
-- Ubuntu 16.04
+- Ubuntu
 - CentOS 7
-- Windows subsystem for Linux (Ubuntu 16.04)
+- Windows subsystem for Linux (Ubuntu)
 
 ## Installed softwares
 - fish
@@ -28,7 +28,7 @@ Change default shell.
 which fish # check path of fish
 sudo vi /etc/shells # add path of fish
 chsh -s /usr/local/bin/fish # input path of fish
-# Ubuntu
+# Ubuntu / CentOS
 which fish # check path of fish
 chsh -s /usr/bin/fish # input path of fish
 # Windows Subsystem for Linux
