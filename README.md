@@ -23,8 +23,8 @@ chmod +x setup_ubuntu.sh
 Change default shell.
 ```
 # Mac
-which fish # check fish's path
-sudo vi /etc/shells # check path of fish
+which fish # check path of fish
+sudo vi /etc/shells # add path of fish
 chsh -s /usr/local/bin/fish # input path of fish
 # Ubuntu
 which fish # check path of fish
