@@ -19,6 +19,7 @@ elif [ "$(uname)" == 'Linux' ] && [ -e /etc/centos-release ] && [ "$(cat /etc/re
     yum install -y epel-release curl
     curl -o /etc/yum.repos.d/dperson-neovim-epel-7.repo https://copr.fedorainfracloud.org/coprs/dperson/neovim/repo/epel-7/dperson-neovim-epel-7.repo 
     curl -o /etc/yum.repos.d/mcepl-vim8-epel-7.repo https://copr.fedorainfracloud.org/coprs/mcepl/vim8/repo/epel-7/mcepl-vim8-epel-7.repo
+    curl -o /etc/yum.repos.d/shells:fish:release:2.repo https://download.opensuse.org/repositories/shells:fish:release:2/CentOS_7/shells:fish:release:2.repo
     yum install -y vim neovim fish tmux python36u python36u-libs python36u-devel python36u-pip python2-pip
     ln -sf /usr/bin/python3.6 /usr/bin/python3
     ln -sf /usr/bin/pip3.6 /usr/bin/pip3
