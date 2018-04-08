@@ -9,27 +9,14 @@
 
 ### Ubuntu
 ```
-# install fish
-sudo apt-add-repository ppa:fish-shell/release-2
-sudo apt-get update
-sudo apt-get install fish mercurial
-chsh # path of fish
-# logout and login
-curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
-fisher
-# install neovim
-sudo apt-get install software-properties-common
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt-get update
-sudo apt-get install neovim
-sudo apt-get install python-dev python-pip python3-dev python3-pip
-pip2 install neovim
-pip3 install neovim neovim-remote virtualfish
-# install tmux
-brew insatll tmux reattach-to-user-namespace
 git clone https://github.com/abekoh/dotfiles.git
-# config
-python3 dotfiles/setup.py
+cd dotfiles
+chmod +x setup_ubuntu.sh
+./setup_ubuntu.sh
+which fish # check fish's path
+chsh -s /usr/bin/fish # input fish's path
+# logout and login
+fisher
 ```
 
 ### Mac
