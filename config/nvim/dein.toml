@@ -152,15 +152,15 @@ repo = 'airblade/vim-gitgutter'
 # ------------------------------------------------------------------------------
 # terminal
 # ------------------------------------------------------------------------------
-[[plugins]]
-repo = 'kassio/neoterm'
-if = "has('nvim')"
-hook_add = '''
-  let g:neoterm_position = 'vertical'
-  nnoremap <silent> <Leader>rc :TREPLSendFile<cr>
-  nnoremap <silent> <Leader>rl :TREPLSendLine<cr>
-  vnoremap <silent> <Leader>rl :TREPLSendSelection<cr>
-'''
+# [[plugins]]
+# repo = 'kassio/neoterm'
+# if = "has('nvim')"
+# hook_add = '''
+#   let g:neoterm_position = 'vertical'
+#   nnoremap <silent> <Leader>rc :TREPLSendFile<cr>
+#   nnoremap <silent> <Leader>rl :TREPLSendLine<cr>
+#   vnoremap <silent> <Leader>rl :TREPLSendSelection<cr>
+# '''
 
 [[plugins]]
 repo = 'Shougo/vimshell'
