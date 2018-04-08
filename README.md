@@ -1,9 +1,15 @@
 # dotfiles
 
-## Softwares
+## Environments
+- Mac
+- Ubuntu
+- Windows subsystem for Linux (Ubuntu)
+
+## Installed softwares
 - fish
 - neovim
 - vim
+- tmux
 
 ## Setup
 
