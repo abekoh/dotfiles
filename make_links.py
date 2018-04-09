@@ -49,6 +49,9 @@ def python_utils():
 
 
 if __name__ == '__main__':
+    config_dir_path = os.path.join(os.environ['HOME'], '.config')
+    if not os.path.exists(config_dir_path):
+        os.mkdir(config_dir_path)
     neovim()
     vim()
     fish()
