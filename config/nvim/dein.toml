@@ -29,16 +29,19 @@ hook_add = '''
   nmap <silent> <Esc><Esc> :nohlsearch<CR><Plug>(anzu-clear-search-status)
 '''
 
+# [[plugins]]
+# repo = 'LeafCage/yankround.vim'
+# hook_add = '''
+#   nmap p <Plug>(yankround-p)
+#   nmap P <Plug>(yankround-P)
+#   nmap gp <Plug>(yankround-gp)
+#   nmap gP <Plug>(yankround-gP)
+#   nmap <C-p> <Plug>(yankround-prev)
+#   nmap <C-n> <Plug>(yankround-next)
+# '''
+
 [[plugins]]
-repo = 'LeafCage/yankround.vim'
-hook_add = '''
-  nmap p <Plug>(yankround-p)
-  nmap P <Plug>(yankround-P)
-  nmap gp <Plug>(yankround-gp)
-  nmap gP <Plug>(yankround-gP)
-  nmap <C-p> <Plug>(yankround-prev)
-  nmap <C-n> <Plug>(yankround-next)
-'''
+repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
 repo = 'cohama/lexima.vim'
@@ -107,21 +110,26 @@ hook_add = '''
 # ------------------------------------------------------------------------------
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
+repo = 'Shougo/denite.nvim'
 hook_add = '''
-  source ~/.config/nvim/plugin/unite.rc.vim
+  source ~/.config/nvim/plugin/denite.rc.vim
 '''
 
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-depends = 'unite.vim'
+depends = 'denite.nvim'
 
 [[plugins]]
-repo = 'Shougo/vimfiler.vim'
-depends = 'unite.vim'
-hook_add = '''
-  source ~/.config/nvim/plugin/vimfiler.rc.vim
-'''
+repo = 'nixprime/cpsm'
+build = 'env PY3=ON ./install.sh'
+
+# [[plugins]]
+# repo = 'Shougo/vimfiler.vim'
+# if = "!has('nvim')"
+# depends = 'unite.vim'
+# hook_add = '''
+#   source ~/.config/nvim/plugin/vimfiler.rc.vim
+# '''
 
 # ------------------------------------------------------------------------------
 # powerline

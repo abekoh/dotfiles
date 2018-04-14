@@ -3,9 +3,10 @@
 if [ "$(uname)" == 'Darwin' ]; then
     brew tap neovim/homebrew-neovim
     brew update
-    brew install fish neovim python3 tmux reattach-to-user-namespace
+    brew install fish neovim python3 tmux reattach-to-user-namespace ripgrep boost
     brew install vim --with-override-system-vi
 # Ubuntu
+# TODO: install ripgrep, boost
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     sudo apt-add-repository -y ppa:fish-shell/release-2
     sudo apt-add-repository -y ppa:neovim-ppa/unstable
@@ -13,6 +14,7 @@ elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     sudo apt -y update
     sudo apt -y install fish mercurial software-properties-common vim neovim python-dev python-pip python3-dev python3-pip tmux curl
 # CentOS (>=7)
+# TODO: install ripgrep, boost
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/centos-release ] && [ "$(cat /etc/redhat-release | sed -e 's/.*\s\([0-9]\)\..*/\1/')" == '7' ]; then
     yum install -y https://centos7.iuscommunity.org/ius-release.rpm
     yum remove -y vim*
@@ -31,5 +33,3 @@ pip install --upgrade pip
 pip3 install --upgrade pip
 pip install neovim
 pip3 install neovim neovim-remote virtualfish
-# python3 make_links.py
-# curl -Lo ~/.config/fish/functions/fisher.fish --create-dirs https://git.io/fisher
