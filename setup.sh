@@ -13,8 +13,8 @@ elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     sudo apt -y update
     sudo apt -y install fish mercurial software-properties-common vim neovim python-dev python-pip python3-dev python3-pip tmux curl libboost-all-dev
     wget -O ~/ripgrep_0.8.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
-    sudo dpkg -i ripgrep_0.8.1_amd64.deb
-    rm -f ripgrep_0.8.1_amd64.deb
+    sudo dpkg -i ~/ripgrep_0.8.1_amd64.deb
+    rm -f ~/ripgrep_0.8.1_amd64.deb
 # CentOS (>=7)
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/centos-release ] && [ "$(cat /etc/redhat-release | sed -e 's/.*\s\([0-9]\)\..*/\1/')" == '7' ]; then
     yum install -y https://centos7.iuscommunity.org/ius-release.rpm
