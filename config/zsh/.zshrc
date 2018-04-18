@@ -83,6 +83,7 @@ setopt hist_reduce_blanks
 
 # viでプラグインなし
 alias vi='vim -u NONE -N'
+alias tmux='tmux -2'
 
 # OS 別の設定
 case ${OSTYPE} in
