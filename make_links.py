@@ -38,6 +38,12 @@ def fish():
             subprocess.run(['ln', '-sf', dotfiles_file_path, config_file_path])
 
 
+def zsh():
+    print('setup zsh')
+    subprocess.run('ln -sf ~/dotfiles/config/zsh/.zshrc ~/.zshrc', shell=True)
+    subprocess.run('ln -sf ~/dotfiles/config/zsh/.zshenv ~/.zshenv', shell=True)
+
+
 def tmux():
     print('setup tmux')
     subprocess.run('ln -sf ~/dotfiles/config/tmux/.tmux.conf ~/.tmux.conf', shell=True)
@@ -55,5 +61,6 @@ if __name__ == '__main__':
     neovim()
     vim()
     fish()
+    zsh()
     tmux()
     python_utils()

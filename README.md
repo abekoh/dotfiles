@@ -8,6 +8,7 @@
 
 ## Installed softwares
 - fish
+- zsh
 - neovim
 - vim
 - tmux
