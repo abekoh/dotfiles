@@ -82,11 +82,14 @@ on_ft = 'coffee'
 repo = 'fatih/vim-go'
 on_ft = 'go'
 
-# [[plugins]]
-# repo = 'nsf/gocode'
-# rtp = 'vim'
-# build = 'sh vim/symlink.sh'
-# on_ft = 'go'
+[[plugins]]
+repo = 'zchee/deoplete-go'
+depends = ['deoplete', 'gocode']
+build = 'make'
+hook_source = '''
+  let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+'''
 
 [[plugins]]
 repo = 'lervag/vimtex'
