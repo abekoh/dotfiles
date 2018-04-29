@@ -6,7 +6,7 @@ repo = 'Shougo/deoplete.nvim'
 if = "has('nvim')"
 on_i = 1
 hook_source = '''
-  source ~/.config/nvim/plugin/deoplete.rc.vim
+  source ~/.config/nvim/plugins/deoplete.rc.vim
 '''
 
 [[plugins]]
@@ -14,7 +14,7 @@ repo = 'Shougo/neocomplete.vim'
 if = "has('lua')"
 on_i = 1
 hook_source = '''
-  source ~/.config/nvim/plugin/neocomplete.rc.vim
+  source ~/.config/nvim/plugins/neocomplete.rc.vim
 '''
 
 [[plugins]]

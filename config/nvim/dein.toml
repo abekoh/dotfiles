@@ -95,14 +95,14 @@ hook_add = '''
 repo = 'neomake/neomake'
 if = "has('nvim')"
 hook_add = '''
-  source ~/.config/nvim/plugin/neomake.rc.vim
+  source ~/.config/nvim/plugins/neomake.rc.vim
 '''
 
 [[plugins]]
 repo = 'vim-syntastic/syntastic'
 if = "!has('nvim')"
 hook_add = '''
-  source ~/.config/nvim/plugin/syntastic.rc.vim
+  source ~/.config/nvim/plugins/syntastic.rc.vim
 '''
 
 # ------------------------------------------------------------------------------
@@ -112,7 +112,7 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
-  source ~/.config/nvim/plugin/denite.rc.vim
+  source ~/.config/nvim/plugins/denite.rc.vim
 '''
 
 [[plugins]]
@@ -128,7 +128,7 @@ build = 'env PY3=ON ./install.sh'
 # if = "!has('nvim')"
 # depends = 'unite.vim'
 # hook_add = '''
-#   source ~/.config/nvim/plugin/vimfiler.rc.vim
+#   source ~/.config/nvim/plugins/vimfiler.rc.vim
 # '''
 
 # ------------------------------------------------------------------------------
@@ -183,5 +183,5 @@ build = 'make'
 repo = 'thinca/vim-quickrun'
 if = "!has('nvim')"
 hook_add = '''
-  source ~/.config/nvim/plugin/quickrun.rc.vim
+  source ~/.config/nvim/plugins/quickrun.rc.vim
 '''
