@@ -1,6 +1,7 @@
 # ------------------------------------------------------------------------------
 # plugin manager
 # ------------------------------------------------------------------------------
+
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
@@ -117,14 +118,6 @@ depends = 'denite.nvim'
 repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
 
-# [[plugins]]
-# repo = 'Shougo/vimfiler.vim'
-# if = "!has('nvim')"
-# depends = 'unite.vim'
-# hook_add = '''
-#   source ~/.config/nvim/plugins/vimfiler.rc.vim
-# '''
-
 # ------------------------------------------------------------------------------
 # powerline
 # ------------------------------------------------------------------------------
@@ -154,24 +147,6 @@ repo = 'airblade/vim-gitgutter'
 # ------------------------------------------------------------------------------
 # terminal
 # ------------------------------------------------------------------------------
+
 [[plugins]]
 repo = 'kassio/neoterm'
-# hook_add = '''
-#   let g:neoterm_position = 'vertical'
-# '''
-
-[[plugins]]
-repo = 'Shougo/vimshell'
-if = "!has('nvim')"
-
-[[plugins]]
-repo = 'Shougo/vimproc.vim'
-if = "!has('nvim')"
-build = 'make'
-
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-if = "!has('nvim')"
-hook_add = '''
-  source ~/.config/nvim/plugins/quickrun.rc.vim
-'''
