@@ -12,7 +12,7 @@ elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     sudo apt-add-repository -y ppa:neovim-ppa/unstable
     sudo apt-add-repository -y ppa:jonathonf/vim
     sudo apt -y update
-    sudo apt -y install fish mercurial software-properties-common vim neovim python-dev python-pip python3-dev python3-pip tmux curl libboost-all-dev ctags
+    sudo apt -y install fish mercurial software-properties-common vim neovim python-dev python-pip python3-dev python3-pip tmux curl libboost-all-dev ctags automake
     wget -O ~/ripgrep_0.8.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
     sudo dpkg -i ~/ripgrep_0.8.1_amd64.deb
     rm -f ~/ripgrep_0.8.1_amd64.deb
