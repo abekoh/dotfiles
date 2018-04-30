@@ -73,3 +73,4 @@ endif
 if !has('nvim')
   set t_Co=256
 endif
+map <Space> <Leader>
