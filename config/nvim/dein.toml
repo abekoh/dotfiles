@@ -70,8 +70,8 @@ hook_add = '''
 [[plugins]]
 repo = 't9md/vim-quickhl'
 hook_add = '''
-  nmap <Space>h <Plug>(quickhl-manual-this)
-  nmap <Space>H <Plug>(quickhl-manual-reset)
+  nmap <Leader>h <Plug>(quickhl-manual-this)
+  nmap <Leader>H <Plug>(quickhl-manual-reset)
 '''
 
 [[plugins]]

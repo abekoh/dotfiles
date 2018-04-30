@@ -1,5 +1,6 @@
 #!/bin/bash
 # Mac
+# TODO: add ctags
 if [ "$(uname)" == 'Darwin' ]; then
     brew tap neovim/homebrew-neovim
     brew update
@@ -11,11 +12,20 @@ elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     sudo apt-add-repository -y ppa:neovim-ppa/unstable
     sudo apt-add-repository -y ppa:jonathonf/vim
     sudo apt -y update
-    sudo apt -y install fish mercurial software-properties-common vim neovim python-dev python-pip python3-dev python3-pip tmux curl libboost-all-dev
+    sudo apt -y install fish mercurial software-properties-common vim neovim python-dev python-pip python3-dev python3-pip tmux curl libboost-all-dev ctags
     wget -O ~/ripgrep_0.8.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/0.8.1/ripgrep_0.8.1_amd64.deb
     sudo dpkg -i ~/ripgrep_0.8.1_amd64.deb
     rm -f ~/ripgrep_0.8.1_amd64.deb
+    git clone https://github.com/unicersal-ctags/ctags.git
+    cd ctags
+    ./autogen.sh
+    ./configure
+    make
+    sudo make install
+    cd ../
+    rm -rf ctags
 # CentOS (>=7)
+# TODO: add ctags
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/centos-release ] && [ "$(cat /etc/redhat-release | sed -e 's/.*\s\([0-9]\)\..*/\1/')" == '7' ]; then
     yum install -y https://centos7.iuscommunity.org/ius-release.rpm
     yum remove -y vim*
