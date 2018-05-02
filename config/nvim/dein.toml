@@ -135,3 +135,15 @@ repo = 'airblade/vim-gitgutter'
 
 [[plugins]]
 repo = 'kassio/neoterm'
+
+# ------------------------------------------------------------------------------
+# extension for vim
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'roxma/vim-hug-neovim-rpc'
+if = "!has('nvim')"
+
+[[plugins]]
+repo = 'roxma/nvim-yarp'
+if = "!has('nvim')"
