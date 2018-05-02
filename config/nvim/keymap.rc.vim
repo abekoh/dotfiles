@@ -41,3 +41,4 @@ nnoremap <Leader>t :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 if has('nvim')
     tnoremap <silent> <ESC> <C-\><C-n>
 endif
+map <Space> <Leader>
