@@ -1,5 +1,6 @@
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'
+# ------------------------------------------------------------------------------
+# insert mode
+# ------------------------------------------------------------------------------
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
@@ -15,22 +16,60 @@ hook_source = '''
   let g:echodoc#enable_at_startup = 1
 '''
 
-[[plugins]]
-repo = 'Shougo/neco-vim'
-on_ft = ['vim']
+# ------------------------------------------------------------------------------
+# filetype
+# ------------------------------------------------------------------------------
+
+# coffee ------------------------------------------------------------------------
 
 [[plugins]]
-repo = 'cespare/vim-toml'
-on_ft = 'toml'
+repo = 'kchmck/vim-coffee-script'
+on_ft = 'coffee'
+
+# ejs ---------------------------------------------------------------------------
 
 [[plugins]]
-repo = 'davidhalter/jedi-vim'
-on_ft = 'python'
+repo = 'nikvdp/ejs-syntax'
+on_ft = 'ejs'
+
+# fish --------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'dag/vim-fish'
+on_ft = 'fish'
+
+# go ----------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'fatih/vim-go'
+on_ft = 'go'
+
+[[plugins]]
+repo = 'zchee/deoplete-go'
+on_ft = 'go'
+depends = 'deoplete.nvim'
+build = 'make'
+hook_source = '''
+  let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+'''
+
+# html --------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'vue']
+
+# json --------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'leshill/vim-json'
+on_ft = 'json'
+
+# python ------------------------------------------------------------------------
 
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 depends = 'deoplete.nvim'
-if = "has('nvim')"
 on_ft = 'python'
 hook_source = '''
   if has('unix')
@@ -57,51 +96,38 @@ repo = 'bps/vim-textobj-python'
 on_ft = 'python'
 depends = ['vim-textobj-user']
 
+# ruby --------------------------------------------------------------------------
+
 [[plugins]]
 repo = 'tpope/vim-endwise'
 on_ft = 'ruby'
 
-[[plugins]]
-repo = 'nikvdp/ejs-syntax'
-on_ft = 'ejs'
-
-[[plugins]]
-repo = 'kchmck/vim-coffee-script'
-on_ft = 'coffee'
-
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-
-[[plugins]]
-repo = 'zchee/deoplete-go'
-depends = ['deoplete', 'gocode']
-build = 'make'
-hook_source = '''
-  let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-'''
+# tex ---------------------------------------------------------------------------
 
 [[plugins]]
 repo = 'lervag/vimtex'
 on_ft = 'tex'
 
+# toml -------------------------------------------------------------------------
+
 [[plugins]]
-repo = 'dag/vim-fish'
-on_ft = 'fish'
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
+
+# typescript --------------------------------------------------------------------
+
+[[plugins]]
+repo = 'leafgarland/typescript-vim'
+on_ft = 'typescript'
+
+# vim --------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+
+# vue ---------------------------------------------------------------------------
 
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = 'vue'
-
-[[plugins]]
-repo = 'alvan/vim-closetag'
-on_ft = ['html', 'vue']
-
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = ['typescript']
-
-[[plugins]]
-repo = 'leshill/vim-json'
-on_ft = ['json']
