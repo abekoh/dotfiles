@@ -1,11 +1,11 @@
 #!/bin/bash
 # Mac
-# TODO: add ctags
 if [ "$(uname)" == 'Darwin' ]; then
     brew tap neovim/homebrew-neovim
     brew update
     brew install fish neovim python3 tmux reattach-to-user-namespace ripgrep boost
     brew install vim --with-override-system-vi
+    brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # Ubuntu
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     sudo apt-add-repository -y ppa:fish-shell/release-2
@@ -25,7 +25,7 @@ elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     cd ../
     rm -rf ctags
 # CentOS (>=7)
-# TODO: add ctags
+# TODO: ctags
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/centos-release ] && [ "$(cat /etc/redhat-release | sed -e 's/.*\s\([0-9]\)\..*/\1/')" == '7' ]; then
     yum install -y https://centos7.iuscommunity.org/ius-release.rpm
     yum remove -y vim*
@@ -45,3 +45,5 @@ pip install --upgrade pip
 pip3 install --upgrade pip
 pip install neovim
 pip3 install neovim neovim-remote virtualfish jedi pycodestyle
+git config --global init.template '~/.git_template'
+git config --global alias.ctags '!.git/hooks/ctags'
