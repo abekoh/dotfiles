@@ -42,6 +42,9 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
 repo = 'Shougo/neoyank.vim'
 
 [[plugins]]
