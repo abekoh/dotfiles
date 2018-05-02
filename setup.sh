@@ -44,4 +44,4 @@ fi
 pip install --upgrade pip
 pip3 install --upgrade pip
 pip install neovim
-pip3 install neovim neovim-remote virtualfish
+pip3 install neovim neovim-remote virtualfish jedi pycodestyle

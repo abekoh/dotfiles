@@ -54,6 +54,14 @@ def python_utils():
     subprocess.run('ln -sf ~/dotfiles/config/python-utils/pycodestyle ~/.config/', shell=True)
 
 
+def git():
+    print('setup git')
+    config_path = os.path.join(os.environ['HOME'], '.git_template')
+    if not os.path.exists(config_path):
+        os.mkdir(config_path)
+    subprocess.run('ln -sf ~/dotfiles/config/git/git_template/hooks ~/.git_template/hooks', shell=True)
+
+
 if __name__ == '__main__':
     config_dir_path = os.path.join(os.environ['HOME'], '.config')
     if not os.path.exists(config_dir_path):
@@ -64,3 +72,4 @@ if __name__ == '__main__':
     zsh()
     tmux()
     python_utils()
+    git()
