@@ -1,14 +1,14 @@
 " keymap
 nnoremap [denite] <Nop>
 nmap <Leader>f [denite]
-nnoremap <silent> [denite]c :Denite<Space>file<CR>
 nnoremap <silent> [denite]f :Denite<Space>file_rec<CR>
 nnoremap <silent> [denite]g :Denite<Space>grep<CR>
+nnoremap <silent> [denite]h :Denite<Space>file_mru<CR>
+nnoremap <silent> [denite]j :DeniteBufferDir<Space>file<CR>
 nnoremap <silent> [denite]b :Denite<Space>buffer<CR>
-nnoremap <silent> [denite]h :Denite<Space>help<CR>
+nnoremap <silent> [denite]q :Denite<Space>help<CR>
 nnoremap <silent> [denite]l :Denite<Space>line<CR>
 nnoremap <silent> [denite]t :Denite<Space>tag<CR>
-nnoremap <silent> [denite]m :Denite<Space>file_mru<CR>
 nnoremap <silent> [denite]u :Denite<Space>menu<CR>
 nnoremap <silent> [denite]y :Denite<Space>neoyank<CR>
 
