@@ -81,16 +81,8 @@ hook_add = '''
 
 [[plugins]]
 repo = 'neomake/neomake'
-if = "has('nvim')"
 hook_add = '''
   source ~/.config/nvim/plugins/neomake.rc.vim
-'''
-
-[[plugins]]
-repo = 'vim-syntastic/syntastic'
-if = "!has('nvim')"
-hook_add = '''
-  source ~/.config/nvim/plugins/syntastic.rc.vim
 '''
 
 # ------------------------------------------------------------------------------
