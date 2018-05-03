@@ -3,10 +3,11 @@
 if [ "$(uname)" == 'Darwin' ]; then
     brew tap neovim/homebrew-neovim
     brew update
-    brew install fish neovim python3 tmux reattach-to-user-namespace ripgrep boost
+    brew install fish neovim python3 tmux reattach-to-user-namespace ripgrep boost go
     brew install vim --with-override-system-vi
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # Ubuntu
+# TODO: go
 elif [ "$(uname)" == 'Linux' ] && [ -e /etc/lsb-release ]; then
     sudo apt-add-repository -y ppa:fish-shell/release-2
     sudo apt-add-repository -y ppa:neovim-ppa/unstable
@@ -41,9 +42,15 @@ else
     echo "Your platform is not supported."
     exit 1
 fi
+# python
 pip install --upgrade pip
 pip3 install --upgrade pip
 pip install neovim
 pip3 install neovim neovim-remote virtualfish jedi pycodestyle
+# git
 git config --global init.template '~/.git_template'
 git config --global alias.ctags '!.git/hooks/ctags'
+# go
+export GOPATH=$HOME/.go
+go get github.com/nsf/gocode
+go get golang.org/x/tools/cmd/goimports

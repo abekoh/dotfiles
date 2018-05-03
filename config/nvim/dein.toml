@@ -8,7 +8,6 @@ repo = 'Shougo/dein.vim'
 # ------------------------------------------------------------------------------
 # color
 # ------------------------------------------------------------------------------
-
 [[plugins]]
 repo = 'rhysd/vim-color-spring-night'
 hook_add = '''
@@ -65,8 +64,8 @@ repo = 'kana/vim-textobj-function'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 hook_add = '''
-  nmap <silent><Leader>c :TComment<CR>
-  vmap <silent><Leader>c :TComment<CR>
+  nmap <silent><Leader>i :TComment<CR>
+  vmap <silent><Leader>i :TComment<CR>
   " vim-textobj-pythonとの競合消す
   let g:tcommentTextObjectInlineComment = ""
 '''
@@ -76,6 +75,13 @@ repo = 't9md/vim-quickhl'
 hook_add = '''
   nmap <Leader>h <Plug>(quickhl-manual-this)
   nmap <Leader>H <Plug>(quickhl-manual-reset)
+'''
+
+[[plugins]]
+repo = 'AndrewRadev/splitjoin.vim'
+hook_add = '''
+  nmap <Leader>j :SplitjoinJoin<CR>
+  nmap <Leader>s :SplitjoinSplit<CR>
 '''
 
 # ------------------------------------------------------------------------------
@@ -115,8 +121,7 @@ repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'tpope/vim-rhubarb'
-depends = 'vim-fugitive'
-
+depends = 'vim-fugitive' 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
@@ -129,12 +134,16 @@ hook_add = '''
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_guide_size = 1
   let g:indent_guides_auto_colors = 0
-  au VimEnter,ColorScheme * hi IndentGuidesOdd ctermbg=237
-  au VimEnter,ColorScheme * hi IndentGuidesEven ctermbg=240
+  let g:indent_guides_default_mapping = 0
+  au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesOdd ctermbg=237
+  au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesEven ctermbg=240
 '''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
+hook_add = '''
+  let g:gitgutter_map_keys = 0
+'''
 
 # ------------------------------------------------------------------------------
 # terminal
