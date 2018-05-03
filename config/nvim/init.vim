@@ -41,3 +41,4 @@ syntax enable
 " 他の設定ファイル
 runtime! options.rc.vim
 runtime! keymap.rc.vim
+runtime! functions.rc.vim

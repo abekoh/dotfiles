@@ -4,7 +4,7 @@ nmap <Leader>f [denite]
 nnoremap <silent> [denite]f :Denite<Space>file_rec<CR>
 nnoremap <silent> [denite]g :Denite<Space>grep<CR>
 nnoremap <silent> [denite]h :Denite<Space>file_mru<CR>
-nnoremap <silent> [denite]j :DeniteBufferDir<Space>file<CR>
+nnoremap <silent> [denite]j :DeniteBufferDir<Space>file<Space>file:new<CR>
 nnoremap <silent> [denite]b :Denite<Space>buffer<CR>
 nnoremap <silent> [denite]q :Denite<Space>help<CR>
 nnoremap <silent> [denite]l :Denite<Space>line<CR>
@@ -14,8 +14,7 @@ nnoremap <silent> [denite]y :Denite<Space>neoyank<CR>
 
 " replace grep into ripgrep
 if executable('rg')
-  call denite#custom#var('file_rec', 'command',
-        \ ['rg', '--files', '--glob', '!.git'])
+  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
   call denite#custom#var('grep', 'command', ['rg'])
 endif
 
@@ -27,7 +26,7 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ [
       \ '.git/', 'build/', '__pycache__/',
       \ 'images/', '*.o', '*.make',
-      \ '*.min.*',
+      \ '*.min.*', 'imgs/',
       \ 'img/', 'fonts/'])
 
 " denite/insert モードのときは，C- で移動できるようにする

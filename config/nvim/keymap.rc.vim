@@ -34,11 +34,11 @@ nnoremap sp gT
 nnoremap sq :q<CR>
 " 記録機能を無効化
 nnoremap q <nop>
-" Leader = Space
 " nmap <Space> <Leader>
 " ctags検索
 nnoremap <Leader>t :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 if has('nvim')
     tnoremap <silent> <ESC> <C-\><C-n>
 endif
+" Leader = Space
 map <Space> <Leader>
