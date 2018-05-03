@@ -7,8 +7,6 @@ nnoremap k gk
 vnoremap v $h
 " Dでヤンクしない
 nnoremap D "_D
-" 検索結果をESC2回で解除
-" nnoremap <silent><ESC><ESC> :noh<CR>
 " s+hjklで移動
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
@@ -21,11 +19,11 @@ nnoremap s<S-L> <C-w>><CR>
 nnoremap s<S-K> <C-w>-<CR>
 nnoremap s<S-J> <C-w>+<CR>
 "インサートモードでも移動
-inoremap <c-d> <delete>
-inoremap <c-j> <down>
-inoremap <c-k> <up>
-inoremap <c-h> <left>
-inoremap <c-l> <right>
+inoremap <C-d> <DELETE>
+inoremap <C-j> <DOWN>
+inoremap <C-k> <UP>
+inoremap <C-h> <LEFT>
+inoremap <C-l> <RIGHT>
 " タブ関連
 nnoremap st :tabnew<CR>
 nnoremap sn gt
@@ -34,10 +32,12 @@ nnoremap sp gT
 nnoremap sq :q<CR>
 " 記録機能を無効化
 nnoremap q <nop>
-" nmap <Space> <Leader>
 " ctags検索
 nnoremap <Leader>t :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 " ESC in terminal mode
 tnoremap <silent> <ESC> <C-\><C-n>
 " Leader = Space
 map <Space> <Leader>
+" コマンドモードでctrl+kjで履歴
+cnoremap <C-k> <up>
+cnoremap <C-j> <down>
