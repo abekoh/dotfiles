@@ -56,10 +56,10 @@ def python_utils():
 
 def git():
     print('setup git')
-    config_path = os.path.join(os.environ['HOME'], '.git_template')
+    config_path = os.path.join(os.environ['HOME'], '.git_template/hooks')
     if not os.path.exists(config_path):
         os.mkdir(config_path)
-    subprocess.run('ln -sf ~/dotfiles/config/git/git_template/hooks ~/.git_template/hooks', shell=True)
+    subprocess.run('ln -sf ~/dotfiles/config/git/git_template/hooks/* ~/.git_template/hooks/', shell=True)
 
 
 if __name__ == '__main__':
