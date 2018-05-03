@@ -1,2 +1,2 @@
-nnoremap <buffer> q <C-w>c
-nnoremap <buffer> t :call<Space>MoveToNewTab()<CR>
+nnoremap <buffer><silent> q <C-w>c
+nnoremap <buffer><silent> t :call<Space>MoveToNewTab()<CR>
