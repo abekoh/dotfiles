@@ -114,6 +114,10 @@ build = 'env PY3=ON ./install.sh'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
+repo = 'tpope/vim-rhubarb'
+depends = 'vim-fugitive'
+
+[[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
   let g:airline_theme = 'spring_night'
