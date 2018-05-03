@@ -37,8 +37,7 @@ nnoremap q <nop>
 " nmap <Space> <Leader>
 " ctags検索
 nnoremap <Leader>t :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
-if has('nvim')
-    tnoremap <silent> <ESC> <C-\><C-n>
-endif
+" ESC in terminal mode
+tnoremap <silent> <ESC> <C-\><C-n>
 " Leader = Space
 map <Space> <Leader>
