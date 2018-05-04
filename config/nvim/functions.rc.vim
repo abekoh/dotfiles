@@ -7,31 +7,29 @@ function! MoveToNewTab()
   endif
 endfunction
 
-function! MoveToNewTeminal()
+function! MoveToNeoTerm()
   if exists("s:neoterm_buffer_id") && bufloaded(s:neoterm_buffer_id)
     let s:neoterm_win_ids = win_findbuf(s:neoterm_buffer_id)
     if empty(s:neoterm_win_ids)
-      tab split
+      tabedit
       execute "buffer " . s:neoterm_buffer_id
+      echo "hey"
     else
       call win_gotoid(s:neoterm_win_ids[0])
     endif
-  elseif winnr('$') > 1
-    execute "normal \<C-w>j"
-    call MoveToNewTab()
+  else
+    tabnext
     let s:neoterm_buffer_id = bufnr('$')
   endif
 endfunction
 
 function! QuickRun(cmd)
-  execute "T " . a:cmd . " %"
-  normal <C-w>j
-  call MoveToNewTeminal()
+  execute "tab T " . a:cmd . " %"
+  call MoveToNeoTerm()
 endfunction
 
 function! QuickRunWithArgs(cmd)
   let l:args = input("$ " . a:cmd . " ")
-  execute "T " . a:cmd . " % " . l:args
-  normal <C-w>j
-  call MoveToNewTeminal()
+  execute "tab T " . a:cmd . " % " . l:args
+  call MoveToNeoTerm()
 endfunction
