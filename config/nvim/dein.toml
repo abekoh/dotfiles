@@ -151,7 +151,7 @@ hook_add = '''
 [[plugins]]
 repo = 'kassio/neoterm'
 hook_add = '''
-  let g:neoterm_default_mod = 'vertical'
+  source ~/.config/nvim/plugins/neoterm.rc.vim
 '''
 
 # ------------------------------------------------------------------------------
