@@ -42,4 +42,4 @@ map <Space> <Leader>
 cnoremap <C-k> <up>
 cnoremap <C-j> <down>
 " 分割ウィンドウを新しいタブに移動
-nnoremap <silent> sT :call<Space>MoveToNewTab()<CR>
+nnoremap <silent> T :call<Space>MoveToNewTab()<CR>
