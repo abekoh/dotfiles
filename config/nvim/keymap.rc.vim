@@ -41,3 +41,5 @@ map <Space> <Leader>
 " コマンドモードでctrl+kjで履歴
 cnoremap <C-k> <up>
 cnoremap <C-j> <down>
+" 分割ウィンドウを新しいタブに移動
+nnoremap <silent> sT :call<Space>MoveToNewTab()<CR>
