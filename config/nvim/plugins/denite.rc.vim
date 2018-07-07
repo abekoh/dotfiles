@@ -32,6 +32,8 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
 " denite/insert モードのときは，C- で移動できるようにする
 call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
 call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
+call denite#custom#map('insert', "<Down>", '<denite:move_to_next_line>')
+call denite#custom#map('insert', "<Up>", '<denite:move_to_previous_line>')
 
 " tabopen や vsplit のキーバインドを割り当て
 call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
