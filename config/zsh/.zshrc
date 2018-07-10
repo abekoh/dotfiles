@@ -12,8 +12,8 @@ SAVEHIST=1000000
 
 # プロンプト
 # PROMPT="%{${fg[red]}%}%n%{${fg[white]}%}@%m%{${reset_color}%} %~
-PROMPT="${fg[yellow]}%n${fg[white]}@%m${fg[white]}:${fg[green]}%~
-${fg[cyan]}$ ${reset_color}"
+PROMPT="${fg[yellow]}%n${fg[white]}@%m${fg[white]}:${fg[green]}%~${reset_color}
+\$ "
 
 # 単語の区切り文字を指定する
 autoload -Uz select-word-style
