@@ -2,7 +2,7 @@
 nnoremap [denite] <Nop>
 nmap <Leader>f [denite]
 nnoremap <silent> [denite]f :Denite<Space>file_rec<CR>
-nnoremap <silent> [denite]g :Denite<Space>grep<CR>
+nnoremap <silent> [denite]g :Denite<Space>-auto_preview<Space>grep<CR>
 nnoremap <silent> [denite]m :Denite<Space>file_mru<CR>
 nnoremap <silent> [denite]j :DeniteBufferDir<Space>file<Space>file:new<CR>
 nnoremap <silent> [denite]b :Denite<Space>buffer<CR>
@@ -17,6 +17,8 @@ if executable('rg')
   call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
   call denite#custom#var('grep', 'command', ['rg'])
 endif
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', [])
 
 " change matcher
 call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm', 'matcher_ignore_globs'])
