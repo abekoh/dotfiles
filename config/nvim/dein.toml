@@ -111,6 +111,20 @@ depends = 'denite.nvim'
 repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
 
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  let g:NERDTreeMinimalUI = 1
+  let g:NERDTreeShowHidden = 1
+'''
+
+[[plugins]]
+repo = 'jistr/vim-nerdtree-tabs'
+depends = 'nerdtree'
+hook_add = '''
+  nnoremap <silent> <Leader>e :NERDTreeTabsToggle<CR>
+'''
+
 # ------------------------------------------------------------------------------
 # powerline
 # ------------------------------------------------------------------------------
