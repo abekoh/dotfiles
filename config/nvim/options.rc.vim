@@ -76,3 +76,5 @@ endif
 map <Space> <Leader>
 " Previewをオフに
 set completeopt-=preview
+" build後に自動保存
+set autowrite
