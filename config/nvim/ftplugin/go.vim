@@ -19,8 +19,3 @@ function! s:build_go_files()
     call go#cmd#Build(0)
   endif
 endfunction
-
-if exists(':T') == 2
-  nnoremap <silent> <Leader>r :call<Space>QuickRun('go run')<CR>
-  nnoremap <silent> <Leader>R :call<Space>QuickRunWithArgs('go run')<CR>
-endif
