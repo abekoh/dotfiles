@@ -64,7 +64,7 @@ repo = 'kana/vim-textobj-function'
 [[plugins]]
 repo = 'tomtom/tcomment_vim'
 hook_add = '''
-  let g:tcommentMaps = 0
+  let g:tcomment_maps = 0
   nmap <silent><Leader>i :TComment<CR>
   vmap <silent><Leader>i :TComment<CR>
 '''
