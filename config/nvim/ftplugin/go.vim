@@ -8,6 +8,7 @@ nmap <Leader>c <Plug>(go-coverage-toggle)
 nmap <Leader>c <Plug>(go-coverage-toggle)
 nmap <Leader>a <Plug>(go-alternate-edit)
 nmap <Leader>A <Plug>(go-alternate-vertical)
+nmap <Leader>d <Plug>(go-def)
   
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
