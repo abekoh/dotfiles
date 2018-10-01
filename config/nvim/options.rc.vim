@@ -59,7 +59,7 @@ set splitbelow
 " highlighting zenkaku space
 autocmd MyAutoCmd BufRead,BufNew * match Error /　/
 " アンダーラインをオフに
-highlight CursorLine cterm=NONE
+" highlight CursorLine cterm=NONE
 if has('nvim')
   set clipboard+=unnamedplus
 else
@@ -70,9 +70,9 @@ if has('nvim')
   let $VISUAL = 'nvr -cc split --remote-wait'
 endif
 " color
-if !has('nvim')
-  set t_Co=256
-endif
+" if !has('nvim')
+"   set t_Co=256
+" endif
 map <Space> <Leader>
 " Previewをオフに
 set completeopt-=preview
