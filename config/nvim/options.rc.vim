@@ -57,7 +57,7 @@ set notitle
 " 下に分割
 set splitbelow
 " highlighting zenkaku space
-autocmd MyAutoCmd BufRead,BufNew * match Error /　/
+" autocmd MyAutoCmd BufRead,BufNew * match Error /　/
 " アンダーラインをオフに
 " highlight CursorLine cterm=NONE
 if has('nvim')

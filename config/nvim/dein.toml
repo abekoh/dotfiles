@@ -11,15 +11,12 @@ repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'rhysd/vim-color-spring-night'
 hook_add = '''
-  au MyAutoCmd VimEnter * nested colorscheme spring-night
-  au MyAutoCmd VimEnter * highlight CursorLine cterm=none
-  " For Vim 7.4.1799 or later
-  if has('termguicolors')
+  colorscheme spring-night
+  if has('nvim')
+    set termguicolors
+  elseif has('termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-  elseif has('nvim')
-    " For Neovim 0.1.5 or later
     set termguicolors
   endif
 '''
@@ -157,8 +154,8 @@ hook_add = '''
   let g:indent_guides_guide_size = 1
   let g:indent_guides_auto_colors = 0
   let g:indent_guides_default_mapping = 0
-  au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesOdd ctermbg=237
-  au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesEven ctermbg=240
+  " au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesOdd ctermbg=237
+  " au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesEven ctermbg=240
 '''
 
 [[plugins]]

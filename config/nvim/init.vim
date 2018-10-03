@@ -1,7 +1,3 @@
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
 if has('nvim')
   let s:dein_cache_path = expand('~/.cache/nvim/dein')
 else
