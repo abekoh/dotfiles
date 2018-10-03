@@ -71,8 +71,8 @@ repo = 'kana/vim-textobj-function'
 repo = 'tomtom/tcomment_vim'
 hook_add = '''
   let g:tcomment_maps = 0
-  nmap <silent><Leader>i :TComment<CR>
-  vmap <silent><Leader>i :TComment<CR>
+  nmap <silent> <Leader>i :TComment<CR>
+  vmap <silent> <Leader>i :TComment<CR>
 '''
 
 [[plugins]]
@@ -85,8 +85,8 @@ hook_add = '''
 [[plugins]]
 repo = 'AndrewRadev/splitjoin.vim'
 hook_add = '''
-  nmap <Leader>j :SplitjoinJoin<CR>
-  nmap <Leader>s :SplitjoinSplit<CR>
+  nmap <silent> <Leader>j :SplitjoinJoin<CR>
+  nmap <silent> <Leader>s :SplitjoinSplit<CR>
 '''
 
 # ------------------------------------------------------------------------------

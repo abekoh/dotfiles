@@ -4,10 +4,18 @@
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
-on_i = 1
+on_event = 'InsertEnter'
 hook_source = '''
   source ~/.config/nvim/plugins/deoplete.rc.vim
 '''
+
+# ------------------------------------------------------------------------------
+# focus lost & cursor lost
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'tpope/vim-repeat'
+on_event = ['FocusLost', 'CursorLost']
 
 # ------------------------------------------------------------------------------
 # filetype

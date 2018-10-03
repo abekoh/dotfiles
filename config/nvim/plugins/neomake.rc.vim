@@ -7,15 +7,8 @@ autocmd! BufEnter,BufWritePost * Neomake
 " autocmd MyAutoCmd ColorScheme * hi NeomakeMessageSign cterm=bold ctermfg=8 ctermbg=150
 " autocmd MyAutoCmd ColorScheme * hi NeomakeInfoSign cterm=bold ctermfg=8 ctermbg=110
 let g:neomake_error_sign = {'text': 'E➤', 'texthl': 'NeomakeErrorSign'}
-let g:neomake_warning_sign = {
-    \   'text': 'W➤',
-    \   'texthl': 'NeomakeWarningSign',
-    \ }
-let g:neomake_message_sign = {
-     \   'text': 'M➤',
-     \   'texthl': 'NeomakeMessageSign',
-     \ }
+let g:neomake_warning_sign = {'text': 'W➤', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': 'M➤', 'texthl': 'NeomakeMessageSign' }
 let g:neomake_info_sign = {'text': 'ℹ➤', 'texthl': 'NeomakeInfoSign'}
-" for Python
 let g:neomake_python_enabled_makers = ['python', 'pyflakes', 'pycodestyle']
 let g:neomake_json_enabled_makers = ['jsonlint']
