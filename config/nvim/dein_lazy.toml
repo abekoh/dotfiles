@@ -6,7 +6,26 @@
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_source = '''
-  source ~/.config/nvim/plugins/deoplete.rc.vim
+  let g:deoplete#enable_at_startup = 1
+  " <TAB>: completion.
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ deoplete#manual_complete()
+  function! s:check_back_space() abort "{{{
+    let l:col = col('.') - 1
+    return !l:col || getline('.')[l:col - 1]  =~ '\s'
+  endfunction"}}}
+
+  " <S-TAB>: completion back.
+  inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+
+  " <BS>: close popup and delete backword char.
+  inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+  if !exists('g:deoplete#omni_patterns')
+    let g:deoplete#omni_patterns = {}
+  endif
+  let g:deoplete#omni_patterns.r = '[[:alnum:].\\]\+'
 '''
 
 # ------------------------------------------------------------------------------
@@ -59,18 +78,6 @@ hook_source = '''
   let g:go_highlight_generate_tags = 1
 '''
 
-[[plugins]]
-repo = 'zchee/deoplete-go'
-on_ft = 'go'
-depends = 'deoplete.nvim'
-build = 'make'
-hook_source = '''
-  let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-  let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-  let g:deoplete#sources#go#package_dot = 1
-  let g:deoplete#sources#go#pointer = 1
-'''
-
 # html --------------------------------------------------------------------------
 
 [[plugins]]
@@ -84,29 +91,6 @@ repo = 'leshill/vim-json'
 on_ft = 'json'
 
 # python ------------------------------------------------------------------------
-
-[[plugins]]
-repo = 'zchee/deoplete-jedi'
-depends = 'deoplete.nvim'
-on_ft = 'python'
-hook_source = '''
-  if has('unix')
-    let g:python_host_prog = '/usr/bin/python2'
-    let g:python3_host_prog = '/usr/bin/python3'
-  endif
-  if has('mac')
-    let g:python_host_prog = '/usr/local/bin/python2'
-    let g:python3_host_prog = '/usr/local/bin/python3'
-  endif
-'''
-
-[[plugins]]
-repo = 'andviro/flake8-vim'
-on_ft = 'python'
-
-[[plugins]]
-repo = 'jmcantrell/vim-virtualenv'
-on_ft = 'python'
 
 [[plugins]]
 repo = 'bps/vim-textobj-python'
