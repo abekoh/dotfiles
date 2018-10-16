@@ -34,3 +34,14 @@ if type go > /dev/null 2>&1; then
 else
   echo "go is not found."
 fi
+
+# javascript/typescript
+if type npm > /dev/null 2>&1; then
+  if ! type javascript-typescript-langserver > /dev/null 2>&1; then
+    npm install -g javascript-typescript-langserver
+  else
+    echo "javascript-typescript-langserver is already installed."
+  fi
+else
+  echo "npm is not found."
+fi
