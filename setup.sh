@@ -3,7 +3,7 @@
 if [ "$(uname)" == 'Darwin' ]; then
     brew tap neovim/homebrew-neovim
     brew update
-    brew install fish neovim python3 tmux reattach-to-user-namespace ripgrep boost go
+    brew install fish neovim python3 tmux reattach-to-user-namespace ripgrep boost go nodebrew
     brew install vim --with-override-system-vi
     brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # Ubuntu
