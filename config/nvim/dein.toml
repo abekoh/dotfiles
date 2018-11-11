@@ -6,22 +6,31 @@
 repo = 'Shougo/dein.vim'
 
 # ------------------------------------------------------------------------------
-# color
+# UI
 # ------------------------------------------------------------------------------
+
 [[plugins]]
 repo = 'rhysd/vim-color-spring-night'
 hook_add = '''
-  au MyAutoCmd VimEnter * nested colorscheme spring-night
-  au MyAutoCmd VimEnter * highlight CursorLine cterm=none
-  " For Vim 7.4.1799 or later
-  if has('termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-  elseif has('nvim')
-    " For Neovim 0.1.5 or later
-    set termguicolors
-  endif
+  set background=dark
+  colorscheme spring-night
+'''
+
+[[plugins]]
+repo = 'vim-airline/vim-airline'
+hook_add = '''
+  let g:airline_theme = 'spring_night'
+'''
+
+[[plugins]]
+repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+  let g:indent_guides_enable_on_vim_startup = 1
+  let g:indent_guides_guide_size = 1
+  let g:indent_guides_auto_colors = 0
+  let g:indent_guides_default_mapping = 0
+  autocmd VimEnter,ColorScheme * :hi IndentGuidesOdd ctermbg=234
+  autocmd VimEnter,ColorScheme * :hi IndentGuidesEven ctermbg=235
 '''
 
 # ------------------------------------------------------------------------------
@@ -39,6 +48,17 @@ hook_add = '''
 '''
 
 [[plugins]]
+repo = 'tomtom/tcomment_vim'
+hook_add = '''
+  let g:tcomment_maps = 0
+  nmap <silent> <Leader>i :TComment<CR>
+  vmap <silent> <Leader>i :TComment<CR>
+'''
+
+[[plugins]]
+repo = 'cohama/lexima.vim'
+
+[[plugins]]
 repo = 'LeafCage/yankround.vim'
 hook_add = '''
   nmap p <Plug>(yankround-p)
@@ -50,13 +70,18 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'vim-scripts/sudo.vim'
+repo = 'AndrewRadev/splitjoin.vim'
+hook_add = '''
+  nmap <silent> <Leader>j :SplitjoinJoin<CR>
+  nmap <silent> <Leader>s :SplitjoinSplit<CR>
+'''
 
 [[plugins]]
-repo = 'Shougo/neoyank.vim'
-
-[[plugins]]
-repo = 'cohama/lexima.vim'
+repo = 't9md/vim-quickhl'
+hook_add = '''
+  nmap <Leader>h <Plug>(quickhl-manual-this)
+  nmap <Leader>H <Plug>(quickhl-manual-reset)
+'''
 
 [[plugins]]
 repo = 'tpope/vim-surround'
@@ -70,38 +95,6 @@ repo = 'kana/vim-operator-user'
 [[plugins]]
 repo = 'kana/vim-textobj-function'
 
-[[plugins]]
-repo = 'tomtom/tcomment_vim'
-hook_add = '''
-  let g:tcomment_maps = 0
-  nmap <silent><Leader>i :TComment<CR>
-  vmap <silent><Leader>i :TComment<CR>
-'''
-
-[[plugins]]
-repo = 't9md/vim-quickhl'
-hook_add = '''
-  nmap <Leader>h <Plug>(quickhl-manual-this)
-  nmap <Leader>H <Plug>(quickhl-manual-reset)
-'''
-
-[[plugins]]
-repo = 'AndrewRadev/splitjoin.vim'
-hook_add = '''
-  nmap <Leader>j :SplitjoinJoin<CR>
-  nmap <Leader>s :SplitjoinSplit<CR>
-'''
-
-# ------------------------------------------------------------------------------
-# linter
-# ------------------------------------------------------------------------------
-
-[[plugins]]
-repo = 'neomake/neomake'
-hook_add = '''
-  source ~/.config/nvim/plugins/neomake.rc.vim
-'''
-
 # ------------------------------------------------------------------------------
 # filer
 # ------------------------------------------------------------------------------
@@ -109,7 +102,47 @@ hook_add = '''
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 hook_add = '''
-  source ~/.config/nvim/plugins/denite.rc.vim
+  nmap <silent> <Leader>ff :Denite<Space>file_rec<CR>
+  nmap <silent> <Leader>fg :Denite<Space>grep<CR>
+  nmap <silent> <Leader>fm :Denite<Space>file_mru<CR>
+  nmap <silent> <Leader>fj :DeniteBufferDir<Space>file<Space>file:new<CR>
+  nmap <silent> <Leader>fb :Denite<Space>buffer<CR>
+  nmap <silent> <Leader>fq :Denite<Space>help<CR>
+  nmap <silent> <Leader>fl :Denite<Space>line<CR>
+  nmap <silent> <Leader>ft :Denite<Space>tag<CR>
+  nmap <silent> <Leader>fu :Denite<Space>menu<CR>
+  nmap <silent> <Leader>fy :Denite<Space>neoyank<CR>
+  nmap <silent> <Leader>fc :Denite<Space>codeAction<CR>
+
+  " replace grep into ripgrep
+  if executable('rg')
+    call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
+    call denite#custom#var('grep', 'command', ['rg'])
+  endif
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'pattern_opt', [])
+
+  " change matcher
+  call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm', 'matcher_ignore_globs'])
+
+  " customize ignore globs
+  call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+        \ [
+        \ '.git/', 'build/', '__pycache__/',
+        \ 'images/', '*.o', '*.make',
+        \ '*.min.*', 'imgs/',
+        \ 'img/', 'fonts/'])
+
+  " denite/insert モードのときは，C-,↑↓ で移動できるようにする
+  call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
+  call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
+  call denite#custom#map('insert', "<Down>", '<denite:move_to_next_line>')
+  call denite#custom#map('insert', "<Up>", '<denite:move_to_previous_line>')
+
+  " tabopen や vsplit のキーバインドを割り当て
+  call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
+  call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
+  call denite#custom#map('normal', "v", '<denite:do_action:vsplit>')
 '''
 
 [[plugins]]
@@ -119,23 +152,45 @@ depends = 'denite.nvim'
 [[plugins]]
 repo = 'nixprime/cpsm'
 build = 'env PY3=ON ./install.sh'
+depends = 'denite.nvim'
 
 [[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-  let g:NERDTreeMinimalUI = 1
-  let g:NERDTreeShowHidden = 1
-'''
+repo = 'nixprime/cpsm'
+build = 'env PY3=ON ./install.sh'
+
+# ------------------------------------------------------------------------------
+# filetype
+# ------------------------------------------------------------------------------
 
 [[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-depends = 'nerdtree'
+repo = 'Shougo/context_filetype.vim'
+
+# ------------------------------------------------------------------------------
+# LSP
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+rev = 'next'
+build = './install.sh'
 hook_add = '''
-  nnoremap <silent> <Leader>e :NERDTreeTabsToggle<CR>
+  let g:LanguageClient_serverCommands = {}
+  let g:LanguageClient_serverCommands["python"] = ['pyls']
+  let g:LanguageClient_serverCommands["go"] = ['go-langserver']
+  let g:LanguageClient_serverCommands["javascript"] = ['javascript-typescript-langserver']
+  let g:LanguageClient_serverCommands["typescript"] = ['javascript-typescript-langserver']
+  let g:LanguageClient_hoverPreview = "Never"
 '''
 
 # ------------------------------------------------------------------------------
-# powerline
+# linter
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'w0rp/ale'
+
+# ------------------------------------------------------------------------------
+# git
 # ------------------------------------------------------------------------------
 
 [[plugins]]
@@ -144,37 +199,11 @@ repo = 'tpope/vim-fugitive'
 [[plugins]]
 repo = 'tpope/vim-rhubarb'
 depends = 'vim-fugitive' 
-[[plugins]]
-repo = 'vim-airline/vim-airline'
-hook_add = '''
-  let g:airline_theme = 'spring_night'
-'''
-
-[[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
-hook_add = '''
-  let g:indent_guides_enable_on_vim_startup = 1
-  let g:indent_guides_guide_size = 1
-  let g:indent_guides_auto_colors = 0
-  let g:indent_guides_default_mapping = 0
-  au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesOdd ctermbg=237
-  au MyAutoCmd VimEnter,ColorScheme * hi IndentGuidesEven ctermbg=240
-'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
   let g:gitgutter_map_keys = 0
-'''
-
-# ------------------------------------------------------------------------------
-# terminal
-# ------------------------------------------------------------------------------
-
-[[plugins]]
-repo = 'kassio/neoterm'
-hook_add = '''
-  source ~/.config/nvim/plugins/neoterm.rc.vim
 '''
 
 # ------------------------------------------------------------------------------
@@ -188,10 +217,3 @@ if = "!has('nvim')"
 [[plugins]]
 repo = 'roxma/nvim-yarp'
 if = "!has('nvim')"
-
-# ------------------------------------------------------------------------------
-# filetype
-# ------------------------------------------------------------------------------
-
-[[plugins]]
-repo = 'Shougo/context_filetype.vim'

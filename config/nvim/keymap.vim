@@ -1,12 +1,12 @@
+" vを二回で行末まで選択
+vnoremap v $h
 " Y -> 行末までヤンク
 nnoremap Y y$
+" Dでヤンクしない
+nnoremap D "_D
 " j, k による移動を折り返されたテキストでも自然に振る舞うように変更
 nnoremap j gj
 nnoremap k gk
-" vを二回で行末まで選択
-vnoremap v $h
-" Dでヤンクしない
-nnoremap D "_D
 " s+hjklで移動
 nnoremap sh <C-w>h
 nnoremap sj <C-w>j
@@ -28,18 +28,10 @@ inoremap <C-l> <RIGHT>
 nnoremap st :tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
-" 終了
-nnoremap sq :q<CR>
-" 記録機能を無効化
-nnoremap q <nop>
-" ctags検索
-nnoremap <Leader>t :<C-u>tab stj <C-R>=expand('<cword>')<CR><CR>
 " ESC in terminal mode
 tnoremap <silent> <ESC> <C-\><C-n>
 " Leader = Space
 map <Space> <Leader>
 " コマンドモードでctrl+kjで履歴
-cnoremap <C-k> <up>
-cnoremap <C-j> <down>
-" 分割ウィンドウを新しいタブに移動
-nnoremap <silent> T :call<Space>MoveToNewTab()<CR>
+cnoremap <C-k> <UP>
+cnoremap <C-j> <DOWN>
