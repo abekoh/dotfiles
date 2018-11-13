@@ -7,19 +7,20 @@ repo = 'Shougo/dein.vim'
 
 # ------------------------------------------------------------------------------
 # UI
-# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------ 
 
 [[plugins]]
-repo = 'rhysd/vim-color-spring-night'
+repo = 'jacoborus/tender.vim'
 hook_add = '''
-  set background=dark
-  colorscheme spring-night
+  set termguicolors
+  syntax enable
+  colorscheme tender
 '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 hook_add = '''
-  let g:airline_theme = 'spring_night'
+  let g:airline_theme = 'tender'
 '''
 
 [[plugins]]
@@ -176,7 +177,6 @@ build = './install.sh'
 hook_add = '''
   let g:LanguageClient_serverCommands = {}
   let g:LanguageClient_serverCommands["python"] = ['pyls']
-  let g:LanguageClient_serverCommands["go"] = ['go-langserver']
   let g:LanguageClient_serverCommands["javascript"] = ['javascript-typescript-langserver']
   let g:LanguageClient_serverCommands["typescript"] = ['javascript-typescript-langserver']
   let g:LanguageClient_hoverPreview = "Never"
