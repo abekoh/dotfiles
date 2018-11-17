@@ -46,3 +46,6 @@ python3 make_links.py
 
 ## iTerm theme
 https://gist.github.com/yads/a69cff702f0283bef2a3fa390650091a
+
+## Terminal font
+https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack
