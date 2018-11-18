@@ -32,3 +32,4 @@ endif
 
 runtime! options.vim
 runtime! keymap.vim
+runtime! secret.vim
