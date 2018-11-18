@@ -245,6 +245,13 @@ hook_add = '''
   let g:gitgutter_map_keys = 0
 '''
 
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+
+[[plugins]]
+repo = 'tyru/open-browser-github.vim'
+depends = 'open-browser.vim'
+
 # ------------------------------------------------------------------------------
 # extension for vim
 # ------------------------------------------------------------------------------
