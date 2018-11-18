@@ -9,6 +9,7 @@ set -x PATH ~/.nodebrew/current/bin $PATH
 
 # alias
 alias vi='vim -u NONE -N'
+alias ij='open -b com.jetbrains.intellij'
 
 # complete
 complete -c workon -a "(ls $WORKON_HOME)"
