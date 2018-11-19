@@ -28,6 +28,8 @@ inoremap <C-l> <RIGHT>
 nnoremap st :tabnew<CR>
 nnoremap sn gt
 nnoremap sp gT
+" 終了
+nnoremap sq :q<CR>
 " ESC in terminal mode
 tnoremap <silent> <ESC> <C-\><C-n>
 " Leader = Space
@@ -35,3 +37,5 @@ map <Space> <Leader>
 " コマンドモードでctrl+kjで履歴
 cnoremap <C-k> <UP>
 cnoremap <C-j> <DOWN>
+" 分割ウィンドウを新しいタブに移動
+noremap <silent> T :call<Space>MoveToNewTab()<CR>

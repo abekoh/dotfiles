@@ -1,6 +1,5 @@
 " debug
-set runtimepath+=~/.dotfiles/nvim
-
+set runtimepath+=~/.dotfiles/nvim 
 if has('nvim')
   let s:dein_cache_path = expand('~/.cache/nvim/dein')
 else
@@ -30,6 +29,7 @@ if dein#check_install()
   call dein#install()
 endif
 
+runtime! functions.vim
 runtime! options.vim
 runtime! keymap.vim
 runtime! secret.vim
