@@ -6,3 +6,11 @@ function! MoveToNewTab()
     tabnext
   endif
 endfunction
+
+if has('vim_starting')
+  function ReloadSettings() abort
+    execute printf('source %s', $MYVIMRC)
+    redraw
+    echo printf('init.vim has reloaded (%s).', strftime('%c'))
+  endfunction
+endif
