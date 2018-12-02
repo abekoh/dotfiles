@@ -6,6 +6,7 @@ set -x TERM xterm-256color
 set -x GOPATH ~/go
 set -x PATH ~/go/bin $PATH
 set -x PATH ~/.nodebrew/current/bin $PATH
+set -x PATH ~/bin $PATH
 
 # alias
 alias vi='vim -u NONE -N'
