@@ -97,11 +97,11 @@ repo = 'godlygeek/tabular'
 on_ft = 'markdown'
 
 [[plugins]]
-repo = 'plasticboy/vim-markdown'
+repo = 'gabrielelana/vim-markdown'
 on_ft = 'markdown'
-depends = 'tabular'
 hook_source = '''
-  let g:vim_markdown_folding_disabled = 1
+  let g:markdown_enable_mappings = 0
+  nnoremap <silent> <buffer> <Leader>o :call markdown#SwitchStatus()<CR>
 '''
 
 [[plugins]]
