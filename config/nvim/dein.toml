@@ -263,3 +263,10 @@ if = "!has('nvim')"
 [[plugins]]
 repo = 'roxma/nvim-yarp'
 if = "!has('nvim')"
+
+[[plugins]]
+repo = 'vim-jp/vital.vim'
+merged = 0
+
+[[plugins]]
+repo = 'lambdalisue/vital-Whisky'
