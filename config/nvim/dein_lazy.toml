@@ -100,8 +100,9 @@ on_ft = 'markdown'
 repo = 'gabrielelana/vim-markdown'
 on_ft = 'markdown'
 hook_source = '''
-  let g:markdown_enable_mappings = 0
-  nnoremap <silent> <buffer> <Leader>o :call markdown#SwitchStatus()<CR>
+  let g:markdown_enable_mappings = 1
+  let g:markdown_enable_spell_checking = 0
+  let g:markdown_mapping_switch_status = '<Leader>o'
 '''
 
 [[plugins]]
