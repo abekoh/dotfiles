@@ -1,3 +1,5 @@
+#!/usr/local/bin/python3
+from __future__ import print_function
 import os
 import subprocess
 
@@ -62,6 +64,13 @@ def git():
     subprocess.run('ln -sf ~/dotfiles/config/git/git_template/hooks/* ~/.git_template/hooks/', shell=True)
 
 
+def hammerspoon():
+    print('setup hammerspoon')
+    config_path = os.path.join(os.environ['HOME'], '.hammerspoon')
+    if not os.path.exists(config_path):
+        os.mkdir(config_path)
+    subprocess.run('ln -sf ~/dotfiles/config/hammerspoon/init.lua ~/.hammerspoon/init.lua', shell=True)
+
 if __name__ == '__main__':
     config_dir_path = os.path.join(os.environ['HOME'], '.config')
     if not os.path.exists(config_dir_path):
@@ -73,3 +82,4 @@ if __name__ == '__main__':
     tmux()
     python_utils()
     git()
+    hammerspoon()
