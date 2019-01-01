@@ -35,6 +35,7 @@ local rightCommandHandler = function(e)
     local isDown = e:getType() == hs.eventtap.event.types.keyDown
     if isDown then
         hs.application.launchOrFocus(app)
+        hs.eventtap.keyStroke({}, 0x66)
     end
     return true, { nil }
   end
