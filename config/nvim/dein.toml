@@ -218,6 +218,7 @@ hook_add = '''
   let g:LanguageClient_serverCommands["python"] = ['pyls']
   let g:LanguageClient_serverCommands["javascript"] = ['javascript-typescript-langserver']
   let g:LanguageClient_serverCommands["typescript"] = ['javascript-typescript-langserver']
+  let g:LanguageClient_serverCommands["go"] = ['golsp', '-mode', 'stdio']
   let g:LanguageClient_hoverPreview = "Never"
 '''
 

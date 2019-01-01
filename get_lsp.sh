@@ -27,7 +27,7 @@ fi
 # go
 if type go > /dev/null 2>&1; then
   if ! type pyls > /dev/null 2>&1; then
-    go get -u github.com/sourcegraph/go-langserver
+    go get -u golang.org/x/tools/cmd/golsp
   else
     echo "go-langserver is already installed."
   fi
