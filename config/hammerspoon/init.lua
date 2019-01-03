@@ -6,27 +6,28 @@ hs.hotkey.bind({"ctrl", "shift"}, "R", function()
 end)
 
 
--- 右コマンドでアプリ切り替え
-local rightCommandKeyCode = 54
-local rightCommandFlag    = 16
+-- 右シフトアプリ切り替え
+local rightShiftKeyCode = 60
+local rightShiftFlag    = 4
 local releasedFlag        = 256
 local keyAppMap = {
-    ["c"] = "Google Chrome",
-    ["f"] = "Finder",
-    ["i"] = "IntelliJ IDEA CE",
-    ["p"] = "iTunes",
-    ["t"] = "iTerm",
-    ["s"] = "Slack",
-    ["o"] = "Spotify"
+    ["C"] = "Google Chrome",
+    ["F"] = "Finder",
+    ["I"] = "IntelliJ IDEA CE",
+    ["P"] = "iTunes",
+    ["T"] = "iTerm",
+    ["S"] = "Slack",
+    ["O"] = "Spotify"
 }
 local asciiAppMap = {
-    ["49"] = "1Password 7"
+    ["33"] = "1Password 7"
 }
 
-local rightCommandHandler = function(e)
+local rightShiftHandler = function(e)
   local keyAscii = string.byte(e:getCharacters(true))
+  print(keyAscii)
   local app
-  if keyAscii >= 97 and keyAscii <= 122 then
+  if keyAscii >= 65 and keyAscii <= 90 then
       app = keyAppMap[e:getCharacters(true)]
   else
       app = asciiAppMap[tostring(keyAscii)]
@@ -35,17 +36,17 @@ local rightCommandHandler = function(e)
     local isDown = e:getType() == hs.eventtap.event.types.keyDown
     if isDown then
         hs.application.launchOrFocus(app)
-        hs.eventtap.keyStroke({}, 0x66)
+        print("focus")
     end
     return true, { nil }
   end
 end
 
 module.modifierListener = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
-  if event:getKeyCode() == rightCommandKeyCode then
+  if event:getKeyCode() == rightShiftKeyCode then
     local eventData = event:getRawEventData().NSEventData
-if (eventData.modifierFlags & rightCommandFlag) == rightCommandFlag then
-      module.keyListener = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp}, rightCommandHandler):start()
+    if (eventData.modifierFlags & rightShiftFlag) == rightShiftFlag then
+      module.keyListener = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp}, rightShiftHandler):start()
     elseif module.keyListener and (eventData.modifierFlags & releasedFlag) == releasedFlag then
       module.keyListener:stop()
       module.keyListener = nil
