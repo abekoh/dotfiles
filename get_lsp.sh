@@ -16,7 +16,7 @@ fi
 # python
 if type pip3 > /dev/null 2>&1; then
   if ! type pyls > /dev/null 2>&1; then
-    pip3 install pyls
+    pip3 install python-language-server
   else
     echo "pyls is already installed."
   fi
