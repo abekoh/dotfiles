@@ -220,6 +220,9 @@ hook_add = '''
   let g:LanguageClient_serverCommands["typescript"] = ['javascript-typescript-langserver']
   let g:LanguageClient_serverCommands["go"] = ['golsp', '-mode', 'stdio']
   let g:LanguageClient_hoverPreview = "Never"
+  let g:LanguageClient_loadSettings = 1
+  nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
+  nnoremap <silent><Leader>d :call LanguageClient#textDocument_definition()<CR>
 '''
 
 # ------------------------------------------------------------------------------
