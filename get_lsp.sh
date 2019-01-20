@@ -35,13 +35,29 @@ else
   echo "go is not found."
 fi
 
-# javascript/typescript
 if type npm > /dev/null 2>&1; then
+  # javascript/typescript
   if ! type javascript-typescript-langserver > /dev/null 2>&1; then
     npm install -g javascript-typescript-langserver
   else
     echo "javascript-typescript-langserver is already installed."
   fi
+  # bash
+  if ! type bash-language-server > /dev/null 2>&1; then
+    npm install -g bash-language-server
+  else
+    echo "bash-language-server is already installed."
+  fi
 else
   echo "npm is not found."
+fi
+
+if type gem > /dev/null 2>&1; then
+  if ! type solargraph > /dev/null 2>&1; then
+    gem install solargraph
+  else
+    echo "solargraph is already installed."
+  fi
+else
+  echo "gem is not found."
 fi

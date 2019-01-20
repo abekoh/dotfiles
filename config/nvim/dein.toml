@@ -235,11 +235,13 @@ rev = 'next'
 build = './install.sh'
 hook_add = '''
   let g:LanguageClient_serverCommands = {}
-  let g:LanguageClient_serverCommands["python"] = ['pyls']
-  let g:LanguageClient_serverCommands["javascript"] = ['javascript-typescript-langserver']
-  let g:LanguageClient_serverCommands["typescript"] = ['javascript-typescript-langserver']
-  let g:LanguageClient_serverCommands["go"] = ['golsp', '-mode', 'stdio']
-  let g:LanguageClient_hoverPreview = "Never"
+  let g:LanguageClient_serverCommands['python'] = ['pyls']
+  let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-langserver']
+  let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-langserver']
+  let g:LanguageClient_serverCommands['go'] = ['golsp', '-mode', 'stdio']
+  let g:LanguageClient_serverCommands['sh'] = ['bash-language-server', 'start']
+  let g:LanguageClient_serverCommands['ruby'] = ['solargraph', 'stdio']
+  let g:LanguageClient_hoverPreview = 'Never'
   let g:LanguageClient_loadSettings = 1
   nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent><Leader>d :call LanguageClient#textDocument_definition()<CR>
