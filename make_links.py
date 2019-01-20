@@ -71,6 +71,12 @@ def hammerspoon():
         os.mkdir(config_path)
     subprocess.run('ln -sf ~/dotfiles/config/hammerspoon/init.lua ~/.hammerspoon/init.lua', shell=True)
 
+
+def ideavim():
+    print('setup ideavim')
+    subprocess.run('ln -sf ~/dotfiles/config/ideavim/.ideavimrc ~/.ideavimrc', shell=True)
+
+
 if __name__ == '__main__':
     config_dir_path = os.path.join(os.environ['HOME'], '.config')
     if not os.path.exists(config_dir_path):
@@ -83,3 +89,4 @@ if __name__ == '__main__':
     python_utils()
     git()
     hammerspoon()
+    ideavim()

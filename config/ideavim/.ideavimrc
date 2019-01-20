@@ -1,0 +1,52 @@
+" Action List: https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
+" Set Commands: https://github.com/JetBrains/ideavim/blob/master/doc/set-commands.md
+" Tabの設定
+set tabstop=4
+set softtabstop=0
+set shiftwidth=4
+set autoindent
+set smartindent
+" 検索時大小区別なし
+set ignorecase
+" 検索ワードの途中でも検索
+set incsearch
+" 検索結果をハイライト
+set hlsearch
+" 対応するカッコの表示
+set showmatch
+set matchtime=1
+" エディタウィンドウの末尾から2行目にステータスラインを常時表示させる
+set laststatus=2
+" 行の最後まで表示
+set display=lastline
+" 不可視文字を表示,設定
+set list
+set listchars=tab:\ \ ,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+" クリップボードとヤンクを連携
+set clipboard=unnamedplus
+" EscEscでハイライト消去
+nnoremap <ESC><ESC> :nohlsearch<CR><ESC>
+" コメントのON/OFF
+nnoremap <Space>i :action CommentByLineComment<CR>
+vnoremap <Space>i :action CommentByLineComment<CR>
+" 実行
+nnoremap <Space>r :action Run<CR>
+" Find in Path
+nnoremap <Space>ff :action FindInPath<CR>
+" 次のタブ
+nnoremap sn :action NextTab<CR>
+" 前のタブ
+nnoremap sp :action PreviousTab<CR>
+" リネーム
+nnoremap <Space>R :action RenameElement<CR>
+" Find Usage
+nnoremap <Space>F :action FindUsages<CR>
+" 今のタブを閉じる
+nnoremap <Space>q :action CloseContent
+" Reload
+nnoremap <Space>L :source ~/.ideavimrc<CR>
+" 直近のヤンクしたものをペースト
+nnoremap tp "0p
+nnoremap tP "0P
+vnoremap tp "0p
+vnoremap tP "0P
