@@ -38,8 +38,9 @@ local rightShiftHandler = function(e)
     if isDown then
         hs.application.launchOrFocus(app)
     end
-    return true, { nil }
+    -- return true, { nil }
   end
+  return false
 end
 
 module.modifierListener = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
@@ -126,5 +127,8 @@ remapKey({'ctrl', 'cmd', 'alt'}, 'h', keyCode('left', {'cmd', 'alt'}))
 remapKey({'ctrl', 'cmd', 'alt'}, 'j', keyCode('down', {'cmd', 'alt'}))
 remapKey({'ctrl', 'cmd', 'alt'}, 'k', keyCode('up', {'cmd', 'alt'}))
 remapKey({'ctrl', 'cmd', 'alt'}, 'l', keyCode('right', {'cmd', 'alt'}))
+
+-- ctrl+delete -> forwarddelete
+remapKey({'ctrl'}, 'delete', keyCode('forwarddelete'))
 
 hs.alert.show("Hammerspoon config is loaded")
