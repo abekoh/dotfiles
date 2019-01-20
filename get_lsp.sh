@@ -15,11 +15,20 @@ fi
 
 # python
 if type pip3 > /dev/null 2>&1; then
-  if ! type pyls > /dev/null 2>&1; then
-    pip3 install python-language-server
-  else
-    echo "pyls is already installed."
-  fi
+  function install_pip () {
+    if [ -n "$2" ]; then
+      cmd=$2
+    else
+      cmd=$1
+    fi
+    if ! type $cmd > /dev/null 2>&1; then
+      pip3 install $1
+    else
+      echo $1 is already installed.
+    fi
+  }
+  install_pip python-language-server pyls
+  install_pip yamllint
 else
   echo "pip3 is not found."
 fi
@@ -36,18 +45,23 @@ else
 fi
 
 if type npm > /dev/null 2>&1; then
-  # javascript/typescript
-  if ! type javascript-typescript-langserver > /dev/null 2>&1; then
-    npm install -g javascript-typescript-langserver
-  else
-    echo "javascript-typescript-langserver is already installed."
-  fi
-  # bash
-  if ! type bash-language-server > /dev/null 2>&1; then
-    npm install -g bash-language-server
-  else
-    echo "bash-language-server is already installed."
-  fi
+  function install_npm () {
+    if [ -n "$2" ]; then
+      cmd=$2
+    else
+      cmd=$1
+    fi
+    if ! type $cmd > /dev/null 2>&1; then
+      npm install -g $1
+    else
+      echo $1 is already installed.
+    fi
+  }
+  install_npm javascript-typescript-langserver
+  install_npm bash-language-server
+  install_npm jsonlint
+  install_npm dockerfile-language-server-nodejs docker-langserver
+  install_npm prettier
 else
   echo "npm is not found."
 fi

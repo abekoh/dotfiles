@@ -179,44 +179,9 @@ hook_add = '''
 repo = 'jistr/vim-nerdtree-tabs'
 depends = 'nerdtree'
 hook_add = '''
-  nmap <Leader>nt <Plug>NERDTreeTabsToggle<CR>
-  nmap <Leader>nf <Plug>NERDTreeTabsFind<CR>
+  nmap <Leader>n :NERDTreeTabsToggle<CR>
+  nmap <Leader>m :NERDTreeTabsFind<CR>
 '''
-
-# [[plugins]]
-# repo = 'Shougo/defx.nvim'
-# hook_add = '''
-#   nmap <silent> <Leader>e :Defx -split=vertical -winwidth=30 -toggle<CR>
-#   autocmd FileType defx call s:defx_my_settings()
-# 	function! s:defx_my_settings() abort
-# 	  " Define mappings
-# 	  nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
-# 	  nnoremap <silent><buffer><expr> t defx#do_action('open', 'tabnew')
-# 	  nnoremap <silent><buffer><expr> c defx#do_action('copy')
-# 	  nnoremap <silent><buffer><expr> m defx#do_action('move')
-# 	  nnoremap <silent><buffer><expr> p defx#do_action('paste')
-# 	  " nnoremap <silent><buffer><expr> l defx#do_action('drop')
-# 	  nnoremap <silent><buffer><expr> l defx#do_action('open_directory')
-# 	  nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
-# 	  nnoremap <silent><buffer><expr> N defx#do_action('new_file')
-# 	  nnoremap <silent><buffer><expr> d defx#do_action('remove')
-# 	  nnoremap <silent><buffer><expr> r defx#do_action('rename')
-# 	  nnoremap <silent><buffer><expr> x defx#do_action('execute_system')
-# 	  nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
-# 	  nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
-# 	  nnoremap <silent><buffer><expr> h defx#do_action('cd', ['..'])
-# 	  nnoremap <silent><buffer><expr> ~ defx#do_action('cd')
-# 	  nnoremap <silent><buffer><expr> q defx#do_action('quit')
-# 	  nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select')
-# 	  nnoremap <silent><buffer><expr> * defx#do_action('toggle_select_all')
-# 	  nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
-# 	  nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
-# 	  nnoremap <silent><buffer><expr> <C-l> defx#do_action('redraw')
-# 	  nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
-# 	  nnoremap <silent><buffer><expr> cd defx#do_action('change_vim_cwd')
-# 	  nnoremap <silent><buffer><expr> C defx#do_action('toggle_columns')
-# 	endfunction
-# '''
 
 # ------------------------------------------------------------------------------
 # filetype
@@ -241,6 +206,7 @@ hook_add = '''
   let g:LanguageClient_serverCommands['go'] = ['golsp', '-mode', 'stdio']
   let g:LanguageClient_serverCommands['sh'] = ['bash-language-server', 'start']
   let g:LanguageClient_serverCommands['ruby'] = ['solargraph', 'stdio']
+  let g:LanguageClient_serverCommands['dockerfile'] = ['docker-langserver', '--stdio']
   let g:LanguageClient_hoverPreview = 'Never'
   let g:LanguageClient_loadSettings = 1
   nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
@@ -253,6 +219,12 @@ hook_add = '''
 
 [[plugins]]
 repo = 'w0rp/ale'
+hook_add = '''
+  let g:ale_sign_error = '✖'
+  let g:ale_sign_warning = '⚠'
+  let g:ale_virtualtext_cursor = 1
+  let g:ale_virtualtext_prefix = '▶ '
+'''
 
 # ------------------------------------------------------------------------------
 # git

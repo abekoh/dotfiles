@@ -79,11 +79,11 @@ hook_source = '''
   let g:go_doc_keywordprg_enabled = 0 " let g:go_highlight_generate_tags = 1
 '''
 
-# html --------------------------------------------------------------------------
+# html/xml -----------------------------------------------------------------------
 
 [[plugins]]
 repo = 'alvan/vim-closetag'
-on_ft = ['html', 'vue']
+on_ft = ['html', 'xml', 'vue']
 
 # json --------------------------------------------------------------------------
 
