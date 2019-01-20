@@ -16,3 +16,4 @@ complete -c workon -a "(ls $WORKON_HOME)"
 
 # run
 eval (python3 -m virtualfish)
+source (rbenv init - | psub)
