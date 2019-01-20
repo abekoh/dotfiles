@@ -25,8 +25,8 @@ local asciiAppMap = {
 }
 
 local rightShiftHandler = function(e)
+  print(e)
   local keyAscii = string.byte(e:getCharacters(true))
-  print(keyAscii)
   local app
   if keyAscii >= 65 and keyAscii <= 90 then
       app = keyAppMap[e:getCharacters(true)]
@@ -37,7 +37,6 @@ local rightShiftHandler = function(e)
     local isDown = e:getType() == hs.eventtap.event.types.keyDown
     if isDown then
         hs.application.launchOrFocus(app)
-        print("focus")
     end
     return true, { nil }
   end
@@ -48,7 +47,9 @@ module.modifierListener = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}
     local eventData = event:getRawEventData().NSEventData
     if (eventData.modifierFlags & rightShiftFlag) == rightShiftFlag then
       module.keyListener = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp}, rightShiftHandler):start()
+      print("key listener start")
     elseif module.keyListener and (eventData.modifierFlags & releasedFlag) == releasedFlag then
+      print("key listener stop")
       module.keyListener:stop()
       module.keyListener = nil
     end
