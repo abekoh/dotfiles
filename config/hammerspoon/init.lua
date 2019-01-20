@@ -11,6 +11,7 @@ local rightShiftKeyCode = 60
 local rightShiftFlag    = 4
 local releasedFlag        = 256
 local keyAppMap = {
+    ["A"] = "Android Studio",
     ["C"] = "Google Chrome",
     ["F"] = "Finder",
     ["I"] = "IntelliJ IDEA CE",
