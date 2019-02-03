@@ -38,7 +38,7 @@ local rightShiftHandler = function(e)
     if isDown then
         hs.application.launchOrFocus(app)
     end
-    -- return true, { nil }
+    return true
   end
   return false
 end
