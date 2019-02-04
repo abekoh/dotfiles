@@ -5,7 +5,7 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 hook_add = '''
-  command! UpdatePlugins :call dein#update()<CR>
+  command! UpdatePlugins :call dein#update()
 '''
 
 # ------------------------------------------------------------------------------
@@ -207,11 +207,18 @@ hook_add = '''
   let g:LanguageClient_serverCommands['sh'] = ['bash-language-server', 'start']
   let g:LanguageClient_serverCommands['ruby'] = ['solargraph', 'stdio']
   let g:LanguageClient_serverCommands['dockerfile'] = ['docker-langserver', '--stdio']
+  let g:LanguageClient_serverCommands['sql'] = ['sql-language-sever', 'up', '--method', 'stdio']
   let g:LanguageClient_hoverPreview = 'Never'
   let g:LanguageClient_loadSettings = 1
   nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent><Leader>d :call LanguageClient#textDocument_definition()<CR>
 '''
+
+# ------------------------------------------------------------------------------
+# snippets
+# ------------------------------------------------------------------------------
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
 
 # ------------------------------------------------------------------------------
 # linter

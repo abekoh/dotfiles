@@ -62,6 +62,7 @@ if type npm > /dev/null 2>&1; then
   install_npm jsonlint
   install_npm dockerfile-language-server-nodejs docker-langserver
   install_npm prettier
+  install_npm sql-language-server
 else
   echo "npm is not found."
 fi
