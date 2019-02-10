@@ -6,10 +6,6 @@ hs.hotkey.bind({"ctrl", "shift"}, "R", function()
 end)
 
 
--- 右シフトアプリ切り替え
-local rightShiftKeyCode = 60
-local rightShiftFlag    = 4
-local releasedFlag        = 256
 local keyAppMap = {
     ["A"] = "Android Studio",
     ["C"] = "Google Chrome",
@@ -20,42 +16,52 @@ local keyAppMap = {
     ["S"] = "Slack",
     ["O"] = "Spotify"
 }
-local asciiAppMap = {
-    ["33"] = "1Password 7"
-}
 
-local rightShiftHandler = function(e)
-  print(e)
-  local keyAscii = string.byte(e:getCharacters(true))
-  local app
-  if keyAscii >= 65 and keyAscii <= 90 then
-      app = keyAppMap[e:getCharacters(true)]
-  else
-      app = asciiAppMap[tostring(keyAscii)]
-  end
-  if app then
-    local isDown = e:getType() == hs.eventtap.event.types.keyDown
-    if isDown then
-        hs.application.launchOrFocus(app)
-    end
-    return true
-  end
-  return false
+for key, app in pairs(keyAppMap) do
+  hs.hotkey.bind({"shift", "alt"}, key, function()
+    hs.application.launchOrFocus(app)
+  end)
 end
 
-module.modifierListener = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
-  if event:getKeyCode() == rightShiftKeyCode then
-    local eventData = event:getRawEventData().NSEventData
-    if (eventData.modifierFlags & rightShiftFlag) == rightShiftFlag then
-      module.keyListener = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp}, rightShiftHandler):start()
-      print("key listener start")
-    elseif module.keyListener and (eventData.modifierFlags & releasedFlag) == releasedFlag then
-      print("key listener stop")
-      module.keyListener:stop()
-      module.keyListener = nil
-    end
-  end
-end):start()
+-- 右シフトアプリ切り替え
+-- local asciiAppMap = {
+--     ["33"] = "1Password 7"
+-- }
+-- local rightShiftKeyCode = 60
+-- local rightShiftFlag    = 4
+-- local releasedFlag        = 256
+-- local rightShiftHandler = function(e)
+--   print(e)
+--   local keyAscii = string.byte(e:getCharacters(true))
+--   local app
+--   if keyAscii >= 65 and keyAscii <= 90 then
+--       app = keyAppMap[e:getCharacters(true)]
+--   else
+--       app = asciiAppMap[tostring(keyAscii)]
+--   end
+--   if app then
+--     local isDown = e:getType() == hs.eventtap.event.types.keyDown
+--     if isDown then
+--         hs.application.launchOrFocus(app)
+--     end
+--     return true
+--   end
+--   return false
+-- end
+--
+-- module.modifierListener = hs.eventtap.new({hs.eventtap.event.types.flagsChanged}, function(event)
+--   if event:getKeyCode() == rightShiftKeyCode then
+--     local eventData = event:getRawEventData().NSEventData
+--     if (eventData.modifierFlags & rightShiftFlag) == rightShiftFlag then
+--       module.keyListener = hs.eventtap.new({hs.eventtap.event.types.keyDown, hs.eventtap.event.types.keyUp}, rightShiftHandler):start()
+--       print("key listener start")
+--     elseif module.keyListener and (eventData.modifierFlags & releasedFlag) == releasedFlag then
+--       print("key listener stop")
+--       module.keyListener:stop()
+--       module.keyListener = nil
+--     end
+--   end
+-- end):start()
 
 -- USでもかな英数
 local prevKeyCode
