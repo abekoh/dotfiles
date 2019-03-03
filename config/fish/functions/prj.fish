@@ -1,5 +1,5 @@
 function prj -d "start project"
-  if test (count $argv) > 0
+  if test (count $argv) -gt 0
     set prjflag --query "$argv"
   end
   set PRJ_PATH (ghq root)/(ghq list | peco $prjflag)
