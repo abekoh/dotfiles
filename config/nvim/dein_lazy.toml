@@ -7,16 +7,22 @@ repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_source = '''
   let g:deoplete#enable_at_startup = 1
-  " <TAB>: completion.
-  " inoremap <silent><expr> <TAB>
-  "       \ pumvisible() ? "\<C-n>" :
-  "       \ <SID>check_back_space() ? "\<TAB>" :
-  "       \ deoplete#manual_complete()
   inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" :
         \ neosnippet#expandable_or_jumpable() ?
         \ "\<Plug>(neosnippet_expand_or_jump)" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ deoplete#manual_complete()
+  inoremap <silent><expr><Down> pumvisible() ? "\<C-n>" :
+        \ neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ deoplete#manual_complete()
+  inoremap <silent><expr><Up> pumvisible() ? "\<C-p>" :
+        \ neosnippet#expandable_or_jumpable() ?
+        \ "\<Plug>(neosnippet_expand_or_jump)" :
+        \ <SID>check_back_space() ? "\<TAB>" :
+        \ deoplete#manual_complete()
+
 
   function! s:check_back_space() abort "{{{
     let l:col = col('.') - 1

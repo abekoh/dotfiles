@@ -54,7 +54,8 @@ hook_add = '''
   nmap N <Plug>(anzu-N-with-echo)
   nmap * <Plug>(anzu-star-with-echo)
   nmap # <Plug>(anzu-sharp-with-echo)
-  nmap <silent> <Esc><Esc> :nohlsearch<CR><Plug>(anzu-clear-search-status)
+  " remove hilight & preview
+  nmap <silent> <Esc><Esc> :pclose<CR>:nohlsearch<CR><Plug>(anzu-clear-search-status)
 '''
 
 [[plugins]]
@@ -183,6 +184,11 @@ hook_add = '''
   nmap <Leader>m :NERDTreeTabsFind<CR>
 '''
 
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0
+
 # ------------------------------------------------------------------------------
 # filetype
 # ------------------------------------------------------------------------------
@@ -208,10 +214,17 @@ hook_add = '''
   let g:LanguageClient_serverCommands['ruby'] = ['solargraph', 'stdio']
   let g:LanguageClient_serverCommands['dockerfile'] = ['docker-langserver', '--stdio']
   let g:LanguageClient_serverCommands['sql'] = ['sql-language-sever', 'up', '--method', 'stdio']
-  let g:LanguageClient_hoverPreview = 'Never'
+  let g:LanguageClient_hoverPreview = 'Always'
   let g:LanguageClient_loadSettings = 1
+  let g:LanguageClient_hasSnippetSupport = 1
+  let g:LanguageClient_completionPreferTextEdit = 1
   nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
   nnoremap <silent><Leader>d :call LanguageClient#textDocument_definition()<CR>
+  nnoremap <silent><Leader>R :call LanguageClient#textDocument_rename()<CR>
+  nnoremap <silent><Leader>u :call LanguageClient#textDocument_references()<CR>
+  nnoremap <silent><Leader>F :call LanguageClient#textDocument_formatting()<CR>
+  nnoremap <silent><Leader>A :call LanguageClient#textDocument_codeAction()<CR>
+  nnoremap <silent><Leader>s :call LanguageClient#textDocument_documentSymbol()<CR>
 '''
 
 # ------------------------------------------------------------------------------
