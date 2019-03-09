@@ -1,4 +1,6 @@
-" debug
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 set runtimepath+=~/.dotfiles/nvim 
 if has('nvim')
   let s:dein_cache_path = expand('~/.cache/nvim/dein')
