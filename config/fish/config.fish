@@ -2,7 +2,7 @@
 set -x PATH /usr/local/bin $PATH
 set -x WORKON_HOME ~/.virtualenvs
 set -x EDITOR nvim
-set -x TERM xterm-256color
+set -x TERM screen-256color
 set -x GOPATH ~
 set -x PATH ~/.nodebrew/current/bin $PATH
 set -x PATH ~/bin $PATH
