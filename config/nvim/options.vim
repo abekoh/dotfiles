@@ -53,6 +53,6 @@ set clipboard=unnamedplus
 " 不可視文字を表示
 set list
 " 不可視文字の表示を設定
-set listchars=tab:\ \ ,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 " previewを下に表示
 set splitbelow

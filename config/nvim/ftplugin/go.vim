@@ -1,6 +1,7 @@
 set tabstop=4
 set noexpandtab
 set shiftwidth=4
+set listchars=tab:\ \ ,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 nmap <Leader>r <Plug>(go-run)
 nmap <Leader>tt <Plug>(go-test)
 nmap <Leader>tf <Plug>(go-test-func)
