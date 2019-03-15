@@ -103,6 +103,9 @@ repo = 'kana/vim-operator-user'
 [[plugins]]
 repo = 'kana/vim-textobj-function'
 
+[[plugins]]
+repo = 'tpope/vim-speeddating'
+
 # ------------------------------------------------------------------------------
 # filer
 # ------------------------------------------------------------------------------
@@ -266,6 +269,13 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'tyru/open-browser-github.vim'
 depends = 'open-browser.vim'
+
+# ------------------------------------------------------------------------------
+# tool
+# ------------------------------------------------------------------------------
+
+[[plugins]]
+repo = 'freitass/todo.txt-vim'
 
 # ------------------------------------------------------------------------------
 # extension for vim
