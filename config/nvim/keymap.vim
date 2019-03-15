@@ -14,10 +14,10 @@ nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sx <C-w>x
 " Shift + 矢印でウィンドウサイズを変更
-nnoremap s<S-H> <C-w><<CR>
-nnoremap s<S-L> <C-w>><CR>
-nnoremap s<S-K> <C-w>-<CR>
-nnoremap s<S-J> <C-w>+<CR>
+nnoremap s<S-H> <C-w>5<<CR>
+nnoremap s<S-L> <C-w>5><CR>
+nnoremap s<S-K> <C-w>5-<CR>
+nnoremap s<S-J> <C-w>5+<CR>
 "インサートモードでも移動
 inoremap <C-d> <DELETE>
 inoremap <C-j> <DOWN>
