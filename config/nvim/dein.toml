@@ -63,8 +63,8 @@ hook_add = '''
   vmap <silent> <Leader>i :TComment<CR>
 '''
 
-[[plugins]]
-repo = 'cohama/lexima.vim'
+# [[plugins]]
+# repo = 'cohama/lexima.vim'
 
 [[plugins]]
 repo = 'LeafCage/yankround.vim'

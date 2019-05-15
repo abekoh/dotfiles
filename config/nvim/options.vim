@@ -56,3 +56,5 @@ set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 " previewを下に表示
 set splitbelow
+" 行の強調表示
+set cursorline
