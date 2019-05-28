@@ -6,6 +6,7 @@ set -x TERM screen-256color
 set -x GOPATH ~
 set -x PATH ~/.nodebrew/current/bin $PATH
 set -x PATH ~/bin $PATH
+set -x NRFSDK12_ROOT ~/sdk/nRF5_SDK_12.3.0_d7731ad
 
 # alias
 alias vi='vim -u NONE -N'

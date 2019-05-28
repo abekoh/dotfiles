@@ -1,37 +1,22 @@
 # ------------------------------------------------------------------------------
 # insert mode
 # ------------------------------------------------------------------------------
-
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
 on_event = 'InsertEnter'
 hook_source = '''
   let g:deoplete#enable_at_startup = 1
-  inoremap <silent><expr><Tab> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)" :
+  " <TAB>: completion.
+  inoremap <silent><expr> <TAB>
+        \ pumvisible() ? "\<C-n>" :
         \ <SID>check_back_space() ? "\<TAB>" :
         \ deoplete#manual_complete()
-  inoremap <silent><expr><Down> pumvisible() ? "\<C-n>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ deoplete#manual_complete()
-  inoremap <silent><expr><Up> pumvisible() ? "\<C-p>" :
-        \ neosnippet#expandable_or_jumpable() ?
-        \ "\<Plug>(neosnippet_expand_or_jump)" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ deoplete#manual_complete()
-
-
   function! s:check_back_space() abort "{{{
     let l:col = col('.') - 1
     return !l:col || getline('.')[l:col - 1]  =~ '\s'
   endfunction"}}}
-
   " <S-TAB>: completion back.
   inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
   " <BS>: close popup and delete backword char.
   inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
   if !exists('g:deoplete#omni_patterns')
@@ -40,19 +25,19 @@ hook_source = '''
   let g:deoplete#omni_patterns.r = '[[:alnum:].\\]\+'
 '''
 
-[[plugins]]
-repo = 'Shougo/neosnippet.vim'
-on_event = 'InsertEnter'
-on_ft = 'snippet'
-depends = 'neosnippet-snippets'
-hook_source = '''
-  imap <C-f> <Plug>(neosnippet_expand_or_jump)
-  smap <C-f> <Plug>(neosnippet_expand_or_jump)
-  xmap <C-f> <Plug>(neosnippet_expand_target)
-  if has('conceal')
-    set conceallevel=2 concealcursor=niv
-  endif
-'''
+# [[plugins]]
+# repo = 'Shougo/neosnippet.vim'
+# on_event = 'InsertEnter'
+# on_ft = 'snippet'
+# depends = 'neosnippet-snippets'
+# hook_source = '''
+#   imap <C-f> <Plug>(neosnippet_expand_or_jump)
+#   smap <C-f> <Plug>(neosnippet_expand_or_jump)
+#   xmap <C-f> <Plug>(neosnippet_expand_target)
+#   if has('conceal')
+#     set conceallevel=2 concealcursor=niv
+#   endif
+# '''
 
 # ------------------------------------------------------------------------------
 # focus lost & cursor lost
