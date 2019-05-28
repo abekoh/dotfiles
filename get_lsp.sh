@@ -10,69 +10,33 @@ if [ ! -d  $java_lsp_path ]; then
   tar xf /tmp/$java_lsp_filename -C $java_lsp_path
   rm /tmp/$java_lsp_filename
 else
-  echo "go-langserver is already installed."
+  echo "jdt-langiage -server is already installed."
 fi
 
 # python
 if type pip3 > /dev/null 2>&1; then
-  function install_pip () {
-    if [ -n "$2" ]; then
-      cmd=$2
-    else
-      cmd=$1
-    fi
-    if ! type $cmd > /dev/null 2>&1; then
-      pip3 install $1
-    else
-      echo $1 is already installed.
-    fi
-  }
-  install_pip python-language-server pyls
-  install_pip yamllint
+  pip3 install python-language-server yamllint rope pyflakes mccabe \
+    pycodestyle pydocstyle autopep8 yapf isort -U
 else
   echo "pip3 is not found."
 fi
 
 # go
 if type go > /dev/null 2>&1; then
-  if ! type pyls > /dev/null 2>&1; then
-    go get -u golang.org/x/tools/cmd/golsp
-  else
-    echo "go-langserver is already installed."
-  fi
+  go get -u golang.org/x/tools/cmd/golsp
 else
   echo "go is not found."
 fi
 
 if type npm > /dev/null 2>&1; then
-  function install_npm () {
-    if [ -n "$2" ]; then
-      cmd=$2
-    else
-      cmd=$1
-    fi
-    if ! type $cmd > /dev/null 2>&1; then
-      npm install -g $1
-    else
-      echo $1 is already installed.
-    fi
-  }
-  install_npm javascript-typescript-langserver
-  install_npm bash-language-server
-  install_npm jsonlint
-  install_npm dockerfile-language-server-nodejs docker-langserver
-  install_npm prettier
-  install_npm sql-language-server
+  npm install -g javascript-typescript-langserver bash-language-server jsonlint \
+    dockerfile-language-server-nodejs prettier sql-language-server
 else
   echo "npm is not found."
 fi
 
 if type gem > /dev/null 2>&1; then
-  if ! type solargraph > /dev/null 2>&1; then
-    gem install solargraph
-  else
-    echo "solargraph is already installed."
-  fi
+  gem install solargraph
 else
   echo "gem is not found."
 fi
