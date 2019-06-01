@@ -20,10 +20,30 @@ hook_add = '''
   colorscheme tender
 '''
 
+# [[plugins]]
+# repo = 'vim-airline/vim-airline'
+# hook_add = '''
+#   let g:airline_theme = 'tender'
+# '''
+
 [[plugins]]
-repo = 'vim-airline/vim-airline'
+repo = 'itchyny/lightline.vim'
 hook_add = '''
-  let g:airline_theme = 'tender'
+  function! CocCurrentFunction()
+      return get(b:, 'coc_current_function', '')
+  endfunction
+  let g:lightline = {
+    \ 'colorscheme': 'tender',
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status',
+    \   'currentfunction': 'CocCurrentFunction',
+    \   'gitbranch': 'fugitive#head'
+    \ },
+    \ }
 '''
 
 [[plugins]]
@@ -32,6 +52,7 @@ hook_add = '''
   let g:indent_guides_enable_on_vim_startup = 1
   let g:indent_guides_start_level = 1
   let g:indent_guides_guide_size = 1
+  let g:indent_guides_default_mapping = 0
 '''
 
 [[plugins]]
@@ -67,7 +88,7 @@ hook_add = '''
 # repo = 'cohama/lexima.vim'
 
 [[plugins]]
-repo = 'LeafCage/yankround.vim'
+repo = 'rcmdnk/yankround.vim'
 hook_add = '''
   nmap p <Plug>(yankround-p)
   nmap P <Plug>(yankround-P)
@@ -110,79 +131,79 @@ repo = 'tpope/vim-speeddating'
 # filer
 # ------------------------------------------------------------------------------
 
-[[plugins]]
-repo = 'Shougo/denite.nvim'
-hook_add = '''
-  nmap <silent> <Leader>ff :Denite<Space>file_rec<CR>
-  nmap <silent> <Leader>fg :Denite<Space>grep<CR>
-  nmap <silent> <Leader>fm :Denite<Space>file_mru<CR>
-  nmap <silent> <Leader>fj :DeniteBufferDir<Space>file<Space>file:new<CR>
-  nmap <silent> <Leader>fb :Denite<Space>buffer<CR>
-  nmap <silent> <Leader>fq :Denite<Space>help<CR>
-  nmap <silent> <Leader>fl :Denite<Space>line<CR>
-  nmap <silent> <Leader>ft :Denite<Space>tag<CR>
-  nmap <silent> <Leader>fu :Denite<Space>menu<CR>
-  nmap <silent> <Leader>fy :Denite<Space>neoyank<CR>
-  nmap <silent> <Leader>fc :Denite<Space>codeAction<CR>
+# [[plugins]]
+# repo = 'Shougo/denite.nvim'
+# hook_add = '''
+#   nmap <silent> <Leader>ff :Denite<Space>file_rec<CR>
+#   nmap <silent> <Leader>fg :Denite<Space>grep<CR>
+#   nmap <silent> <Leader>fm :Denite<Space>file_mru<CR>
+#   nmap <silent> <Leader>fj :DeniteBufferDir<Space>file<Space>file:new<CR>
+#   nmap <silent> <Leader>fb :Denite<Space>buffer<CR>
+#   nmap <silent> <Leader>fq :Denite<Space>help<CR>
+#   nmap <silent> <Leader>fl :Denite<Space>line<CR>
+#   nmap <silent> <Leader>ft :Denite<Space>tag<CR>
+#   nmap <silent> <Leader>fu :Denite<Space>menu<CR>
+#   nmap <silent> <Leader>fy :Denite<Space>neoyank<CR>
+#   nmap <silent> <Leader>fc :Denite<Space>codeAction<CR>
+#
+#   " replace grep into ripgrep
+#   if executable('rg')
+#     call denite#custom#var('file_rec', 'command', ['rg', '--hidden', '--files', '--glob', '!.git'])
+#     call denite#custom#var('grep', 'command', ['rg', '--hidden'])
+#   endif
+#   call denite#custom#var('grep', 'recursive_opts', [])
+#   call denite#custom#var('grep', 'pattern_opt', [])
+#
+#   " change matcher
+#   call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm', 'matcher_ignore_globs'])
+#
+#   " customize ignore globs
+#   call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+#         \ [
+#         \ '.git/', 'build/', '__pycache__/',
+#         \ 'images/', '*.o', '*.make',
+#         \ '*.min.*', 'imgs/',
+#         \ 'img/', 'fonts/'])
+#
+#   " denite/insert モードのときは，C-,↑↓ で移動できるようにする
+#   call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
+#   call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
+#   call denite#custom#map('insert', "<Down>", '<denite:move_to_next_line>')
+#   call denite#custom#map('insert', "<Up>", '<denite:move_to_previous_line>')
+#
+#   " tabopen や vsplit のキーバインドを割り当て
+#   call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
+#   call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
+#   call denite#custom#map('normal', "v", '<denite:do_action:vsplit>')
+# '''
 
-  " replace grep into ripgrep
-  if executable('rg')
-    call denite#custom#var('file_rec', 'command', ['rg', '--hidden', '--files', '--glob', '!.git'])
-    call denite#custom#var('grep', 'command', ['rg', '--hidden'])
-  endif
-  call denite#custom#var('grep', 'recursive_opts', [])
-  call denite#custom#var('grep', 'pattern_opt', [])
+# [[plugins]]
+# repo = 'Shougo/neomru.vim'
+# depends = 'denite.nvim'
 
-  " change matcher
-  call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm', 'matcher_ignore_globs'])
+# [[plugins]]
+# repo = 'nixprime/cpsm'
+# build = 'env PY3=ON ./install.sh'
+# depends = 'denite.nvim'
 
-  " customize ignore globs
-  call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-        \ [
-        \ '.git/', 'build/', '__pycache__/',
-        \ 'images/', '*.o', '*.make',
-        \ '*.min.*', 'imgs/',
-        \ 'img/', 'fonts/'])
+# [[plugins]]
+# repo = 'nixprime/cpsm'
+# build = 'env PY3=ON ./install.sh'
 
-  " denite/insert モードのときは，C-,↑↓ で移動できるようにする
-  call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
-  call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
-  call denite#custom#map('insert', "<Down>", '<denite:move_to_next_line>')
-  call denite#custom#map('insert', "<Up>", '<denite:move_to_previous_line>')
+# [[plugins]]
+# repo = 'scrooloose/nerdtree'
+# hook_add = '''
+#   let g:NERDTreeShowHidden = 1
+#   let g:NERDTreeMinimalUI = 1
+# '''
 
-  " tabopen や vsplit のキーバインドを割り当て
-  call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
-  call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
-  call denite#custom#map('normal', "v", '<denite:do_action:vsplit>')
-'''
-
-[[plugins]]
-repo = 'Shougo/neomru.vim'
-depends = 'denite.nvim'
-
-[[plugins]]
-repo = 'nixprime/cpsm'
-build = 'env PY3=ON ./install.sh'
-depends = 'denite.nvim'
-
-[[plugins]]
-repo = 'nixprime/cpsm'
-build = 'env PY3=ON ./install.sh'
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-  let g:NERDTreeShowHidden = 1
-  let g:NERDTreeMinimalUI = 1
-'''
-
-[[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-depends = 'nerdtree'
-hook_add = '''
-  nmap <Leader>n :NERDTreeTabsToggle<CR>
-  nmap <Leader>m :NERDTreeTabsFind<CR>
-'''
+# [[plugins]]
+# repo = 'jistr/vim-nerdtree-tabs'
+# depends = 'nerdtree'
+# hook_add = '''
+#   nmap <Leader>n :NERDTreeTabsToggle<CR>
+#   nmap <Leader>m :NERDTreeTabsFind<CR>
+# '''
 
 [[plugins]]
 repo = 'junegunn/fzf'
@@ -200,51 +221,174 @@ repo = 'Shougo/context_filetype.vim'
 # LSP
 # ------------------------------------------------------------------------------
 
+# [[plugins]]
+# repo = 'autozimu/LanguageClient-neovim'
+# rev = 'next'
+# build = './install.sh'
+# hook_add = '''
+#   let g:LanguageClient_serverCommands = {}
+#   let g:LanguageClient_serverCommands['python'] = ['pyls']
+#   let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-langserver']
+#   let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-langserver']
+#   let g:LanguageClient_serverCommands['go'] = ['golsp', '-mode', 'stdio']
+#   let g:LanguageClient_serverCommands['sh'] = ['bash-language-server', 'start']
+#   let g:LanguageClient_serverCommands['ruby'] = ['solargraph', 'stdio']
+#   let g:LanguageClient_serverCommands['dockerfile'] = ['docker-langserver', '--stdio']
+#   let g:LanguageClient_serverCommands['sql'] = ['sql-language-sever', 'up', '--method', 'stdio']
+#   let g:LanguageClient_hoverPreview = 'Always'
+#   let g:LanguageClient_loadSettings = 1
+#   let g:LanguageClient_hasSnippetSupport = 1
+#   let g:LanguageClient_completionPreferTextEdit = 1
+#   nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
+#   nnoremap <silent><Leader>d :call LanguageClient#textDocument_definition()<CR>
+#   nnoremap <silent><Leader>R :call LanguageClient#textDocument_rename()<CR>
+#   nnoremap <silent><Leader>u :call LanguageClient#textDocument_references()<CR>
+#   nnoremap <silent><Leader>F :call LanguageClient#textDocument_formatting()<CR>
+#   nnoremap <silent><Leader>A :call LanguageClient#textDocument_codeAction()<CR>
+#   nnoremap <silent><Leader>s :call LanguageClient#textDocument_documentSymbol()<CR>
+# '''
+
 [[plugins]]
-repo = 'autozimu/LanguageClient-neovim'
-rev = 'next'
+repo = 'neoclide/coc.nvim'
 build = './install.sh'
 hook_add = '''
-  let g:LanguageClient_serverCommands = {}
-  let g:LanguageClient_serverCommands['python'] = ['pyls']
-  let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-langserver']
-  let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-langserver']
-  let g:LanguageClient_serverCommands['go'] = ['golsp', '-mode', 'stdio']
-  let g:LanguageClient_serverCommands['sh'] = ['bash-language-server', 'start']
-  let g:LanguageClient_serverCommands['ruby'] = ['solargraph', 'stdio']
-  let g:LanguageClient_serverCommands['dockerfile'] = ['docker-langserver', '--stdio']
-  let g:LanguageClient_serverCommands['sql'] = ['sql-language-sever', 'up', '--method', 'stdio']
-  let g:LanguageClient_hoverPreview = 'Always'
-  let g:LanguageClient_loadSettings = 1
-  let g:LanguageClient_hasSnippetSupport = 1
-  let g:LanguageClient_completionPreferTextEdit = 1
-  nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
-  nnoremap <silent><Leader>d :call LanguageClient#textDocument_definition()<CR>
-  nnoremap <silent><Leader>R :call LanguageClient#textDocument_rename()<CR>
-  nnoremap <silent><Leader>u :call LanguageClient#textDocument_references()<CR>
-  nnoremap <silent><Leader>F :call LanguageClient#textDocument_formatting()<CR>
-  nnoremap <silent><Leader>A :call LanguageClient#textDocument_codeAction()<CR>
-  nnoremap <silent><Leader>s :call LanguageClient#textDocument_documentSymbol()<CR>
+  " use <tab> for trigger completion and navigate to the next complete item
+  function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~ '\s'
+  endfunction
+  inoremap <silent><expr> <TAB>
+    \ pumvisible() ? coc#_select_confirm() :
+    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+  inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+  " navigate completion list
+  inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+  inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+  inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
+  inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
+  " Close preview window when completion is done
+  autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+  " confirm complete (select the first completion item and confirm completion when no item have selected)
+  inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+                                             \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  nmap <silent> <Leader>c :CocList<Space>commands<CR>
+  nmap <silent> <Leader>s :CocList<Space>words<CR>
+  nmap <silent> <Leader>f :CocList<Space>files<CR>
+  nmap <silent> <Leader>m :CocList<Space>mru<CR>
+  nmap <silent> <Leader>g :CocList<Space>grep<CR>
+  nmap <silent> <Leader>b :CocList<Space>buffers<CR>
+  nmap <silent> <Leader>e :CocList diagnostics<CR>
+  nmap <silent> <Leader>F <Plug>(coc-format)
+  vmap <silent> <Leader>F <Plug>(coc-format-selected)
+  xmap <silent> <Leader>F <Plug>(coc-format-selected)
+  nmap <silent> <Leader>R <Plug>(coc-rename)
+  nmap <silent> <Leader>A <Plug>(coc-codeaction)
+  vmap <silent> <Leader>A <Plug>(coc-codeaction-selected)
+  xmap <silent> <Leader>A <Plug>(coc-codeaction-selected)
+  nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
+  nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
+  nmap <silent> <Leader>d <Plug>(coc-definition)
+  nmap <silent> <Leader>y <Plug>(coc-type-definition)
+  nmap <silent> <Leader>p <Plug>(coc-implementation)
+  nmap <silent> <Leader>r <Plug>(coc-references)
+  nmap <silent> <Leader>q <Plug>(coc-fix-current)
+  nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
+  function! s:show_documentation()
+    if (index(['vim','help'], &filetype) >= 0)
+      execute 'h '.expand('<cword>')
+    else
+      call CocAction('doHover')
+    endif
+  endfunction
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
 '''
+
+[[plugins]]
+repo = 'iamcco/coc-angular'
+depends = 'coc.nvim'
+
+[[plugins]]
+repo = 'neoclide/coc-css'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-git'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-highlight'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-html'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-java'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-json'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-lists'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-neco'
+depends = 'coc.nvim'
+
+[[plugins]]
+repo = 'neoclide/coc-python'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-snippets'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-solargraph'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-tsserver'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+
 
 # ------------------------------------------------------------------------------
 # snippets
 # ------------------------------------------------------------------------------
-[[plugins]]
-repo = 'Shougo/neosnippet-snippets'
+# [[plugins]]
+# repo = 'Shougo/neosnippet-snippets'
 
 # ------------------------------------------------------------------------------
 # linter
 # ------------------------------------------------------------------------------
 
-[[plugins]]
-repo = 'w0rp/ale'
-hook_add = '''
-  let g:ale_sign_error = '✖'
-  let g:ale_sign_warning = '⚠'
-  let g:ale_virtualtext_cursor = 1
-  let g:ale_virtualtext_prefix = '▶ '
-'''
+# [[plugins]]
+# repo = 'w0rp/ale'
+# hook_add = '''
+#   let g:ale_sign_error = '✖'
+#   let g:ale_sign_warning = '⚠'
+#   let g:ale_virtualtext_cursor = 1
+#   let g:ale_virtualtext_prefix = '▶ '
+# '''
 
 # ------------------------------------------------------------------------------
 # git
@@ -291,7 +435,3 @@ if = "!has('nvim')"
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
-merged = 0
-
-[[plugins]]
-repo = 'lambdalisue/vital-Whisky'

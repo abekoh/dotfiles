@@ -1,0 +1,52 @@
+{
+    "suggest.triggerAfterInsertEnter": true,
+    "suggest.enablePreview": true,
+
+    "diagnostic.virtualText": true,
+    "diagnostic.errorSign": "✖",
+    "diagnostic.warningSign": "⚠",
+    "diagnostic.infoSign": "ⓘ",
+    "diagnostic.hintSign": "💡",
+
+    "codeLens.enable": true,
+
+    "list.insertMappings": {
+      "<C-t>": "action:tabe",
+      "<C-v>": "action:vsplit",
+      "<C-s>": "action:split" },
+
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+
+    "python.jediEnabled": false,
+    "python.linting.pep8Enabled": true,
+    "python.linting.pep8Path": "pycodestyle",
+    "python.linting.flake8Enabled": false,
+    "python.linting.mypyEnabled": true,
+
+    "languageserver": {
+        "golang": {
+            "command": "go-langserver",
+            "filetypes": ["go"],
+            "initializationOptions": {
+                "gocodeCompletionEnabled": true,
+                "diagnosticsEnabled": true,
+                "lintTool": "golint"
+            }
+        },
+        "dockerfile": {
+            "command": "docker-langserver",
+            "filetypes": ["dockerfile"],
+            "args": ["--stdio"]
+        },
+        "bash": {
+            "command": "bash-language-server",
+            "args": ["start"],
+            "filetypes": ["sh"],
+            "ignoredRootPaths": ["~"]
+        }
+    }
+}

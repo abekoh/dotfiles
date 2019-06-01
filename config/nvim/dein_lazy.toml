@@ -1,29 +1,29 @@
 # ------------------------------------------------------------------------------
 # insert mode
 # ------------------------------------------------------------------------------
-[[plugins]]
-repo = 'Shougo/deoplete.nvim'
-on_event = 'InsertEnter'
-hook_source = '''
-  let g:deoplete#enable_at_startup = 1
-  " <TAB>: completion.
-  inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ deoplete#manual_complete()
-  function! s:check_back_space() abort "{{{
-    let l:col = col('.') - 1
-    return !l:col || getline('.')[l:col - 1]  =~ '\s'
-  endfunction"}}}
-  " <S-TAB>: completion back.
-  inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-  " <BS>: close popup and delete backword char.
-  inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-  if !exists('g:deoplete#omni_patterns')
-    let g:deoplete#omni_patterns = {}
-  endif
-  let g:deoplete#omni_patterns.r = '[[:alnum:].\\]\+'
-'''
+# [[plugins]]
+# repo = 'Shougo/deoplete.nvim'
+# on_event = 'InsertEnter'
+# hook_source = '''
+#   let g:deoplete#enable_at_startup = 1
+#   " <TAB>: completion.
+#   inoremap <silent><expr> <TAB>
+#         \ pumvisible() ? "\<C-n>" :
+#         \ <SID>check_back_space() ? "\<TAB>" :
+#         \ deoplete#manual_complete()
+#   function! s:check_back_space() abort "{{{
+#     let l:col = col('.') - 1
+#     return !l:col || getline('.')[l:col - 1]  =~ '\s'
+#   endfunction"}}}
+#   " <S-TAB>: completion back.
+#   inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+#   " <BS>: close popup and delete backword char.
+#   inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
+#   if !exists('g:deoplete#omni_patterns')
+#     let g:deoplete#omni_patterns = {}
+#   endif
+#   let g:deoplete#omni_patterns.r = '[[:alnum:].\\]\+'
+# '''
 
 # [[plugins]]
 # repo = 'Shougo/neosnippet.vim'
@@ -87,7 +87,8 @@ hook_source = '''
   " let g:go_highlight_operators = 1
   " let g:go_highlight_extra_types = 1
   let g:go_def_mapping_enabled = 0
-  let g:go_doc_keywordprg_enabled = 0 " let g:go_highlight_generate_tags = 1
+  let g:go_doc_keywordprg_enabled = 0
+  " let g:go_highlight_generate_tags = 1
 '''
 
 # html/xml -----------------------------------------------------------------------
@@ -137,9 +138,9 @@ on_ft = 'ruby'
 
 # tex ---------------------------------------------------------------------------
 
-[[plugins]]
-repo = 'lervag/vimtex'
-on_ft = 'tex'
+# [[plugins]]
+# repo = 'lervag/vimtex'
+# on_ft = 'tex'
 
 # toml -------------------------------------------------------------------------
 
@@ -149,9 +150,9 @@ on_ft = 'toml'
 
 # typescript --------------------------------------------------------------------
 
-[[plugins]]
-repo = 'leafgarland/typescript-vim'
-on_ft = 'typescript'
+# [[plugins]]
+# repo = 'leafgarland/typescript-vim'
+# on_ft = 'typescript'
 
 # vim --------------------------------------------------------------------------
 

@@ -58,3 +58,9 @@ set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
 set splitbelow
 " 行の強調表示
 set cursorline
+" vim-gitgutterのスペースを最初から開けとく
+set signcolumn=yes
+" 保存しなくても別バッファにいける
+set hidden
+" CursorHold & CursorHoldIの時間
+set updatetime=300
