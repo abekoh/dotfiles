@@ -23,7 +23,6 @@
 
     "python.jediEnabled": false,
     "python.linting.pep8Enabled": true,
-    "python.linting.pep8Path": "pycodestyle",
     "python.linting.flake8Enabled": false,
 
     "languageserver": {
