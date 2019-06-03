@@ -25,7 +25,6 @@
     "python.linting.pep8Enabled": true,
     "python.linting.pep8Path": "pycodestyle",
     "python.linting.flake8Enabled": false,
-    "python.linting.mypyEnabled": true,
 
     "languageserver": {
         "golang": {
