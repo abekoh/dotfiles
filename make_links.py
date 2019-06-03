@@ -55,6 +55,7 @@ def python_utils():
     print('setup python-utils')
     subprocess.run('ln -sf ~/dotfiles/config/python-utils/pycodestyle ~/.config/', shell=True)
     subprocess.run('ln -sf ~/dotfiles/config/python-utils/flake8 ~/.config/', shell=True)
+    subprocess.run('ln -sf ~/dotfiles/config/python-utils/pep8 ~/.config/', shell=True)
     if not os.path.exists('~/dotfiles/config/python-utils/yapf'):
         subprocess.run('ln -sf ~/dotfiles/config/python-utils/yapf ~/.config', shell=True)
 
