@@ -3,10 +3,10 @@
     "suggest.enablePreview": true,
 
     "diagnostic.virtualText": true,
-    "diagnostic.errorSign": "✖",
-    "diagnostic.warningSign": "⚠",
-    "diagnostic.infoSign": "ⓘ",
-    "diagnostic.hintSign": "💡",
+    "diagnostic.errorSign": "",
+    "diagnostic.warningSign": "",
+    "diagnostic.infoSign": "",
+    "diagnostic.hintSign": "",
 
     "codeLens.enable": true,
 
