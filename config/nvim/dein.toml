@@ -384,6 +384,20 @@ depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
+name = 'coc-dictionary'
+repo = 'neoclide/coc-sources'
+rtp = 'packages/dictionary'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+name = 'coc-emoji'
+repo = 'neoclide/coc-sources'
+rtp = 'packages/emoji'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
 repo = 'neoclide/coc-git'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
@@ -433,12 +447,38 @@ depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
+name = 'coc-word'
+repo = 'neoclide/coc-sources'
+rtp = 'packages/word'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
 repo = 'neoclide/coc-tsserver'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
+[[plugins]]
+name = 'coc-tag'
+repo = 'neoclide/coc-sources'
+rtp = 'packages/tag'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
 
+[[plugins]]
+repo = 'iamcco/coc-vimlsp'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
 
+[[plugins]]
+repo = 'neoclide/coc-yaml'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'fannheyward/coc-xml'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
 # ------------------------------------------------------------------------------
 # snippets
 # ------------------------------------------------------------------------------

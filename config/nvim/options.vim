@@ -64,3 +64,10 @@ set signcolumn=yes
 set hidden
 " CursorHold & CursorHoldIの時間
 set updatetime=300
+" 0.4.0以降の場合
+if has('nvim-0.4.0')
+  " ポップアップを半透明に
+  set pumblend=20
+  " コマンドライン保管をポップアップに
+  set wildoptions=pum
+endif
