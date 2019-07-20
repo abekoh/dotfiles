@@ -318,7 +318,7 @@ repo = 'Shougo/context_filetype.vim'
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
-build = 'yarn install --frozen-lockfile'
+merge = 0
 rev = 'release'
 hook_add = '''
   " use <tab> for trigger completion and navigate to the next complete item
