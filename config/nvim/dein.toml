@@ -482,6 +482,11 @@ depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
+repo = 'neoclide/coc-vetur'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
 repo = 'neoclide/coc-yaml'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
