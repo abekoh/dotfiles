@@ -1,5 +1,5 @@
 # set
-set -g fish_prompt_pwd_dir_length 80
+set -g fish_prompt_pwd_dir_length 0
 
 function fish_prompt --description 'Write out the prompt'
   set -l last_status $status
@@ -23,9 +23,15 @@ function fish_prompt --description 'Write out the prompt'
   echo -n (prompt_pwd)
   set_color normal
 
+  if test (tput cols) -lt 85
+    echo
+  else
+    echo -n " "
+  end
+
   if __fish_is_git_repository
     set_color DB5837
-    echo -n " :"(git symbolic-ref --short HEAD)
+    echo -n ":"(git symbolic-ref --short HEAD)
     set_color normal
   end
 
