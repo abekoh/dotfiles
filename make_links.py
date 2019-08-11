@@ -77,6 +77,7 @@ def hammerspoon():
 
 
 def ideavim():
+    print('setup ideavim')
     subprocess.run('ln -sf ~/dotfiles/config/ideavim/.ideavimrc ~/.ideavimrc', shell=True)
 
 
@@ -86,6 +87,11 @@ def homebrew():
     if not os.path.exists(config_path):
         os.mkdir(config_path)
     subprocess.run('ln -sf ~/dotfiles/config/homebrew/Brewfile ~/.config/brewfile/Brewfile', shell=True)
+
+
+def iterm():
+    print('setup iterm')
+    subprocess.run('ln -sf ~/dotfiles/config/iterm ~/.config/iterm', shell=True)
 
 
 if __name__ == '__main__':
@@ -102,3 +108,4 @@ if __name__ == '__main__':
     hammerspoon()
     ideavim()
     homebrew()
+    iterm()
