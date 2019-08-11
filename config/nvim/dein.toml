@@ -455,9 +455,7 @@ depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
-name = 'coc-word'
-repo = 'neoclide/coc-sources'
-rtp = 'packages/word'
+repo = 'fannheyward/coc-sql'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
@@ -485,6 +483,13 @@ build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
 repo = 'neoclide/coc-vetur'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+name = 'coc-word'
+repo = 'neoclide/coc-sources'
+rtp = 'packages/word'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
