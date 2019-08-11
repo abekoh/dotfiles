@@ -77,8 +77,15 @@ def hammerspoon():
 
 
 def ideavim():
-    print('setup ideavim')
     subprocess.run('ln -sf ~/dotfiles/config/ideavim/.ideavimrc ~/.ideavimrc', shell=True)
+
+
+def homebrew():
+    print('setup homebrew')
+    config_path = os.path.join(os.environ['HOME'], '.config', 'brewfile')
+    if not os.path.exists(config_path):
+        os.mkdir(config_path)
+    subprocess.run('ln -sf ~/dotfiles/config/homebrew/Brewfile ~/.config/brewfile/Brewfile', shell=True)
 
 
 if __name__ == '__main__':
@@ -94,3 +101,4 @@ if __name__ == '__main__':
     git()
     hammerspoon()
     ideavim()
+    homebrew()
