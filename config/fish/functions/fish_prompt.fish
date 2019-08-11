@@ -31,7 +31,7 @@ function fish_prompt --description 'Write out the prompt'
 
   if __fish_is_git_repository
     set_color DB5837
-    echo -n ":"(git symbolic-ref --short HEAD)
+    echo -n ":"(git symbolic-ref --short HEAD)" "
     set_color normal
   end
 
@@ -39,7 +39,7 @@ function fish_prompt --description 'Write out the prompt'
 
   if set -q VIRTUAL_ENV
     set_color 3076B8
-    echo -n " :"(basename "$VIRTUAL_ENV")
+    echo -n ":"(basename "$VIRTUAL_ENV")" "
     set_color normal
   end
 
