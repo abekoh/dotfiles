@@ -7,6 +7,13 @@
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "",
     "codeLens.enable": true,
+    "list.source.files.command": "rg",
+    "list.source.files.args": [
+      "--files",
+      "--hidden",
+      "--glob",
+      "!.git/"
+    ],
     "list.insertMappings": {
         "<C-t>": "action:tabe",
         "<C-v>": "action:vsplit",
