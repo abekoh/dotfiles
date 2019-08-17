@@ -30,7 +30,7 @@ function cd --description "Change directory"
     return $status
   end
 
-  if test "$TMUX" -a -z "$argv"
+  if test -n "$TMUX" -a -z "$argv"
     set session_path (tmux show-environment | grep TMUX_SESSION_PATH | string replace "TMUX_SESSION_PATH=" "")
     if test $session_path
       builtin cd $session_path
