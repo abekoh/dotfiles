@@ -566,3 +566,6 @@ if = "!has('nvim')"
 
 [[plugins]]
 repo = 'vim-jp/vital.vim'
+
+[[plugins]]
+repo = '~/src/github.com/abekoh/snipslack.vim'

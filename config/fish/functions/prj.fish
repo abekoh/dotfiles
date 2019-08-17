@@ -13,6 +13,7 @@ function prj -d "start project"
     else
       tmux new-session -c $PRJ_PATH -s $PRJ_NAME -d
     end
+    tmux setenv -t $PRJ_NAME TMUX_SESSION_PATH $PRJ_PATH
   else
     if test -z $TMUX
       tmux attach -t $PRJ_NAME
