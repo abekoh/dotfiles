@@ -51,4 +51,7 @@ function fish_prompt --description 'Write out the prompt'
 
   echo -n '$ '
   set_color normal
+
+  # iTermのタブ名
+  echo -ne "\033]0;"(pwd)"\007"
 end
