@@ -20,7 +20,16 @@ function fish_prompt --description 'Write out the prompt'
 
   # PWD
   set_color $fish_color_cwd
-  echo -n (prompt_pwd)
+  if test -n $TMUX
+    set session_path (tmux show-environment | grep TMUX_SESSION_PATH | string replace "TMUX_SESSION_PATH=" "")
+    if test (string match -r $session_path (pwd))
+      echo -n @(string replace $session_path "" (pwd))
+    else
+      echo -n (prompt_pwd)
+    end
+  else
+    echo -n (prompt_pwd)
+  end
   set_color normal
 
   if test (tput cols) -lt 85
