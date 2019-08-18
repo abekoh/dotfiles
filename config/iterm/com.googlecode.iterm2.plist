@@ -440,7 +440,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>1152 1199 770 429 0 0 3840 2137 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1931 473 1743 1024 0 0 3840 2137 </string>
+	<string>1739 906 1646 769 0 0 3840 2137 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>1638 1057 1263 684 0 0 3840 2137 </string>
 	<key>New Bookmarks</key>
@@ -1179,9 +1179,9 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Title Components</key>
-			<integer>256</integer>
+			<integer>1</integer>
 			<key>Transparency</key>
-			<real>0.041134597081218277</real>
+			<real>0.0</real>
 			<key>Triggers</key>
 			<array>
 				<dict>
@@ -1225,7 +1225,7 @@
 		<key>screenFrame</key>
 		<string>{{0, 0}, {3840, 2160}}</string>
 		<key>topLeft</key>
-		<string>{519, 1368}</string>
+		<string>{414, 757}</string>
 	</dict>
 	<key>NoSyncHaveUsedCopyMode</key>
 	<true/>
@@ -1236,7 +1236,7 @@
 	<key>NoSyncLastTipTime</key>
 	<real>587120346.72483897</real>
 	<key>NoSyncLaunchExperienceControllerRunCount</key>
-	<integer>5</integer>
+	<integer>7</integer>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
@@ -2005,7 +2005,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-08-10T08:03:20Z</date>
+	<date>2019-08-16T09:19:42Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SeparateStatusBarsPerPane</key>
