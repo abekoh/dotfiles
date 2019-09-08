@@ -13,6 +13,9 @@ set -x PATH $JAVA_HOME/bin $PATH
 # alias
 alias vi='vim -u NONE -N'
 alias ij='open -b com.jetbrains.intellij'
+alias vim='nvim'
+alias g='git'
+alias k='kubectl'
 
 # complete
 complete -c workon -a "(ls $WORKON_HOME)"
