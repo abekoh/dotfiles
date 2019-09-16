@@ -493,10 +493,10 @@ rtp = 'packages/word'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
-[[plugins]]
-repo = 'neoclide/coc-yaml'
-depends = 'coc.nvim'
-build = 'yarn install --frozen-lockfile'
+# [[plugins]]
+# repo = 'neoclide/coc-yaml'
+# depends = 'coc.nvim'
+# build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
 repo = 'fannheyward/coc-xml'

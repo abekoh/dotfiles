@@ -123,6 +123,12 @@ repo = 'previm/previm'
 on_ft = 'markdown'
 depends = 'open-browser.vim'
 
+# mustache ----------------------------------------------------------------------
+
+[[plugins]]
+repo = 'mustache/vim-mustache-handlebars'
+on_ft = 'mustache'
+
 # python ------------------------------------------------------------------------
 
 [[plugins]]

@@ -19,6 +19,9 @@
         "<C-v>": "action:vsplit",
         "<C-s>": "action:split"
     },
+    "yaml.schemas": {
+      "kubernetes": "/deployment.yaml"
+    },
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
