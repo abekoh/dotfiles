@@ -380,6 +380,12 @@ hook_add = '''
 [[plugins]]
 repo = 'iamcco/coc-angular'
 depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
+repo = 'neoclide/coc-highlight'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
 repo = 'neoclide/coc-css'
@@ -445,6 +451,11 @@ depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
+repo = 'neoclide/coc-rls'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
+
+[[plugins]]
 repo = 'neoclide/coc-snippets'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
@@ -493,10 +504,10 @@ rtp = 'packages/word'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
-# [[plugins]]
-# repo = 'neoclide/coc-yaml'
-# depends = 'coc.nvim'
-# build = 'yarn install --frozen-lockfile'
+[[plugins]]
+repo = 'neoclide/coc-yaml'
+depends = 'coc.nvim'
+build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
 repo = 'fannheyward/coc-xml'
