@@ -31,6 +31,7 @@
     "python.linting.pep8Enabled": true,
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "autopep8",
+    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home",
     "languageserver": {
         "golang": {
             "command": "gopls",

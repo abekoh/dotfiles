@@ -11,6 +11,7 @@ set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
 set -x PATH $JAVA_HOME/bin $PATH
 set -x PATH ~/google-cloud-sdk/bin $PATH
 set -x PATH ~/.jenv/bin $PATH
+set -x PATH ~/.nodenv/shims $PATH
 
 # alias
 alias vi='vim -u NONE -N'
