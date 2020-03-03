@@ -21,3 +21,4 @@ complete -c workon -a "(ls $WORKON_HOME)"
 
 # run
 status --is-interactive; and source (anyenv init -|psub)
+status --is-interactive; and source (nodenv init -|psub)
