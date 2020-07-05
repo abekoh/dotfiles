@@ -1,45 +1,4 @@
 # ------------------------------------------------------------------------------
-# insert mode
-# ------------------------------------------------------------------------------
-# [[plugins]]
-# repo = 'Shougo/deoplete.nvim'
-# on_event = 'InsertEnter'
-# hook_source = '''
-#   let g:deoplete#enable_at_startup = 1
-#   " <TAB>: completion.
-#   inoremap <silent><expr> <TAB>
-#         \ pumvisible() ? "\<C-n>" :
-#         \ <SID>check_back_space() ? "\<TAB>" :
-#         \ deoplete#manual_complete()
-#   function! s:check_back_space() abort "{{{
-#     let l:col = col('.') - 1
-#     return !l:col || getline('.')[l:col - 1]  =~ '\s'
-#   endfunction"}}}
-#   " <S-TAB>: completion back.
-#   inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-#   " <BS>: close popup and delete backword char.
-#   inoremap <expr><BS> deoplete#smart_close_popup()."\<C-h>"
-#   if !exists('g:deoplete#omni_patterns')
-#     let g:deoplete#omni_patterns = {}
-#   endif
-#   let g:deoplete#omni_patterns.r = '[[:alnum:].\\]\+'
-# '''
-
-# [[plugins]]
-# repo = 'Shougo/neosnippet.vim'
-# on_event = 'InsertEnter'
-# on_ft = 'snippet'
-# depends = 'neosnippet-snippets'
-# hook_source = '''
-#   imap <C-f> <Plug>(neosnippet_expand_or_jump)
-#   smap <C-f> <Plug>(neosnippet_expand_or_jump)
-#   xmap <C-f> <Plug>(neosnippet_expand_target)
-#   if has('conceal')
-#     set conceallevel=2 concealcursor=niv
-#   endif
-# '''
-
-# ------------------------------------------------------------------------------
 # focus lost & cursor lost
 # ------------------------------------------------------------------------------
 
@@ -68,28 +27,6 @@ on_ft = 'ejs'
 [[plugins]]
 repo = 'dag/vim-fish'
 on_ft = 'fish'
-
-# go ----------------------------------------------------------------------------
-
-# [[plugins]]
-# repo = 'fatih/vim-go'
-# on_ft = 'go'
-# hook_source = '''
-#   let g:go_test_show_name = 1
-#   " let g:go_list_type = "quickfix"
-#   let g:go_fmt_command = "goimports"
-#   " let g:go_auto_type_info = 1
-#   " let g:go_auto_sameids = 1
-#   " let g:go_highlight_types = 1
-#   " let g:go_highlight_fields = 1
-#   " let g:go_highlight_functions = 1
-#   " let g:go_highlight_methods = 1
-#   " let g:go_highlight_operators = 1
-#   " let g:go_highlight_extra_types = 1
-#   let g:go_def_mapping_enabled = 0
-#   let g:go_doc_keywordprg_enabled = 0
-#   " let g:go_highlight_generate_tags = 1
-# '''
 
 # html/xml -----------------------------------------------------------------------
 
@@ -141,12 +78,6 @@ depends = ['vim-textobj-user']
 [[plugins]]
 repo = 'tpope/vim-endwise'
 on_ft = 'ruby'
-
-# tex ---------------------------------------------------------------------------
-
-# [[plugins]]
-# repo = 'lervag/vimtex'
-# on_ft = 'tex'
 
 # toml -------------------------------------------------------------------------
 

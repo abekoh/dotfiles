@@ -20,12 +20,6 @@ hook_add = '''
   colorscheme tender
 '''
 
-# [[plugins]]
-# repo = 'vim-airline/vim-airline'
-# hook_add = '''
-#   let g:airline_theme = 'tender'
-# '''
-
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -133,79 +127,6 @@ repo = 'tpope/vim-speeddating'
 # filer
 # ------------------------------------------------------------------------------
 
-# [[plugins]]
-# repo = 'Shougo/denite.nvim'
-# hook_add = '''
-#   nmap <silent> <Leader>ff :Denite<Space>file_rec<CR>
-#   nmap <silent> <Leader>fg :Denite<Space>grep<CR>
-#   nmap <silent> <Leader>fm :Denite<Space>file_mru<CR>
-#   nmap <silent> <Leader>fj :DeniteBufferDir<Space>file<Space>file:new<CR>
-#   nmap <silent> <Leader>fb :Denite<Space>buffer<CR>
-#   nmap <silent> <Leader>fq :Denite<Space>help<CR>
-#   nmap <silent> <Leader>fl :Denite<Space>line<CR>
-#   nmap <silent> <Leader>ft :Denite<Space>tag<CR>
-#   nmap <silent> <Leader>fu :Denite<Space>menu<CR>
-#   nmap <silent> <Leader>fy :Denite<Space>neoyank<CR>
-#   nmap <silent> <Leader>fc :Denite<Space>codeAction<CR>
-#
-#   " replace grep into ripgrep
-#   if executable('rg')
-#     call denite#custom#var('file_rec', 'command', ['rg', '--hidden', '--files', '--glob', '!.git'])
-#     call denite#custom#var('grep', 'command', ['rg', '--hidden'])
-#   endif
-#   call denite#custom#var('grep', 'recursive_opts', [])
-#   call denite#custom#var('grep', 'pattern_opt', [])
-#
-#   " change matcher
-#   call denite#custom#source('file_rec', 'matchers', ['matcher_cpsm', 'matcher_ignore_globs'])
-#
-#   " customize ignore globs
-#   call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
-#         \ [
-#         \ '.git/', 'build/', '__pycache__/',
-#         \ 'images/', '*.o', '*.make',
-#         \ '*.min.*', 'imgs/',
-#         \ 'img/', 'fonts/'])
-#
-#   " denite/insert モードのときは，C-,↑↓ で移動できるようにする
-#   call denite#custom#map('insert', "<C-j>", '<denite:move_to_next_line>')
-#   call denite#custom#map('insert', "<C-k>", '<denite:move_to_previous_line>')
-#   call denite#custom#map('insert', "<Down>", '<denite:move_to_next_line>')
-#   call denite#custom#map('insert', "<Up>", '<denite:move_to_previous_line>')
-#
-#   " tabopen や vsplit のキーバインドを割り当て
-#   call denite#custom#map('insert', "<C-t>", '<denite:do_action:tabopen>')
-#   call denite#custom#map('insert', "<C-v>", '<denite:do_action:vsplit>')
-#   call denite#custom#map('normal', "v", '<denite:do_action:vsplit>')
-# '''
-
-# [[plugins]]
-# repo = 'Shougo/neomru.vim'
-# depends = 'denite.nvim'
-
-# [[plugins]]
-# repo = 'nixprime/cpsm'
-# build = 'env PY3=ON ./install.sh'
-# depends = 'denite.nvim'
-
-# [[plugins]]
-# repo = 'nixprime/cpsm'
-# build = 'env PY3=ON ./install.sh'
-
-# [[plugins]]
-# repo = 'scrooloose/nerdtree'
-# hook_add = '''
-#   let g:NERDTreeShowHidden = 1
-#   let g:NERDTreeMinimalUI = 1
-# '''
-
-# [[plugins]]
-# repo = 'jistr/vim-nerdtree-tabs'
-# depends = 'nerdtree'
-# hook_add = '''
-#   nmap <Leader>n :NERDTreeTabsToggle<CR>
-#   nmap <Leader>m :NERDTreeTabsFind<CR>
-# '''
 
 [[plugins]]
 repo = 'Shougo/defx.nvim'
@@ -271,10 +192,6 @@ hook_add = '''
 repo = 'kristijanhusak/defx-icons'
 depends = 'defx.nvim'
 
-# [[plugins]]
-# repo = 'kristijanhusak/defx-git'
-# depends = 'defx.nvim'
-
 [[plugins]]
 repo = 'junegunn/fzf'
 build = './install --all'
@@ -291,32 +208,6 @@ repo = 'Shougo/context_filetype.vim'
 # LSP
 # ------------------------------------------------------------------------------
 
-# [[plugins]]
-# repo = 'autozimu/LanguageClient-neovim'
-# rev = 'next'
-# build = './install.sh'
-# hook_add = '''
-#   let g:LanguageClient_serverCommands = {}
-#   let g:LanguageClient_serverCommands['python'] = ['pyls']
-#   let g:LanguageClient_serverCommands['javascript'] = ['javascript-typescript-langserver']
-#   let g:LanguageClient_serverCommands['typescript'] = ['javascript-typescript-langserver']
-#   let g:LanguageClient_serverCommands['go'] = ['golsp', '-mode', 'stdio']
-#   let g:LanguageClient_serverCommands['sh'] = ['bash-language-server', 'start']
-#   let g:LanguageClient_serverCommands['ruby'] = ['solargraph', 'stdio']
-#   let g:LanguageClient_serverCommands['dockerfile'] = ['docker-langserver', '--stdio']
-#   let g:LanguageClient_serverCommands['sql'] = ['sql-language-sever', 'up', '--method', 'stdio']
-#   let g:LanguageClient_hoverPreview = 'Always'
-#   let g:LanguageClient_loadSettings = 1
-#   let g:LanguageClient_hasSnippetSupport = 1
-#   let g:LanguageClient_completionPreferTextEdit = 1
-#   nnoremap <silent><Leader>k :call LanguageClient#textDocument_hover()<CR>
-#   nnoremap <silent><Leader>d :call LanguageClient#textDocument_definition()<CR>
-#   nnoremap <silent><Leader>R :call LanguageClient#textDocument_rename()<CR>
-#   nnoremap <silent><Leader>u :call LanguageClient#textDocument_references()<CR>
-#   nnoremap <silent><Leader>F :call LanguageClient#textDocument_formatting()<CR>
-#   nnoremap <silent><Leader>A :call LanguageClient#textDocument_codeAction()<CR>
-#   nnoremap <silent><Leader>s :call LanguageClient#textDocument_documentSymbol()<CR>
-# '''
 
 [[plugins]]
 repo = 'neoclide/coc.nvim'
@@ -376,11 +267,6 @@ hook_add = '''
   " Highlight symbol under cursor on CursorHold
   autocmd CursorHold * silent call CocActionAsync('highlight')
 '''
-
-[[plugins]]
-repo = 'iamcco/coc-angular'
-depends = 'coc.nvim'
-build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
 repo = 'neoclide/coc-highlight'
@@ -513,24 +399,6 @@ build = 'yarn install --frozen-lockfile'
 repo = 'fannheyward/coc-xml'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
-# ------------------------------------------------------------------------------
-# snippets
-# ------------------------------------------------------------------------------
-# [[plugins]]
-# repo = 'Shougo/neosnippet-snippets'
-
-# ------------------------------------------------------------------------------
-# linter
-# ------------------------------------------------------------------------------
-
-# [[plugins]]
-# repo = 'w0rp/ale'
-# hook_add = '''
-#   let g:ale_sign_error = '✖'
-#   let g:ale_sign_warning = '⚠'
-#   let g:ale_virtualtext_cursor = 1
-#   let g:ale_virtualtext_prefix = '▶ '
-# '''
 
 # ------------------------------------------------------------------------------
 # git
