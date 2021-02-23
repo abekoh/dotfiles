@@ -16,6 +16,8 @@ alias ij='open -b com.jetbrains.intellij'
 alias vim='nvim'
 alias g='git'
 alias k='kubectl'
+alias ks='kubens'
+alias kx='kubectx'
 
 # complete
 complete -c workon -a "(ls $WORKON_HOME)"
