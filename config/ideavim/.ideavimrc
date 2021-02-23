@@ -31,6 +31,12 @@ nnoremap <Space>i :action CommentByLineComment<CR>
 vnoremap <Space>i :action CommentByLineComment<CR>
 " 実行
 nnoremap <Space>r :action Run<CR>
+" カーソル位置のクラス実行
+nnoremap <Space>t :action RunClass<CR>
+" デバッグ
+nnoremap <Space>d :action Debug<CR>
+" カーソル位置のデバッグ
+nnoremap <Space>f :action RunDebug<CR>
 " Find in Path
 nnoremap <Space>ff :action FindInPath<CR>
 " 次のタブ
