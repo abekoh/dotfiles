@@ -307,10 +307,10 @@ repo = 'neoclide/coc-html'
 depends = 'coc.nvim'
 build = 'yarn install --frozen-lockfile'
 
-[[plugins]]
-repo = 'neoclide/coc-java'
-depends = 'coc.nvim'
-build = 'yarn install --frozen-lockfile'
+# [[plugins]]
+# repo = 'neoclide/coc-java'
+# depends = 'coc.nvim'
+# build = 'yarn install --frozen-lockfile'
 
 [[plugins]]
 repo = 'neoclide/coc-json'
