@@ -25,8 +25,8 @@ alias kx='kubectx'
 complete -c workon -a "(ls $WORKON_HOME)"
 
 # run
-status --is-interactive; and source (anyenv init -|psub)
-status --is-interactive; and source (nodenv init -|psub)
+# ${PATH}がfishでパースできないエラー回避のため、grepで該当を除去
+status --is-interactive; and source (anyenv init - | grep -v "export PATH=\".*.anyenv/envs/pyenv/shims:\${PATH}\"" | psub)
 
 # eventをhookさせるため一度実行
 history-merge
