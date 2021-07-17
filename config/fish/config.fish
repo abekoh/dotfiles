@@ -1,3 +1,8 @@
+# anyenv設定
+set -x PATH ~/.anyenv/bin $PATH
+# ${PATH}がfishでパースできないエラー回避のため、grepで該当を除去
+status --is-interactive; and source (anyenv init - | grep -v "export PATH=\".*.anyenv/envs/pyenv/shims:\${PATH}\"" | psub)
+
 # environment vars
 set -x PATH /usr/local/bin $PATH
 set -x EDITOR nvim
@@ -9,7 +14,7 @@ set -x NRFSDK12_ROOT ~/sdk/nRF5_SDK_12.3.0_d7731ad
 set -x PATH ~/google-cloud-sdk/bin $PATH
 set -x PATH ~/.cargo/bin $PATH
 set -x PATH ~/flutter/bin $PATH
-set -x PATH ~/.anyenv/bin $PATH
+set -x GOPATH ~
 
 # alias
 alias vi='vim -u NONE -N'
@@ -22,12 +27,6 @@ alias kx='kubectx'
 
 # complete
 complete -c workon -a "(ls $WORKON_HOME)"
-
-# run
-# ${PATH}がfishでパースできないエラー回避のため、grepで該当を除去
-status --is-interactive; and source (anyenv init - | grep -v "export PATH=\".*.anyenv/envs/pyenv/shims:\${PATH}\"" | psub)
-# GOPATHはhomeに上書き
-set -x GOPATH ~
 
 # eventをhookさせるため一度実行
 history-merge
