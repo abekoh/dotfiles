@@ -2,7 +2,6 @@
 set -x PATH /usr/local/bin $PATH
 set -x EDITOR nvim
 set -x TERM xterm-256color
-set -x GOPATH ~
 set -x PATH ~/bin $PATH
 set -x NRFSDK12_ROOT ~/sdk/nRF5_SDK_12.3.0_d7731ad
 # set -x JAVA_HOME (/usr/libexec/java_home -v 1.8)
@@ -27,6 +26,8 @@ complete -c workon -a "(ls $WORKON_HOME)"
 # run
 # ${PATH}がfishでパースできないエラー回避のため、grepで該当を除去
 status --is-interactive; and source (anyenv init - | grep -v "export PATH=\".*.anyenv/envs/pyenv/shims:\${PATH}\"" | psub)
+# GOPATHはhomeに上書き
+set -x GOPATH ~
 
 # eventをhookさせるため一度実行
 history-merge
