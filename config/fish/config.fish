@@ -2,6 +2,7 @@
 set -x PATH ~/.anyenv/bin $PATH
 # ${PATH}がfishでパースできないエラー回避のため、grepで該当を除去
 status --is-interactive; and source (anyenv init - | grep -v "export PATH=\".*.anyenv/envs/pyenv/shims:\${PATH}\"" | psub)
+set -x PATH ~/.anyenv/envs/pyenv/shims $PATH
 
 # environment vars
 set -x PATH /usr/local/bin $PATH
