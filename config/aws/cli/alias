@@ -1,0 +1,29 @@
+amis =
+  !f() {
+  	# Amazon Linux, Windows
+    aws ssm get-parameters --names \
+      /aws/service/ami-amazon-linux-latest/amzn-ami-hvm-x86_64-gp2 \
+      /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 \
+      /aws/service/ami-windows-latest/Windows_Server-2019-Japanese-Full-Base \
+      /aws/service/ami-windows-latest/Windows_Server-2016-Japanese-Full-Base \
+      --query "Parameters[].[Value, LastModifiedDate, Name]" \
+      --output text
+
+	# CentOS7
+    aws ec2 describe-images --owners aws-marketplace \
+      --filters "Name=product-code,Values=aw0evgkw8e5c1q413zgy5pjce" \
+      --query "reverse(sort_by(Images, &CreationDate))[0].[ImageId,CreationDate,Description]" \
+      --output text
+
+	# Ubuntu Server 20.04 LTS (x86_64)
+    aws ec2 describe-images --owners 099720109477 \
+      --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64*" \
+      --query "reverse(sort_by(Images, &CreationDate))[0].[ImageId,CreationDate,Name]" \
+      --output text
+
+	# Ubuntu Server 18.04 LTS (x86_64)
+    aws ec2 describe-images --owners 099720109477 \
+      --filters "Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64*" \
+      --query "reverse(sort_by(Images, &CreationDate))[0].[ImageId,CreationDate,Name]" \
+      --output text
+  }; f

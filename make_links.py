@@ -94,6 +94,11 @@ def iterm():
     subprocess.run('ln -sf ~/dotfiles/config/iterm ~/.config/iterm', shell=True)
 
 
+def aws():
+    print('setup aws')
+    os.makedirs(os.path.join(os.environ['HOME'], '.aws', 'cli'), exist_ok=True)
+    subprocess.run('ln -sf ~/dotfiles/config/aws/cli/alias ~/.aws/cli/alias', shell=True)
+
 if __name__ == '__main__':
     config_dir_path = os.path.join(os.environ['HOME'], '.config')
     if not os.path.exists(config_dir_path):
@@ -109,3 +114,4 @@ if __name__ == '__main__':
     ideavim()
     homebrew()
     iterm()
+    aws()
