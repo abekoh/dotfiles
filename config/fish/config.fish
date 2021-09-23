@@ -16,6 +16,7 @@ set -x PATH ~/google-cloud-sdk/bin $PATH
 set -x PATH ~/.cargo/bin $PATH
 set -x PATH ~/flutter/bin $PATH
 set -x GOPATH ~
+set -x GOBIN ~/bin
 
 # alias
 alias vi='vim -u NONE -N'
