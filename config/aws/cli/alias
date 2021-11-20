@@ -28,3 +28,14 @@ amis =
       --query "reverse(sort_by(Images, &CreationDate))[0].[ImageId,CreationDate,Name]" \
       --output text
   }; f
+upgrade =
+  !f() {
+      if [ "$(uname)" != "Linux" ]; then
+        echo "upgrade is not supported: $(uname)"
+        exit 1
+      fi
+      curl "https://awscli.amazonaws.com/awscli-exe-linux-$(uname -m).zip" -o /tmp/awscliv2.zip
+      unzip /tmp/awscliv2.zip -d /tmp/
+      sudo /tmp/aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+      # rm -rf /tmp/aws /tmp/awscliv2.zip
+  }; f
