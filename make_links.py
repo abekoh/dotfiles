@@ -40,17 +40,6 @@ def tmux():
     subprocess.run("ln -sf ~/dotfiles/config/tmux/.tmux.conf ~/.tmux.conf", shell=True)
 
 
-def git():
-    print("setup git")
-    config_path = os.path.join(os.environ["HOME"], ".git_template/hooks")
-    if not os.path.exists(config_path):
-        os.mkdir(config_path)
-    subprocess.run(
-        "ln -sf ~/dotfiles/config/git/git_template/hooks/* ~/.git_template/hooks/",
-        shell=True,
-    )
-
-
 def ideavim():
     print("setup ideavim")
     subprocess.run(
@@ -71,14 +60,8 @@ if __name__ == "__main__":
     if not os.path.exists(config_dir_path):
         os.mkdir(config_dir_path)
     neovim()
-    vim()
     fish()
     zsh()
     tmux()
-    python_utils()
-    git()
-    hammerspoon()
     ideavim()
-    homebrew()
-    iterm()
     aws()
