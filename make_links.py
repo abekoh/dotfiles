@@ -58,17 +58,6 @@ def ideavim():
     )
 
 
-def homebrew():
-    print("setup homebrew")
-    config_path = os.path.join(os.environ["HOME"], ".config", "brewfile")
-    if not os.path.exists(config_path):
-        os.mkdir(config_path)
-    subprocess.run(
-        "ln -sf ~/dotfiles/config/homebrew/Brewfile ~/.config/brewfile/Brewfile",
-        shell=True,
-    )
-
-
 def iterm():
     print("setup iterm")
     subprocess.run("ln -sf ~/dotfiles/config/iterm ~/.config/iterm", shell=True)
