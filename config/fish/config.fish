@@ -1,3 +1,10 @@
+# brew
+set -gx HOMEBREW_PREFIX "/opt/homebrew";
+set -gx HOMEBREW_CELLAR "/opt/homebrew/Cellar";
+set -gx HOMEBREW_REPOSITORY "/opt/homebrew";
+set -q PATH; or set PATH ''; set -gx PATH "/opt/homebrew/bin" "/opt/homebrew/sbin" $PATH;
+set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/opt/homebrew/share/man" $MANPATH;
+
 # anyenv設定
 set -x PATH ~/.anyenv/bin $PATH
 # ${PATH}がfishでパースできないエラー回避のため、grepで該当を除去
@@ -32,3 +39,6 @@ complete -c workon -a "(ls $WORKON_HOME)"
 
 # eventをhookさせるため一度実行
 history-merge
+
+# direnv
+eval (direnv hook fish)
