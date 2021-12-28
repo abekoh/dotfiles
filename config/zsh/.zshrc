@@ -28,6 +28,7 @@ zinit light-mode for \
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-autosuggestions
 
 # substring-search
 bindkey '^[[A' history-substring-search-up
