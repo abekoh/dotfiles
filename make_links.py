@@ -51,17 +51,6 @@ def git():
     )
 
 
-def hammerspoon():
-    print("setup hammerspoon")
-    config_path = os.path.join(os.environ["HOME"], ".hammerspoon")
-    if not os.path.exists(config_path):
-        os.mkdir(config_path)
-    subprocess.run(
-        "ln -sf ~/dotfiles/config/hammerspoon/init.lua ~/.hammerspoon/init.lua",
-        shell=True,
-    )
-
-
 def ideavim():
     print("setup ideavim")
     subprocess.run(
