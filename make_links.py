@@ -58,11 +58,6 @@ def ideavim():
     )
 
 
-def iterm():
-    print("setup iterm")
-    subprocess.run("ln -sf ~/dotfiles/config/iterm ~/.config/iterm", shell=True)
-
-
 def aws():
     print("setup aws")
     os.makedirs(os.path.join(os.environ["HOME"], ".aws", "cli"), exist_ok=True)
