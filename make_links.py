@@ -8,18 +8,6 @@ def neovim():
     print('setup neovim')
     subprocess.run('ln -sf ~/dotfiles/config/nvim ~/.config/', shell=True)
 
-
-def vim():
-    print('setup vim')
-    subprocess.run('ln -sf ~/dotfiles/config/nvim/init.vim ~/.vimrc', shell=True)
-    vim_dir_path = os.path.join(os.environ['HOME'], '.vim')
-    if not os.path.exists(vim_dir_path):
-        os.mkdir(vim_dir_path)
-    subprocess.run('ln -sf ~/dotfiles/config/nvim/options.rc.vim ~/.vim/', shell=True)
-    subprocess.run('ln -sf ~/dotfiles/config/nvim/keymap.rc.vim ~/.vim/', shell=True)
-    subprocess.run('ln -sf ~/dotfiles/config/nvim/ftplugin ~/.vim/', shell=True)
-
-
 def fish():
     print('setup fish')
     dotfiles_path = os.path.join(os.environ['HOME'], 'dotfiles/config/fish')
