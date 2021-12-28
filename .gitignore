@@ -3,3 +3,4 @@ secret.vim
 .mypy_cache/
 node_modules/
 .vscode/
+.DS_Store
