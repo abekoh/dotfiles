@@ -33,3 +33,4 @@ zinit light-mode for \
 ### End of Zinit's installer chunk
 
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
