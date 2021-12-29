@@ -15,6 +15,11 @@ cd dotfiles
 ./make_links.py
 ```
 
+## Install
+```
+cd ~/dotfiles
+```
+
 ## Other Configs
 
 ### iTerm2 theme

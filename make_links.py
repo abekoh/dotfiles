@@ -53,12 +53,6 @@ def aws():
         "ln -sf ~/dotfiles/config/aws/cli/alias ~/.aws/cli/alias", shell=True
     )
 
-def homebrew():
-    print("setup homebrew")
-    subprocess.run(
-        "ln -sf ~/dotfiles/config/homebrew/.Brewfile ~/.Brewfile", shell=True
-    )
-
 
 if __name__ == "__main__":
     config_dir_path = os.path.join(os.environ["HOME"], ".config")
@@ -70,4 +64,3 @@ if __name__ == "__main__":
     tmux()
     ideavim()
     aws()
-    homebrew()
