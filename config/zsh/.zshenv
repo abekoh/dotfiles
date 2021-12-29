@@ -13,11 +13,11 @@ export EDITOR=nvim
 export TERM=xterm-256color
 
 # path
-export PATH=$PATH:/usr/local/bin
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/.anyenv/bin
-export PATH=$PATH:$HOME/.cargo/bin
-export PATH=$PATH:$HOME/flutter/bin
+export PATH=/usr/local/bin:${PATH+:$PATH}
+export PATH=$HOME/bin:${PATH+:$PATH}
+export PATH=$HOME/.anyenv/bin:${PATH+:$PATH}
+export PATH=$HOME/.cargo/bin:${PATH+:$PATH}
+export PATH=$HOME/flutter/bin:${PATH+:$PATH}
 
 # go
 export GOPATH=$HOME
