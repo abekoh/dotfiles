@@ -44,3 +44,11 @@ alias vim='nvim'
 alias k='kubectl'
 alias ks='kubens'
 alias kx='kubectx'
+
+# prj
+prj () {
+  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -n "$selected_dir" ]; then
+    cd ${selected_dir}
+  fi
+}
