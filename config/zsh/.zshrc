@@ -141,3 +141,5 @@ nvim () {
 
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

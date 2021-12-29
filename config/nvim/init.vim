@@ -15,6 +15,15 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 runtime! plugins.vim
+
+" theme
+set termguicolors
+syntax enable
+colorscheme tender
+set guifont=Hack\ Nerd\ Font\ Mono:h11
+
+runtime! coc.vim
+
 runtime! functions.vim
 runtime! options.vim
 runtime! keymap.vim
