@@ -47,8 +47,18 @@ alias kx='kubectx'
 
 # prj
 prj () {
-  local selected_dir=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -n "$selected_dir" ]; then
-    cd ${selected_dir}
+  local prj_path=$(ghq list -p | peco --query "$LBUFFER")
+  if [[ -z "$prj_path" ]]; then
+    return
+  fi
+  local prj_name=$(echo "$(basename $(dirname $prj_path))/$(basename $prj_path)" | sed -e 's/\./_/g')
+  if ! tmux has-session -t $prj_name; then
+    tmux new-session -c $prj_path -s $prj_name -d
+    tmux setenv -t $prj_name TMUX_SESSION_PATH $prj_path
+  fi
+  if [[ -z "$TMUX" ]]; then
+    tmux attach -t $prj_name
+  else
+    tmux switch-client -t $prj_name
   fi
 }
