@@ -1,6 +1,6 @@
 let g:coc_global_extensions = [
   \'coc-lists',
-  \'coc-python',
+  \'coc-pyright',
   \'coc-go',
   \'coc-rls',
   \'coc-solargraph',
