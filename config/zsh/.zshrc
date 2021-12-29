@@ -40,3 +40,7 @@ compinit
 
 # alias
 alias g='git'
+alias vim='nvim'
+alias k='kubectl'
+alias ks='kubens'
+alias kx='kubectx'
