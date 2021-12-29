@@ -15,6 +15,17 @@ cd dotfiles
 ./make_links.py
 ```
 
+## Install
+```
+cd ~/dotfiles
+```
+
+## Manual Install
+- rust
+- gcloud
+- aws
+- docker
+
 ## Other Configs
 
 ### iTerm2 theme

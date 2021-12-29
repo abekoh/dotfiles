@@ -1,103 +1,113 @@
-# colors
-autoload -Uz colors
-colors
+# starship
+eval "$(starship init zsh)"
 
-# vi key bind
-bindkey -v
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-# ヒストリの設定
-HISTFILE=~/.zsh_history
-HISTSIZE=1000000
-SAVEHIST=1000000
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
-# プロンプト
-# PROMPT="%{${fg[red]}%}%n%{${fg[white]}%}@%m%{${reset_color}%} %~
-PROMPT="${fg[yellow]}%n${fg[white]}@%m${fg[white]}:${fg[green]}%~${reset_color}
-\$ "
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
-# 単語の区切り文字を指定する
-autoload -Uz select-word-style
-select-word-style default
-# ここで指定した文字は単語区切りとみなされる
-# / も区切りと扱うので、^W でディレクトリ１つ分を削除できる
-zstyle ':zle:*' word-chars " /=;@:{},|"
-zstyle ':zle:*' word-style unspecified
+### End of Zinit's installer chunk
 
-# 補完
-# 補完機能を有効にする
+# zinit
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-history-substring-search
+zinit light zsh-users/zsh-autosuggestions
+
+# google cloud
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
+# The next line enables shell command completion for gcloud.
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
+
+# substring-search
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+# completion
 autoload -Uz compinit
 compinit
+# 大文字小文字無視
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+# 大文字のときは小文字を無視
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+# 大文字見つからなければ小文字
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+# みつからなければ文字種無視
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+# 通常補完 -> （小文字 -> 大文字） -> （小文字 -> 大文字 + 大文字 -> 小文字）.
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
-# 補完で小文字でも大文字にマッチさせる
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# alias
+alias g='git'
+alias vim='nvim'
+alias k='kubectl'
+alias ks='kubens'
+alias kx='kubectx'
 
-# ../ の後は今いるディレクトリを補完しない
-zstyle ':completion:*' ignore-parents parent pwd ..
-
-# sudo の後ろでコマンド名を補完する
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                   /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-
-# ps コマンドのプロセス名補完
-zstyle ':completion:*:processes' command 'ps x -o pid,s,args'
-
-
-# vcs_info
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-
-zstyle ':vcs_info:*' formats '%F{green}(%s)-[%b]%f'
-zstyle ':vcs_info:*' actionformats '%F{red}(%s)-[%b|%a]%f'
-
-function _update_vcs_info_msg() {
-    LANG=en_US.UTF-8 vcs_info
-    RPROMPT="${vcs_info_msg_0_}"
+# prj
+prj () {
+  local prj_path=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -z "$prj_path" ]; then
+    return
+  fi
+  local prj_name=$(echo "$(basename $(dirname $prj_path))/$(basename $prj_path)" | sed -e 's/\./_/g')
+  if ! tmux has-session -t $prj_name; then
+    tmux new-session -c $prj_path -s $prj_name -d
+    tmux setenv -t $prj_name TMUX_SESSION_PATH $prj_path
+  fi
+  if [ -z "$TMUX" ]; then
+    tmux attach -t $prj_name
+  else
+    tmux switch-client -t $prj_name
+  fi
 }
-add-zsh-hook precmd _update_vcs_info_msg
 
+cd () {
+  if [ -n "$TMUX" -a -z "$@" ]; then
+    local session_path=$(tmux show-environment | grep TMUX_SESSION_PATH | sed -e 's/TMUX_SESSION_PATH=//')
+    if [ -n "$session_path" ]; then
+      builtin cd $session_path
+      return
+    fi
+  fi
+  builtin cd "$@"
+}
 
-# オプション
-# 日本語ファイル名を表示可能にする
-setopt print_eight_bit
-
-# beep を無効にする
-setopt no_beep
-
-# フローコントロールを無効にする
-setopt no_flow_control
-
-# Ctrl+Dでzshを終了しない
-setopt ignore_eof
-
-# 同時に起動したzshの間でヒストリを共有する
-setopt share_history
-
-# 同じコマンドをヒストリに残さない
-setopt hist_ignore_all_dups
-
-# スペースから始まるコマンド行はヒストリに残さない
-setopt hist_ignore_space
-
-# ヒストリに保存するときに余分なスペースを削除する
-setopt hist_reduce_blanks
-
-# viでプラグインなし
-alias vi='vim -u NONE -N'
-alias tmux='tmux -2'
-
-# OS 別の設定
-case ${OSTYPE} in
-    darwin*)
-        #Mac用の設定
-        export CLICOLOR=1
-        alias ls='ls -G -F'
-        alias ctags="`brew --prefix`/bin/ctags"
-        ;;
-    linux*)
-        #Linux用の設定
-        alias ls='ls -F --color=auto'
-        ;;
-esac
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+nvim () {
+    if [ -z "$TMUX" ]; then
+      command nvim $@
+      return
+    fi
+    # ソケットを設定
+    local socket_path=/tmp/$(echo $(tmux display-message -p '#S') | sed 's/\//_/g' )
+    if [ -S $socket_path ]; then
+        # すでにソケットが存在してたらそれに接続
+        nvr --remote-tab --servername $socket_path $argv 
+        # 該当のnvimに移動
+        local session_id=$(tmux list-panes -F '#{session_id}')
+        local pane_ids_str=$(tmux list-panes -a -F "#{session_id},#{window_index},#{pane_index},#{pane_current_command}" | grep "^$session_id,.*,nvim\$")
+        # 配列にする: https://gist.github.com/mattmc3/76ad634f362b5a9a54f1779a4737d5ae
+        local pane_ids=(${(@s:,:)pane_ids_str})
+        tmux select-window -t $pane_ids[2] && tmux select-pane -t $pane_ids[3]
+    else 
+      # ソケットがなければ作成して起動
+      NVIM_LISTEN_ADDRESS=$socket_path command nvim $@
+    fi
+}
