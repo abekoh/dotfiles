@@ -1,36 +1,20 @@
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '~/.anyenv/envs/pyenv/shims/python3'
 
-set runtimepath+=~/.dotfiles/nvim 
-if has('nvim')
-  let s:dein_cache_path = expand('~/.cache/nvim/dein')
-else
-  let s:dein_cache_path = expand('~/.cache/vim/dein')
+" for plugin development
+set runtimepath+=~/dotfiles/nvim 
+
+" Install vim-plug if not found
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-let s:dein_dir = s:dein_cache_path . '/repos/github.com/Shougo/dein.vim'
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
-if &runtimepath !~ '/dein.vim'
-  if !isdirectory(s:dein_dir)
-    execute '!git clone https://github.com/Shougo/dein.vim' s:dein_dir
-  endif
-  execute 'set runtimepath+=' . fnamemodify(s:dein_dir, ':p')
-endif
-
-if dein#load_state(s:dein_cache_path)
-  call dein#begin(s:dein_cache_path)
-
-  call dein#load_toml('~/dotfiles/config/nvim/dein.toml', {'lazy': 0})
-  call dein#load_toml('~/dotfiles/config/nvim/dein_lazy.toml', {'lazy': 1})
-
-  call dein#end()
-  call dein#save_state()
-endif
-
-if dein#check_install()
-  call dein#install()
-endif
-
+runtime! plugins.vim
 runtime! functions.vim
 runtime! options.vim
 runtime! keymap.vim

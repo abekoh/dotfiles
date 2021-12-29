@@ -25,6 +25,7 @@ cd ~/dotfiles
 - gcloud
 - aws
 - docker
+- vim-plug
 
 ## Other Configs
 
