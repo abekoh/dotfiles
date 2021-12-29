@@ -37,6 +37,16 @@ bindkey '^[[B' history-substring-search-down
 # completion
 autoload -Uz compinit
 compinit
+# 大文字小文字無視
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+# 大文字のときは小文字を無視
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+# 大文字見つからなければ小文字
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+# みつからなければ文字種無視
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+# 通常補完 -> （小文字 -> 大文字） -> （小文字 -> 大文字 + 大文字 -> 小文字）.
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 # alias
 alias g='git'
@@ -81,7 +91,7 @@ nvim () {
     fi
     # ソケットを設定
     local socket_path=/tmp/$(echo $(tmux display-message -p '#S') | sed 's/\//_/g' )
-    if [ -s $socket_path ]; then
+    if [ -S $socket_path ]; then
         # すでにソケットが存在してたらそれに接続
         nvr --remote-tab --servername $socket_path $argv 
         # 該当のnvimに移動
