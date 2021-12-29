@@ -68,8 +68,30 @@ cd () {
     local session_path=$(tmux show-environment | grep TMUX_SESSION_PATH | sed -e 's/TMUX_SESSION_PATH=//')
     if [ -n "$session_path" ]; then
       builtin cd $session_path
-      return $?
+      return
     fi
   fi
   builtin cd "$@"
+}
+
+nvim () {
+    if [ -z "$TMUX" ]; then
+      command nvim $@
+      return
+    fi
+    # ソケットを設定
+    local socket_path=/tmp/$(echo $(tmux display-message -p '#S') | sed 's/\//_/g' )
+    if [ -s $socket_path ]; then
+        # すでにソケットが存在してたらそれに接続
+        nvr --remote-tab --servername $socket_path $argv 
+        # 該当のnvimに移動
+        local session_id=$(tmux list-panes -F '#{session_id}')
+        local pane_ids_str=$(tmux list-panes -a -F "#{session_id},#{window_index},#{pane_index},#{pane_current_command}" | grep "^$session_id,.*,nvim\$")
+        # 配列にする: https://gist.github.com/mattmc3/76ad634f362b5a9a54f1779a4737d5ae
+        local pane_ids=(${(@s:,:)pane_ids_str})
+        tmux select-window -t $pane_ids[2] && tmux select-pane -t $pane_ids[3]
+    else 
+      # ソケットがなければ作成して起動
+      NVIM_LISTEN_ADDRESS=$socket_path command nvim $@
+    fi
 }
