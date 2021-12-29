@@ -111,3 +111,6 @@ nvim () {
       NVIM_LISTEN_ADDRESS=$socket_path command nvim $@
     fi
 }
+
+[ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
