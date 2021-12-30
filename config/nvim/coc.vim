@@ -20,6 +20,7 @@ let g:coc_global_extensions = [
   \'coc-word',
   \'coc-emoji',
   \'coc-git',
+  \'coc-fzf-preview',
   \'coc-highlight'
 \]
 " use <tab> for trigger completion and navigate to the next complete item
@@ -49,14 +50,14 @@ nmap <silent> <Leader>f :CocList<Space>files<CR>
 nmap <silent> <Leader>m :CocList<Space>mru<CR>
 nmap <silent> <Leader>g :CocList<Space>grep<CR>
 nmap <silent> <Leader>b :CocList<Space>buffers<CR>
-nmap <silent> <Leader>; :CocList diagnostics<CR>
+nmap <silent> <Leader>e :CocList diagnostics<CR>
 nmap <silent> <Leader>F <Plug>(coc-format)
 vmap <silent> <Leader>F <Plug>(coc-format-selected)
 xmap <silent> <Leader>F <Plug>(coc-format-selected)
 nmap <silent> <Leader>R <Plug>(coc-rename)
-nmap <silent> <Leader>A <Plug>(coc-codeaction)
-vmap <silent> <Leader>A <Plug>(coc-codeaction-selected)
-xmap <silent> <Leader>A <Plug>(coc-codeaction-selected)
+nmap <silent> <Leader>a <Plug>(coc-codeaction)
+vmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
+xmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
 nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
 nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
 nmap <silent> <Leader>d <Plug>(coc-definition)
