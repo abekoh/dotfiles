@@ -94,6 +94,8 @@ let g:fern#renderer = "nerdfont"
 
 Plug 'yuki-yano/fern-preview.vim'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_map_keys = 0
 autocmd BufWritePost * GitGutter
@@ -112,3 +114,14 @@ Plug 'previm/previm', { 'for': 'markdown' }
 Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
 call plug#end()
+
+" treesitter
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained",
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+}
+EOF
