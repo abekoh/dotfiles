@@ -58,6 +58,8 @@ vmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
 xmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
 nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
 nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
+nmap <silent> <Leader>b :CocCommand<Space>fzf-preview.Buffers<CR>
+nmap <silent> <Leader>B :CocCommand<Space>fzf-preview.AllBuffers<CR>
 nmap <silent> <Leader>r :CocCommand<Space>fzf-preview.CocReferences<CR>
 nmap <silent> <Leader>d :CocCommand<Space>fzf-preview.CocDefinition<CR>
 nmap <silent> <Leader>D :CocCommand<Space>fzf-preview.CocTypeDefinition<CR>
