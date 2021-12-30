@@ -94,7 +94,7 @@ Plug 'yuki-yano/fern-preview.vim'
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_map_keys = 0
-autocmd! gitgutter CursorHold,CursorHoldI
+autocmd BufWritePost * GitGutter
 
 Plug 'tyru/open-browser.vim'
 
