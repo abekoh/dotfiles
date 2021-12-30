@@ -66,11 +66,18 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
 Plug 'antoinemadec/FixCursorHold.nvim'
 
+
 Plug 'lambdalisue/fern.vim'
 nmap <silent> <Leader>n :Fern . -drawer -reveal=% -stay -keep<CR>
 function! s:init_fern() abort
-  echo "This function is called ON a fern buffer WHEN initialized"
-  nmap <buffer> s <Nop>
+  nmap <silent> <buffer> s <Nop>
+  " preview
+  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
+  nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
+  nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
+  nmap <silent> <buffer> <expr> <Plug>(fern-quit-or-close-preview) fern_preview#smart_preview("\<Plug>(fern-action-preview:close)", ":q\<CR>")
+  nmap <silent> <buffer> q <Plug>(fern-quit-or-close-preview)
 endfunction
 augroup fern-custom
   autocmd! *
@@ -81,6 +88,8 @@ Plug 'lambdalisue/fern-git-status.vim'
 
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 let g:fern#renderer = "nerdfont"
+
+Plug 'yuki-yano/fern-preview.vim'
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_map_keys = 0
