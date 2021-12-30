@@ -39,6 +39,7 @@ fi
 if type go > /dev/null 2>&1; then
   go install golang.org/x/tools/cmd/golsp@latest
   go install github.com/rubenv/sql-migrate/...@latest
+  go install golang.org/x/tools/gopls@latest
 else
   echo "go is not found."
 fi
