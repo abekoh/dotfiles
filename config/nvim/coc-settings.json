@@ -27,11 +27,9 @@
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-    "python.jediEnabled": false,
-    "python.linting.pep8Enabled": true,
+    "git.addGBlameToVirtualText": true,
     "python.linting.flake8Enabled": false,
     "python.formatting.provider": "autopep8",
-    "java.home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home",
     "languageserver": {
         "golang": {
             "command": "gopls",
@@ -64,12 +62,6 @@
             ],
             "ignoredRootPaths": [
                 "~"
-            ]
-        },
-        "lua": {
-            "command": "lua-lsp",
-            "filetypes": [
-                "lua"
             ]
         }
     }

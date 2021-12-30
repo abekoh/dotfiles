@@ -18,6 +18,9 @@ nnoremap s<S-H> <C-w>5<<CR>
 nnoremap s<S-L> <C-w>5><CR>
 nnoremap s<S-K> <C-w>5-<CR>
 nnoremap s<S-J> <C-w>5+<CR>
+" 分割
+nnoremap ss :split<CR>
+nnoremap sv :vsplit<CR>
 "インサートモードでも移動
 inoremap <C-d> <DELETE>
 inoremap <C-j> <DOWN>
@@ -45,3 +48,7 @@ nnoremap tp "0p
 nnoremap tP "0P
 vnoremap tp "0p
 vnoremap tP "0P
+" ファイルリロード
+nnoremap <silent> <Leader>E :e!<CR>
+" nohl
+nnoremap <ESC><ESC> :nohl<CR>
