@@ -48,7 +48,7 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() :
 nmap <silent> <Leader>c :CocList<Space>commands<CR>
 nmap <silent> <Leader>l :CocCommand<Space>fzf-preview.Lines<CR>
 nmap <silent> <Leader>f :CocCommand<Space>fzf-preview.ProjectFiles<CR>
-nmap <silent> <Leader>F :CocCommand<Space>fzf-preview.DirectoryFiles<CR>
+nmap <silent> <Leader>C :CocCommand<Space>fzf-preview.DirectoryFiles<CR>
 nmap <silent> <Leader>m :CocCommand<Space>fzf-preview.ProjectMruFiles<CR>
 nmap <Leader>g :CocCommand<Space>fzf-preview.ProjectGrep<Space>
 nmap <silent> <Leader>F <Plug>(coc-format)
