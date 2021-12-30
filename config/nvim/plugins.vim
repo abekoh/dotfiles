@@ -59,6 +59,8 @@ Plug 'kana/vim-textobj-function'
 
 Plug 'tpope/vim-speeddating'
 
+Plug 'simeji/winresizer'
+
 Plug 'lambdalisue/gina.vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

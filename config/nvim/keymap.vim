@@ -14,10 +14,10 @@ nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sx <C-w>x
 " Shift + 矢印でウィンドウサイズを変更
-nnoremap s<S-H> <C-w>5<<CR>
-nnoremap s<S-L> <C-w>5><CR>
-nnoremap s<S-K> <C-w>5-<CR>
-nnoremap s<S-J> <C-w>5+<CR>
+nnoremap <C-S-h> <C-w><
+nnoremap <C-S-l> <C-w>>
+nnoremap <C-S-k> <C-w>-
+nnoremap <C-S-j> <C-w>+
 " 分割
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>

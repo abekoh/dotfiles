@@ -50,7 +50,7 @@ nmap <silent> <Leader>l :CocCommand<Space>fzf-preview.Lines<CR>
 nmap <silent> <Leader>f :CocCommand<Space>fzf-preview.ProjectFiles<CR>
 nmap <silent> <Leader>C :CocCommand<Space>fzf-preview.DirectoryFiles<CR>
 nmap <silent> <Leader>m :CocCommand<Space>fzf-preview.ProjectMruFiles<CR>
-nmap <Leader>g :CocCommand<Space>fzf-preview.ProjectGrep<Space>
+nmap          <Leader>g :CocCommand<Space>fzf-preview.ProjectGrep<Space>
 nmap <silent> <Leader>F <Plug>(coc-format)
 vmap <silent> <Leader>F <Plug>(coc-format-selected)
 xmap <silent> <Leader>F <Plug>(coc-format-selected)
@@ -72,6 +72,11 @@ nmap <silent> <Leader>q <Plug>(coc-fix-current)
 nmap <silent> <Leader>s :CocCommand fzf-preview.GitStatus<CR>
 nmap <silent> <Leader>k :CocCommand fzf-preview.GitActions<CR>
 nnoremap <silent> <Leader>K :call <SID>show_documentation()<CR>
+
+autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>t :CocCommand<Space>jest.singleTest<CR>
+autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>T :CocCommand<Space>jest.fileTest %<CR>
+autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>R :CocCommand<Space>jest.projectTest %<CR>
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')

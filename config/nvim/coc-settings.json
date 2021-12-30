@@ -1,12 +1,15 @@
 {
     "suggest.triggerAfterInsertEnter": true,
     "suggest.enablePreview": true,
+
     "diagnostic.virtualText": true,
     "diagnostic.errorSign": "",
     "diagnostic.warningSign": "",
     "diagnostic.infoSign": "",
     "diagnostic.hintSign": "",
+
     "codeLens.enable": true,
+
     "list.source.files.command": "rg",
     "list.source.files.args": [
       "--files",
@@ -19,17 +22,22 @@
         "<C-v>": "action:vsplit",
         "<C-s>": "action:split"
     },
+
     "yaml.schemas": {
       "kubernetes": "/deployment.yaml"
     },
+
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "git.addGBlameToVirtualText": true,
-    "python.linting.flake8Enabled": false,
-    "python.formatting.provider": "autopep8",
+
+    "python.formatting.provider": "black",
+
+    "jest.terminalPosition": "bottom",
+
     "languageserver": {
         "golang": {
             "command": "gopls",
