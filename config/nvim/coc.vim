@@ -65,7 +65,7 @@ nmap <silent> <Leader>B :CocCommand<Space>fzf-preview.AllBuffers<CR>
 nmap <silent> <Leader>r :CocCommand<Space>fzf-preview.CocReferences<CR>
 nmap <silent> <Leader>d :CocCommand<Space>fzf-preview.CocDefinition<CR>
 nmap <silent> <Leader>D :CocCommand<Space>fzf-preview.CocTypeDefinition<CR>
-nmap <silent> <Leader>e :CocCommand<Space>fzf-preview.CurrentCocDiagnostics<CR>
+nmap <silent> <Leader>e :CocCommand<Space>fzf-preview.CocCurrentDiagnostics<CR>
 nmap <silent> <Leader>E :CocCommand<Space>fzf-preview.CocDiagnostics<CR>
 nmap <silent> <Leader>I :CocCommand<Space>fzf-preview.CocImplementations<CR>
 nmap <silent> <Leader>q <Plug>(coc-fix-current)
