@@ -18,6 +18,9 @@ nnoremap s<S-H> <C-w>5<<CR>
 nnoremap s<S-L> <C-w>5><CR>
 nnoremap s<S-K> <C-w>5-<CR>
 nnoremap s<S-J> <C-w>5+<CR>
+" 分割
+nnoremap ss :split<CR>
+nnoremap sv :vsplit<CR>
 "インサートモードでも移動
 inoremap <C-d> <DELETE>
 inoremap <C-j> <DOWN>

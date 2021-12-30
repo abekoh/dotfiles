@@ -32,7 +32,7 @@ let g:indent_guides_start_level = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_default_mapping = 0
 
-" Plug 'ryanoasis/vim-devicons'
+Plug 'lambdalisue/nerdfont.vim'
 
 Plug 'tomtom/tcomment_vim'
 let g:tcomment_maps = 0
@@ -63,8 +63,24 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " configs are in 'coc.vim'
+"
+Plug 'antoinemadec/FixCursorHold.nvim'
 
-Plug 'tpope/vim-fugitive'
+Plug 'lambdalisue/fern.vim'
+nmap <silent> <Leader>n :Fern . -drawer -reveal=% -stay -keep<CR>
+function! s:init_fern() abort
+  echo "This function is called ON a fern buffer WHEN initialized"
+  nmap <buffer> s <Nop>
+endfunction
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
+Plug 'lambdalisue/fern-git-status.vim'
+
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+let g:fern#renderer = "nerdfont"
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_map_keys = 0
