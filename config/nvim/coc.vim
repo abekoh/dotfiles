@@ -49,7 +49,7 @@ nmap <silent> <Leader>f :CocList<Space>files<CR>
 nmap <silent> <Leader>m :CocList<Space>mru<CR>
 nmap <silent> <Leader>g :CocList<Space>grep<CR>
 nmap <silent> <Leader>b :CocList<Space>buffers<CR>
-nmap <silent> <Leader>e :CocList diagnostics<CR>
+nmap <silent> <Leader>; :CocList diagnostics<CR>
 nmap <silent> <Leader>F <Plug>(coc-format)
 vmap <silent> <Leader>F <Plug>(coc-format-selected)
 xmap <silent> <Leader>F <Plug>(coc-format-selected)

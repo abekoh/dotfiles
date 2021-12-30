@@ -48,3 +48,5 @@ nnoremap tp "0p
 nnoremap tP "0P
 vnoremap tp "0p
 vnoremap tP "0P
+" ファイルリロード
+nnoremap <silent> <Leader>E :e!<CR>

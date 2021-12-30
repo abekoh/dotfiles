@@ -68,11 +68,12 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 
 Plug 'lambdalisue/fern.vim'
-nmap <silent> <Leader>n :Fern . -drawer -reveal=% -stay -keep<CR>
+nmap <silent> <Leader>n :Fern . -drawer -reveal=% -stay -keep -toggle<CR>
 function! s:init_fern() abort
   nmap <silent> <buffer> s <Nop>
+  nmap <silent> <buffer> t <Plug>(fern-action-open:tabedit)
   " preview
-  nmap <silent> <buffer> p     <Plug>(fern-action-preview:toggle)
+  nmap <silent> <buffer> p <Plug>(fern-action-preview:toggle)
   nmap <silent> <buffer> <C-p> <Plug>(fern-action-preview:auto:toggle)
   nmap <silent> <buffer> <C-d> <Plug>(fern-action-preview:scroll:down:half)
   nmap <silent> <buffer> <C-u> <Plug>(fern-action-preview:scroll:up:half)
