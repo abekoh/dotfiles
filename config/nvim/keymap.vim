@@ -50,3 +50,5 @@ vnoremap tp "0p
 vnoremap tP "0P
 " ファイルリロード
 nnoremap <silent> <Leader>E :e!<CR>
+" nohl
+nnoremap <ESC><ESC> :nohl<CR>

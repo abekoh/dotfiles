@@ -45,12 +45,10 @@ autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nmap <silent> <Leader>c :CocList<Space>commands<CR>
-nmap <silent> <Leader>s :CocList<Space>words<CR>
-nmap <silent> <Leader>f :CocList<Space>files<CR>
-nmap <silent> <Leader>m :CocList<Space>mru<CR>
-nmap <silent> <Leader>g :CocList<Space>grep<CR>
-nmap <silent> <Leader>b :CocList<Space>buffers<CR>
-nmap <silent> <Leader>e :CocList diagnostics<CR>
+nmap <silent> <Leader>l :CocCommand<Space>fzf-preview.Lines<CR>
+nmap <silent> <Leader>f :CocCommand<Space>fzf-preview.ProjectFiles<CR>
+nmap <silent> <Leader>m :CocCommand<Space>fzf-preview.ProjectMruFiles<CR>
+nmap <Leader>g :CocCommand<Space>fzf-preview.ProjectGrep<Space>
 nmap <silent> <Leader>F <Plug>(coc-format)
 vmap <silent> <Leader>F <Plug>(coc-format-selected)
 xmap <silent> <Leader>F <Plug>(coc-format-selected)
@@ -60,12 +58,16 @@ vmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
 xmap <silent> <Leader>a <Plug>(coc-codeaction-selected)
 nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
 nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
-nmap <silent> <Leader>d <Plug>(coc-definition)
-nmap <silent> <Leader>y <Plug>(coc-type-definition)
-nmap <silent> <Leader>p <Plug>(coc-implementation)
-nmap <silent> <Leader>r <Plug>(coc-references)
+nmap <silent> <Leader>r :CocCommand<Space>fzf-preview.CocReferences<CR>
+nmap <silent> <Leader>d :CocCommand<Space>fzf-preview.CocDefinition<CR>
+nmap <silent> <Leader>D :CocCommand<Space>fzf-preview.CocTypeDefinition<CR>
+nmap <silent> <Leader>e :CocCommand<Space>fzf-preview.CurrentCocDiagnostics<CR>
+nmap <silent> <Leader>E :CocCommand<Space>fzf-preview.CocDiagnostics<CR>
+nmap <silent> <Leader>I :CocCommand<Space>fzf-preview.CocImplementations<CR>
 nmap <silent> <Leader>q <Plug>(coc-fix-current)
-nnoremap <silent> <Leader>k :call <SID>show_documentation()<CR>
+nmap <silent> <Leader>s :CocCommand fzf-preview.GitStatus<CR>
+nmap <silent> <Leader>k :CocCommand fzf-preview.GitActions<CR>
+nnoremap <silent> <Leader>K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
