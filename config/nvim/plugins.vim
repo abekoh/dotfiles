@@ -64,6 +64,22 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " configs are in 'coc.vim'
 
+Plug 'tpope/vim-fugitive'
 
+Plug 'airblade/vim-gitgutter'
+let g:gitgutter_map_keys = 0
+
+Plug 'tyru/open-browser.vim'
+
+Plug 'tyru/open-browser-github.vim'
+
+Plug 'abekoh/snipslack.vim'
+let g:snipslack_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+
+Plug 'tpope/vim-repeat'
+
+Plug 'previm/previm', { 'for': 'markdown' }
+
+Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
 call plug#end()
