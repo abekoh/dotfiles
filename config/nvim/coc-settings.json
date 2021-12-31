@@ -38,6 +38,8 @@
 
     "jest.terminalPosition": "bottom",
 
+    "rust-analyzer.server.path": "/opt/homebrew/bin/rust-analyzer",
+
     "languageserver": {
         "golang": {
             "command": "gopls",
