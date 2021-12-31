@@ -2,7 +2,7 @@ let g:coc_global_extensions = [
   \'coc-lists',
   \'coc-pyright',
   \'coc-go',
-  \'coc-rls',
+  \'coc-rust-analyzer',
   \'coc-solargraph',
   \'coc-tsserver',
   \'coc-jest',
