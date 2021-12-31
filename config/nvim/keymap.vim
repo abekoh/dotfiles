@@ -41,7 +41,7 @@ map <Space> <Leader>
 cnoremap <C-k> <UP>
 cnoremap <C-j> <DOWN>
 " 分割ウィンドウを新しいタブに移動
-noremap <silent> T :call<Space>MoveToNewTab()<CR>
+" noremap <silent> T :call<Space>MoveToNewTab()<CR>
 noremap <silent> <Leader>l :call<Space>ReloadSettings()<CR>
 " 直近のヤンクしたものをペースト
 nnoremap tp "0p
