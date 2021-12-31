@@ -15,8 +15,8 @@ let g:lightline = {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ],
   \   'right':[
-  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
-  \     [ 'blame' ] ]
+  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ]
+  \   ]
   \ },
   \ 'component_function': {
   \   'cocstatus': 'coc#status',
@@ -72,7 +72,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 
 Plug 'lambdalisue/fern.vim'
-nmap <silent> <Leader>n :Fern . -drawer -reveal=% -stay -keep -toggle<CR>
+nmap <silent> <Leader>n :Fern . -drawer -reveal=% -stay -toggle<CR>
 function! s:init_fern() abort
   nmap <silent> <buffer> s <Nop>
   nmap <silent> <buffer> t <Plug>(fern-action-open:tabedit)
@@ -101,6 +101,14 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_map_keys = 0
 autocmd BufWritePost * GitGutter
+
+Plug 'thinca/vim-quickrun'
+let g:quickrun_config = {}
+let g:quickrun_config._ = {}
+let g:quickrun_config.rust = {'exec' : 'cargo run'}
+
+Plug 'lambdalisue/vim-quickrun-neovim-job'
+let g:quickrun_config._.runner = 'neovim_job'
 
 Plug 'tyru/open-browser.vim'
 

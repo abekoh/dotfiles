@@ -62,7 +62,7 @@ nmap <silent> <Leader>[ <Plug>(coc-diagnostic-prev)
 nmap <silent> <Leader>] <Plug>(coc-diagnostic-next)
 nmap <silent> <Leader>b :CocCommand<Space>fzf-preview.Buffers<CR>
 nmap <silent> <Leader>B :CocCommand<Space>fzf-preview.AllBuffers<CR>
-nmap <silent> <Leader>r :CocCommand<Space>fzf-preview.CocReferences<CR>
+nmap <silent> <Leader>u :CocCommand<Space>fzf-preview.CocReferences<CR>
 nmap <silent> <Leader>d :CocCommand<Space>fzf-preview.CocDefinition<CR>
 nmap <silent> <Leader>D :CocCommand<Space>fzf-preview.CocTypeDefinition<CR>
 nmap <silent> <Leader>e :CocCommand<Space>fzf-preview.CocCurrentDiagnostics<CR>
@@ -75,7 +75,6 @@ nnoremap <silent> <Leader>K :call <SID>show_documentation()<CR>
 
 autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>t :CocCommand<Space>jest.singleTest<CR>
 autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>T :CocCommand<Space>jest.fileTest %<CR>
-autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>R :CocCommand<Space>jest.projectTest %<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
