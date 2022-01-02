@@ -109,6 +109,7 @@ let g:quickrun_config.rust = {'exec' : 'cargo run'}
 
 Plug 'lambdalisue/vim-quickrun-neovim-job'
 let g:quickrun_config._.runner = 'neovim_job'
+nnoremap <silent> <Leader>r :QuickRun<CR>
 
 Plug 'tyru/open-browser.vim'
 
