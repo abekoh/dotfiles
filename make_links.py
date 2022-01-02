@@ -53,10 +53,12 @@ def aws():
         "ln -sf ~/dotfiles/config/aws/cli/alias ~/.aws/cli/alias", shell=True
     )
 
+
 def git():
     print("setup git")
     os.makedirs(os.path.join(os.environ["HOME"], ".config", "git"), exist_ok=True)
-    subprocess.run("ln -sf ~/dotfiles/config/git/ignore ~/config/git/ignore")
+    subprocess.run("ln -sf ~/dotfiles/config/git/ignore ~/.config/git/ignore", shell=True)
+
 
 if __name__ == "__main__":
     config_dir_path = os.path.join(os.environ["HOME"], ".config")
@@ -68,3 +70,4 @@ if __name__ == "__main__":
     tmux()
     ideavim()
     aws()
+    git()
