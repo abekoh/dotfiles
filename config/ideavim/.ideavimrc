@@ -56,3 +56,17 @@ nnoremap tp "0p
 nnoremap tP "0P
 vnoremap tp "0p
 vnoremap tP "0P
+" IDE or Vim
+sethandler <C-A> a:vim
+sethandler <C-B> a:vim
+sethandler <C-D> a:vim
+sethandler <C-I> a:vim
+sethandler <C-J> a:vim
+sethandler <C-L> a:vim
+sethandler <C-N> a:vim
+sethandler <C-O> a:vim
+sethandler <C-P> a:vim
+sethandler <C-R> a:vim
+sethandler <C-S> a:vim
+sethandler <C-T> a:ide
+sethandler <C-V> a:vim
