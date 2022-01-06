@@ -24,3 +24,7 @@ brew "tflint"
 brew "deno"
 brew "graphviz"
 brew "plantuml"
+
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform-ls"
+brew "hashicorp/tap/terraform"
