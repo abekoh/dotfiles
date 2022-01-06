@@ -21,25 +21,25 @@ brew "tig"
 brew "git-delta"
 
 # gorgeous shell tools
-brew "ripgrep"
-brew "bat"
-brew "fd"
-brew "exa"
-brew "xsv"
-brew "tokei"
+brew "ripgrep"   # grep
+brew "bat"       # cat
+brew "fd"        # find
+brew "exa"       # ls
+brew "htop"      # top
+brew "bottom"    # top
+brew "navi"      # man
+brew "bandwhich" # lsof
 
-# like sed
+# config viewer and parser
 brew "jq"
 brew "yq"
+brew "xsv"
 
 # traditional commands
 brew "tree"
 brew "telnet"
 brew "wget"
 brew "gsed"
-brew "htop"
-brew "bottom"
-brew "navi"
 
 # languages and its tools
 brew "deno"
@@ -54,3 +54,6 @@ tap "hashicorp/tap"
 brew "hashicorp/tap/terraform-ls"
 brew "hashicorp/tap/terraform"
 brew "tflint"
+
+# others
+brew "tokei"
