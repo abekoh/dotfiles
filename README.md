@@ -12,12 +12,17 @@ abekoh's dotfiles
 cd ~/
 git clone https://github.com/abekoh/dotfiles.git
 cd dotfiles
-./make_links.py
+python3 make_links.py
 ```
 
 ## Install
 ```
 cd ~/dotfiles
+
+# for mac
+brew bundle
+
+./lang_deps.sh
 ```
 
 ## Manual Install
@@ -25,7 +30,6 @@ cd ~/dotfiles
 - gcloud
 - aws
 - docker
-- vim-plug
 
 ## Other Configs
 
