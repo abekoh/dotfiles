@@ -42,8 +42,10 @@ brew "tree"
 brew "telnet"
 brew "wget"
 brew "gsed"
+brew "openssl"
 
 # languages and its tools
+brew "ninja"
 brew "deno"
 brew "rust-analyzer"
 
