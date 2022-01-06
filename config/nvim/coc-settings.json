@@ -1,78 +1,63 @@
 {
-    "suggest.triggerAfterInsertEnter": true,
-    "suggest.enablePreview": true,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.enablePreview": true,
 
-    "diagnostic.virtualText": true,
-    "diagnostic.errorSign": "",
-    "diagnostic.warningSign": "",
-    "diagnostic.infoSign": "",
-    "diagnostic.hintSign": "",
+  "diagnostic.virtualText": true,
+  "diagnostic.errorSign": "",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic.hintSign": "",
 
-    "codeLens.enable": true,
+  "codeLens.enable": true,
 
-    "list.source.files.command": "rg",
-    "list.source.files.args": [
-      "--files",
-      "--hidden",
-      "--glob",
-      "!.git/"
-    ],
-    "list.insertMappings": {
-        "<C-t>": "action:tabe",
-        "<C-v>": "action:vsplit",
-        "<C-s>": "action:split"
+  "list.source.files.command": "rg",
+  "list.source.files.args": ["--files", "--hidden", "--glob", "!.git/"],
+  "list.insertMappings": {
+    "<C-t>": "action:tabe",
+    "<C-v>": "action:vsplit",
+    "<C-s>": "action:split"
+  },
+
+  "yaml.schemas": {
+    "kubernetes": "/deployment.yaml"
+  },
+
+  "git.addedSign.hlGroup": "GitGutterAdd",
+  "git.changedSign.hlGroup": "GitGutterChange",
+  "git.removedSign.hlGroup": "GitGutterDelete",
+  "git.topRemovedSign.hlGroup": "GitGutterDelete",
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "git.addGBlameToVirtualText": true,
+
+  "python.formatting.provider": "black",
+
+  "jest.terminalPosition": "bottom",
+
+  "rust-analyzer.server.path": "/opt/homebrew/bin/rust-analyzer",
+
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
     },
-
-    "yaml.schemas": {
-      "kubernetes": "/deployment.yaml"
+    "dockerfile": {
+      "command": "docker-langserver",
+      "filetypes": ["dockerfile"],
+      "args": ["--stdio"]
     },
-
-    "git.addedSign.hlGroup": "GitGutterAdd",
-    "git.changedSign.hlGroup": "GitGutterChange",
-    "git.removedSign.hlGroup": "GitGutterDelete",
-    "git.topRemovedSign.hlGroup": "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-    "git.addGBlameToVirtualText": true,
-
-    "python.formatting.provider": "black",
-
-    "jest.terminalPosition": "bottom",
-
-    "rust-analyzer.server.path": "/opt/homebrew/bin/rust-analyzer",
-
-    "languageserver": {
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": [
-                "go.mod",
-                ".vim/",
-                ".git/",
-                ".hg/"
-            ],
-            "filetypes": [
-                "go"
-            ]
-        },
-        "dockerfile": {
-            "command": "docker-langserver",
-            "filetypes": [
-                "dockerfile"
-            ],
-            "args": [
-                "--stdio"
-            ]
-        },
-        "bash": {
-            "command": "bash-language-server",
-            "args": [
-                "start"
-            ],
-            "filetypes": [
-                "sh"
-            ],
-            "ignoredRootPaths": [
-                "~"
-            ]
-        }
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    },
+    "terraform": {
+      "command": "terraform-ls",
+      "args": ["serve"],
+      "filetypes": ["terraform", "tf"],
+      "initializationOptions": {},
+      "settings": {}
     }
+  }
 }
