@@ -18,6 +18,7 @@ brew "fzf"
 brew "gh"
 brew "ghq"
 brew "tig"
+brew "git-delta"
 
 # gorgeous shell tools
 brew "ripgrep"
@@ -38,6 +39,7 @@ brew "wget"
 brew "gsed"
 brew "htop"
 brew "bottom"
+brew "navi"
 
 # languages and its tools
 brew "deno"
