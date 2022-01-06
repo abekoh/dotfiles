@@ -124,6 +124,8 @@ Plug 'previm/previm', { 'for': 'markdown' }
 
 Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
+Plug 'bfontaine/Brewfile.vim'
+
 call plug#end()
 
 " treesitter
