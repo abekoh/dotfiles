@@ -28,6 +28,8 @@ export GOBIN=$HOME/bin
 eval "$(anyenv init -)"
 # starship
 eval "$(starship init zsh)"
+# zoxide
+eval "$(zoxide init zsh)"
 
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
