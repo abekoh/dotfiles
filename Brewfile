@@ -36,6 +36,8 @@ brew "tree"
 brew "telnet"
 brew "wget"
 brew "gsed"
+brew "htop"
+brew "bottom"
 
 # languages and its tools
 brew "deno"
