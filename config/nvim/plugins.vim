@@ -72,6 +72,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 
 
 Plug 'lambdalisue/fern.vim'
+let g:fern#default_hidden=1
 nmap <silent> <Leader>n :Fern . -drawer -reveal=% -stay -toggle<CR>
 function! s:init_fern() abort
   nmap <silent> <buffer> s <Nop>
