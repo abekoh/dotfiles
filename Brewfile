@@ -28,7 +28,9 @@ brew "exa"       # ls
 brew "htop"      # top
 brew "bottom"    # top
 brew "navi"      # man
+brew "tealdeer"  # man
 brew "bandwhich" # lsof
+brew "zoxide"    # cd
 
 # config viewer and parser
 brew "jq"
