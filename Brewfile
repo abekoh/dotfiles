@@ -20,7 +20,7 @@ brew "ghq"
 brew "tig"
 brew "git-delta"
 
-# gorgeous shell tools
+# gorgeous shell tools (replace from...)
 brew "ripgrep"   # grep
 brew "bat"       # cat
 brew "fd"        # find
