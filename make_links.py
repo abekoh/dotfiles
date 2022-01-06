@@ -58,6 +58,7 @@ def git():
     print("setup git")
     os.makedirs(os.path.join(os.environ["HOME"], ".config", "git"), exist_ok=True)
     subprocess.run("ln -sf ~/dotfiles/config/git/ignore ~/.config/git/ignore", shell=True)
+    subprocess.run("ln -sf ~/dotfiles/config/git/config ~/.config/git/config", shell=True)
 
 
 if __name__ == "__main__":
