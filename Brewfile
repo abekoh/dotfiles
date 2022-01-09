@@ -61,3 +61,8 @@ brew "tflint"
 
 # others
 brew "tokei"
+
+# php
+brew "bzip2"
+brew "libiconv"
+brew "tidy-html5"

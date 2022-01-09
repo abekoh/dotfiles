@@ -19,10 +19,16 @@ export PATH=$HOME/bin:${PATH+:$PATH}
 export PATH=$HOME/.anyenv/bin:${PATH+:$PATH}
 export PATH=$HOME/.cargo/bin:${PATH+:$PATH}
 export PATH=$HOME/flutter/bin:${PATH+:$PATH}
+export PATH=/opt/homebrew/opt/bzip2/bin:${PATH+:$PATH}
+export PATH=/opt/homebrew/opt/libiconv/bin:${PATH+:$PATH}
 
 # go
 export GOPATH=$HOME
 export GOBIN=$HOME/bin
+
+# php
+# export PHP_RPATHS=$(brew --prefix bzip2)
+export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
 
 # anyenv
 eval "$(anyenv init -)"
