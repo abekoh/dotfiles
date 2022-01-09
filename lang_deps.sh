@@ -30,7 +30,8 @@ if type pip3 > /dev/null 2>&1; then
     autopep8 \
     yapf \
     isort \
-    black
+    black \
+    pip
 else
   echo "pip3 is not found."
 fi
@@ -51,7 +52,9 @@ if type npm > /dev/null 2>&1; then
     jsonlint \
     dockerfile-language-server-nodejs \
     prettier \
-    sql-language-server
+    sql-language-server \
+    typescript
+  npm update -g
 else
   echo "npm is not found."
 fi
