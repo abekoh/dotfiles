@@ -1,12 +1,14 @@
-# homebrew
 case ${OSTYPE} in
   darwin*)
+    # homebrew
     export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
     export HOMEBREW_REPOSITORY="/opt/homebrew";
     export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
     export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
     export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
     export HOMEBREW_FILE="~/dotfiles/Brewfile"
+    # php
+    export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
 esac
 
 # shell config
@@ -25,10 +27,6 @@ export PATH=/opt/homebrew/opt/libiconv/bin:${PATH+:$PATH}
 # go
 export GOPATH=$HOME
 export GOBIN=$HOME/bin
-
-# php
-# export PHP_RPATHS=$(brew --prefix bzip2)
-export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
 
 # anyenv
 eval "$(anyenv init -)"
