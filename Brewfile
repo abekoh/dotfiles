@@ -13,6 +13,7 @@ brew "direnv"
 # fizzy finder
 brew "peco"
 brew "fzf"
+brew "sk"    # fzf
 
 # git manager
 brew "gh"
