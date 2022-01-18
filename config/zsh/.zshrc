@@ -30,6 +30,8 @@ export GOBIN=$HOME/bin
 
 # anyenv
 eval "$(anyenv init -)"
+# direnv
+eval "$(direnv hook zsh)"
 # starship
 eval "$(starship init zsh)"
 # zoxide
