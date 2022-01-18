@@ -49,6 +49,7 @@ brew "openssl"
 brew "ninja"
 brew "deno"
 brew "rust-analyzer"
+brew "golangci-lint"
 
 # graphical tools
 brew "graphviz"
@@ -62,8 +63,9 @@ brew "tflint"
 
 # others
 brew "tokei"
+brew "circleci"
 
-# php
+# for build php
 brew "bzip2"
 brew "libiconv"
 brew "tidy-html5"
