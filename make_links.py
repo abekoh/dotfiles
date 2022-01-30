@@ -61,6 +61,11 @@ def git():
     subprocess.run("ln -sf ~/dotfiles/config/git/config ~/.config/git/config", shell=True)
 
 
+def starship():
+    print("setup starship")
+    subprocess.run("ln -sf ~/dotfiles/config/starship/starship.toml ~/.config/starship.toml", shell=True)
+
+
 if __name__ == "__main__":
     config_dir_path = os.path.join(os.environ["HOME"], ".config")
     if not os.path.exists(config_dir_path):
@@ -72,3 +77,4 @@ if __name__ == "__main__":
     ideavim()
     aws()
     git()
+    starship()
