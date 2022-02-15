@@ -64,6 +64,7 @@ brew "tflint"
 # others
 brew "tokei"
 brew "circleci"
+brew "protobuf"
 
 # for build php
 brew "bzip2"
