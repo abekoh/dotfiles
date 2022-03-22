@@ -99,6 +99,8 @@ alias k='kubectl'
 alias ks='kubens'
 alias kx='kubectx'
 
+abbr import-aliases --quiet | true
+
 # prj
 prj () {
   local prj_path=$(ghq list -p | peco --query "$LBUFFER")
