@@ -96,19 +96,23 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:
 alias d='docker'
 alias dc='docker compose'
 alias g='git'
-alias gs='git switch'
-alias gsm='git switch main'
+alias gs='git status'
+alias gcm='git checkout main'
 alias gpl='git pull'
 alias gps='git push origin HEAD'
 alias gc='git checkout'
 alias gcb='git checkout -b'
+alias ghrepov='gh repo view --web'
+alias ghprc='gh pr create'
+alias ghprv='gh pr view --web'
 alias v='nvim'
 alias vim='nvim'
 alias k='kubectl'
 alias ks='kubens'
 alias kx='kubectx'
 
-abbr import-aliases --quiet | true
+abbr clear-session
+abbr import-aliases --quiet
 
 # prj
 prj () {
