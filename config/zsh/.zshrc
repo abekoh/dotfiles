@@ -93,7 +93,16 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 # alias
+alias d='docker'
+alias dc='docker compose'
 alias g='git'
+alias gs='git switch'
+alias gsm='git switch main'
+alias gpl='git pull'
+alias gps='git push origin HEAD'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias v='nvim'
 alias vim='nvim'
 alias k='kubectl'
 alias ks='kubens'
