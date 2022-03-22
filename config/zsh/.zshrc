@@ -93,11 +93,11 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 # alias
-abbr g='git'
-abbr vim='nvim'
-abbr k='kubectl'
-abbr ks='kubens'
-abbr kx='kubectx'
+alias g='git'
+alias vim='nvim'
+alias k='kubectl'
+alias ks='kubens'
+alias kx='kubectx'
 
 # prj
 prj () {
