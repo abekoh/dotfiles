@@ -65,6 +65,8 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-history-substring-search
 zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-autosuggestions
+zinit light olets/zsh-abbr
 
 # google cloud
 # The next line updates PATH for the Google Cloud SDK.
@@ -91,11 +93,26 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 # alias
+alias d='docker'
+alias dc='docker compose'
 alias g='git'
+alias gs='git status'
+alias gcm='git checkout main'
+alias gpl='git pull'
+alias gps='git push origin HEAD'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias ghrepov='gh repo view --web'
+alias ghprc='gh pr create'
+alias ghprv='gh pr view --web'
+alias v='nvim'
 alias vim='nvim'
 alias k='kubectl'
 alias ks='kubens'
 alias kx='kubectx'
+
+abbr clear-session
+abbr import-aliases --quiet
 
 # prj
 prj () {

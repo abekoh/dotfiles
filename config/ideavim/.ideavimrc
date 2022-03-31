@@ -70,3 +70,5 @@ sethandler <C-R> a:vim
 sethandler <C-S> a:vim
 sethandler <C-T> a:ide
 sethandler <C-V> a:vim
+sethandler <C-[> a:ide
+sethandler <C-[> a:ide
