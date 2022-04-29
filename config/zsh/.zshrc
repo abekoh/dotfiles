@@ -21,6 +21,7 @@ export PATH=$HOME/bin:${PATH+:$PATH}
 export PATH=$HOME/.anyenv/bin:${PATH+:$PATH}
 export PATH=$HOME/.cargo/bin:${PATH+:$PATH}
 export PATH=$HOME/flutter/bin:${PATH+:$PATH}
+export PATH=$HOME/Library/Android/sdk/tools/bin:${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/bzip2/bin:${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/libiconv/bin:${PATH+:$PATH}
 
