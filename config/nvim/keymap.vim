@@ -52,3 +52,7 @@ vnoremap tP "0P
 nnoremap <silent> <Leader>E :e!<CR>
 " nohl
 nnoremap <ESC><ESC> :nohl<CR>
+" コマンド履歴を機能させない
+nnoremap q: <NOP>
+nnoremap q/ <NOP>
+nnoremap q? <NOP>
