@@ -56,3 +56,5 @@ nnoremap <ESC><ESC> :nohl<CR>
 nnoremap q: <NOP>
 nnoremap q/ <NOP>
 nnoremap q? <NOP>
+" C-pでヤンクなしペースト
+vnoremap <C-p> "_dP
