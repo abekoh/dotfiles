@@ -58,3 +58,6 @@ nnoremap q/ <NOP>
 nnoremap q? <NOP>
 " C-pでヤンクなしペースト
 vnoremap <C-p> "_dP
+" terminalで編集に入る
+tmap <C-i> <C-\><C-n>
+tmap <C-o> <C-\><C-n>

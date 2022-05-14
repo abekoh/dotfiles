@@ -136,7 +136,6 @@ nmap <silent> <leader>v :TestVisit<CR>
 let g:test#strategy = "neovim"
 let g:test#preserve_screen = 1
 let test#neovim#term_position = "botright 20"
-tmap <C-o> <C-\><C-n>
 
 call plug#end()
 
