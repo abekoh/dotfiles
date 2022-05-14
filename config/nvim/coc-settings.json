@@ -37,7 +37,7 @@
 
   "jest.terminalPosition": "bottom",
 
-  "rust-analyzer.server.path": "/opt/homebrew/bin/rust-analyzer",
+  "rust-analyzer.server.path": "~/bin/rust-analyzer",
 
   "languageserver": {
     "golang": {
