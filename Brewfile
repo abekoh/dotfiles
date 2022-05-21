@@ -47,6 +47,7 @@ brew "openssl"
 
 # languages and its tools
 brew "ninja"
+brew "llvm"
 brew "deno"
 brew "rust-analyzer"
 brew "golangci-lint"
