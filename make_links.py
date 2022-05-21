@@ -6,6 +6,7 @@ import subprocess
 def neovim():
     print("setup neovim")
     subprocess.run("ln -sf ~/dotfiles/config/nvim ~/.config/", shell=True)
+    subprocess.run("ln -sf ~/dotfiles/config/nvim ~/.config/", shell=True)
 
 
 def fish():

@@ -22,7 +22,8 @@ let g:coc_global_extensions = [
   \'coc-emoji',
   \'coc-git',
   \'coc-fzf-preview',
-  \'coc-highlight'
+  \'coc-highlight',
+  \'coc-clangd'
 \]
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort

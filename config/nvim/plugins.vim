@@ -137,6 +137,8 @@ let g:test#strategy = "neovim"
 let g:test#preserve_screen = 1
 let test#neovim#term_position = "botright 20"
 
+Plug 'zchee/vim-flatbuffers'
+
 call plug#end()
 
 " treesitte
