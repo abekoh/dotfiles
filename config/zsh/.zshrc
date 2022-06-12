@@ -24,6 +24,7 @@ export PATH=$HOME/flutter/bin:${PATH+:$PATH}
 export PATH=$HOME/Library/Android/sdk/cmdline-tools/latest/bin:${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/bzip2/bin:${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/libiconv/bin:${PATH+:$PATH}
+export PATH=/opt/homebrew/opt/llvm/bin:${PATH+:$PATH}
 
 # go
 export GOPATH=$HOME
