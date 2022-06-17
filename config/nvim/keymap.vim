@@ -52,3 +52,12 @@ vnoremap tP "0P
 nnoremap <silent> <Leader>E :e!<CR>
 " nohl
 nnoremap <ESC><ESC> :nohl<CR>
+" コマンド履歴を機能させない
+nnoremap q: <NOP>
+nnoremap q/ <NOP>
+nnoremap q? <NOP>
+" C-pでヤンクなしペースト
+vnoremap <C-p> "_dP
+" terminalで編集に入る
+tmap <C-i> <C-\><C-n>
+tmap <C-o> <C-\><C-n>

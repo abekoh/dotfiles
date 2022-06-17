@@ -103,14 +103,14 @@ Plug 'airblade/vim-gitgutter'
 let g:gitgutter_map_keys = 0
 autocmd BufWritePost * GitGutter
 
-Plug 'thinca/vim-quickrun'
-let g:quickrun_config = {}
-let g:quickrun_config._ = {}
-let g:quickrun_config.rust = {'exec' : 'cargo run'}
-
-Plug 'lambdalisue/vim-quickrun-neovim-job'
-let g:quickrun_config._.runner = 'neovim_job'
-nnoremap <silent> <Leader>r :QuickRun<CR>
+" Plug 'thinca/vim-quickrun'
+" let g:quickrun_config = {}
+" let g:quickrun_config._ = {}
+" let g:quickrun_config.rust = {'exec' : 'cargo run'}
+"
+" Plug 'lambdalisue/vim-quickrun-neovim-job'
+" let g:quickrun_config._.runner = 'neovim_job'
+" nnoremap <silent> <Leader>r :QuickRun<CR>
 
 Plug 'tyru/open-browser.vim'
 
@@ -127,9 +127,21 @@ Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
 Plug 'bfontaine/Brewfile.vim'
 
+Plug 'vim-test/vim-test'
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+" nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>r :TestLast<CR>
+nmap <silent> <leader>v :TestVisit<CR>
+let g:test#strategy = "neovim"
+let g:test#preserve_screen = 1
+let test#neovim#term_position = "botright 20"
+
+Plug 'zchee/vim-flatbuffers'
+
 call plug#end()
 
-" treesitter
+" treesitte
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   ensure_installed = "maintained",

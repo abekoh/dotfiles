@@ -22,6 +22,10 @@
     "kubernetes": "/deployment.yaml"
   },
 
+  "snippets.ultisnips.directories": [
+      "~/.config/nvim/ultisnips"
+  ],
+
   "git.addedSign.hlGroup": "GitGutterAdd",
   "git.changedSign.hlGroup": "GitGutterChange",
   "git.removedSign.hlGroup": "GitGutterDelete",
@@ -33,7 +37,7 @@
 
   "jest.terminalPosition": "bottom",
 
-  "rust-analyzer.server.path": "/opt/homebrew/bin/rust-analyzer",
+  "rust-analyzer.server.path": "~/bin/rust-analyzer",
 
   "languageserver": {
     "golang": {
