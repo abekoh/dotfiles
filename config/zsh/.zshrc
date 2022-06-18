@@ -112,6 +112,7 @@ alias vim='nvim'
 alias k='kubectl'
 alias ks='kubens'
 alias kx='kubectx'
+alias para='printf "%s\0" {1..5} | xargs -0 -I {} -P 5 echo {}'
 
 abbr clear-session
 abbr import-aliases --quiet
