@@ -25,6 +25,9 @@ export PATH=$HOME/Library/Android/sdk/cmdline-tools/latest/bin:${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/bzip2/bin:${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/libiconv/bin:${PATH+:$PATH}
 
+# HISTORY
+export HISTSIZE=10000
+
 # go
 export GOPATH=$HOME
 export GOBIN=$HOME/bin
@@ -170,3 +173,6 @@ nvim () {
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+setopt incappendhistory
+setopt sharehistory
