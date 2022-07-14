@@ -125,6 +125,8 @@ Plug 'previm/previm', { 'for': 'markdown' }
 
 Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
+Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+
 Plug 'bfontaine/Brewfile.vim'
 
 Plug 'vim-test/vim-test'
