@@ -29,8 +29,8 @@ export PATH=/opt/homebrew/opt/libiconv/bin:${PATH+:$PATH}
 export HISTSIZE=10000
 
 # go
-export GOPATH=$HOME
-export GOBIN=$HOME/bin
+export GOPATH=$(go env GOPATH)
+export GOBIN=$(go env GOBIN)
 
 # anyenv
 eval "$(anyenv init -)"
