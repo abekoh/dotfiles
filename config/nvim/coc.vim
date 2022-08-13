@@ -23,6 +23,7 @@ let g:coc_global_extensions = [
   \'coc-git',
   \'coc-fzf-preview',
   \'coc-highlight',
+  \'coc-prisma',
   \'coc-clangd'
 \]
 " use <tab> for trigger completion and navigate to the next complete item
