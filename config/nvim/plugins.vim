@@ -141,6 +141,9 @@ let test#neovim#term_position = "botright 20"
 
 Plug 'zchee/vim-flatbuffers'
 
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+
 call plug#end()
 
 " treesitte
