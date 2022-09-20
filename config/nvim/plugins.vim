@@ -143,6 +143,7 @@ Plug 'zchee/vim-flatbuffers'
 
 Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
 
 call plug#end()
 
