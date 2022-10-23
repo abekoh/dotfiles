@@ -6,6 +6,7 @@
 
 [delta]
     navigate = true
+    line-numbers = true
 
 [merge]
     conflictstyle = diff3

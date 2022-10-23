@@ -26,12 +26,16 @@ export PATH=/opt/homebrew/opt/bzip2/bin${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/libiconv/bin${PATH+:$PATH}
 export PATH=/opt/homebrew/opt/llvm/bin${PATH+:$PATH}
 export PATH=/usr/local/go/bin:${PATH+:$PATH}
+export PATH=$HOME/.poetry/bin:${PATH+:$PATH}
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
+# HISTORY
+export HISTSIZE=10000
+
 # go
-export GOPATH=$HOME
-export GOBIN=$HOME/bin
+export GOPATH=$(go env GOPATH)
+export GOBIN=$(go env GOBIN)
 
 # anyenv
 eval "$(anyenv init -)"
@@ -176,4 +180,5 @@ nvim () {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export PATH="$HOME/.poetry/bin:$PATH"
+setopt incappendhistory
+setopt sharehistory

@@ -125,6 +125,8 @@ Plug 'previm/previm', { 'for': 'markdown' }
 
 Plug 'bps/vim-textobj-python', { 'for': 'python' }
 
+Plug 'aklt/plantuml-syntax', { 'for': 'plantuml' }
+
 Plug 'bfontaine/Brewfile.vim'
 
 Plug 'vim-test/vim-test'
@@ -138,6 +140,10 @@ let g:test#preserve_screen = 1
 let test#neovim#term_position = "botright 20"
 
 Plug 'zchee/vim-flatbuffers'
+
+Plug 'godlygeek/tabular'
+Plug 'preservim/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
 
 call plug#end()
 
