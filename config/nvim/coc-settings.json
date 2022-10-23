@@ -39,6 +39,8 @@
 
   "rust-analyzer.server.path": "~/bin/rust-analyzer",
 
+  "coc.preferences.enableMarkdown": false,
+
   "languageserver": {
     "golang": {
       "command": "gopls",

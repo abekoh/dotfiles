@@ -131,7 +131,7 @@ Plug 'vim-test/vim-test'
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 " nmap <silent> <leader>a :TestSuite<CR>
-nmap <silent> <leader>r :TestLast<CR>
+nmap <silent> <leader>l :TestLast<CR>
 nmap <silent> <leader>v :TestVisit<CR>
 let g:test#strategy = "neovim"
 let g:test#preserve_screen = 1
