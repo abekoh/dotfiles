@@ -24,7 +24,8 @@ let g:coc_global_extensions = [
   \'coc-fzf-preview',
   \'coc-highlight',
   \'coc-prisma',
-  \'coc-clangd'
+  \'coc-clangd',
+  \'coc-deno'
 \]
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
