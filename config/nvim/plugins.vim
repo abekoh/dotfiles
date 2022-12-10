@@ -150,7 +150,7 @@ call plug#end()
 " treesitte
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "lua", "rust", "go", "python", "rust", "haskell", "rust", "java", "gitignore", "go", "gomod", "javascript", "typescript", "yaml", "json", "markdown", "make" , "html" },
+  ensure_installed = { "lua", "rust", "go", "python", "rust", "haskell", "rust", "java", "gitignore", "go", "gomod", "javascript", "typescript", "yaml", "json", "markdown", "make" , "html", "bash" },
   auto_install = true,
   highlight = {
     enable = true,
