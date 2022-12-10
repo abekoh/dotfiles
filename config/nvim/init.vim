@@ -1,4 +1,4 @@
-let g:python3_host_prog = '~/.anyenv/envs/pyenv/shims/python3'
+" let g:python3_host_prog = '~/.anyenv/envs/pyenv/shims/python3'
 
 " for plugin development
 set runtimepath+=~/dotfiles/nvim 

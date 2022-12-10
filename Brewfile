@@ -7,7 +7,7 @@ brew "tmux"
 brew "neovim"
 
 # envs
-brew "anyenv"
+# brew "anyenv"
 brew "direnv"
 brew "asdf"
 

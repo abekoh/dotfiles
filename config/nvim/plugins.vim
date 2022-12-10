@@ -97,7 +97,7 @@ let g:fern#renderer = "nerdfont"
 
 Plug 'yuki-yano/fern-preview.vim'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_map_keys = 0
@@ -149,11 +149,11 @@ call plug#end()
 
 " treesitte
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained",
-  highlight = {
-    enable = true,
-    disable = {},
-  },
-}
+-- require'nvim-treesitter.configs'.setup {
+--   ensure_installed = "maintained",
+--   highlight = {
+--     enable = true,
+--     disable = {},
+--   },
+-- }
 EOF
