@@ -9,6 +9,7 @@ brew "neovim"
 # envs
 brew "anyenv"
 brew "direnv"
+brew "asdf"
 
 # fizzy finder
 brew "peco"
