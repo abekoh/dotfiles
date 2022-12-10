@@ -1,24 +1,6 @@
-case ${OSTYPE} in
-  darwin*)
-    # homebrew
-    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
-    export HOMEBREW_REPOSITORY="/opt/homebrew";
-    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
-    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
-    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
-    export HOMEBREW_FILE="~/dotfiles/Brewfile"
-    # php
-    export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
-esac
-
-# shell config
-export EDITOR=nvim
-export TERM=xterm-256color
-
 # path
 export PATH=/usr/local/bin${PATH+:$PATH}
 export PATH=$HOME/bin${PATH+:$PATH}
-export PATH=$HOME/.anyenv/bin${PATH+:$PATH}
 export PATH=$HOME/.cargo/bin${PATH+:$PATH}
 export PATH=$HOME/flutter/bin${PATH+:$PATH}
 export PATH=$HOME/Library/Android/sdk/cmdline-tools/latest/bin${PATH+:$PATH}
@@ -31,6 +13,29 @@ export PATH=$HOME/.local/bin:${PATH+:$PATH}
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
+case ${OSTYPE} in
+  darwin*)
+    # homebrew
+    export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+    export HOMEBREW_REPOSITORY="/opt/homebrew";
+    export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+    export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+    export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+    export HOMEBREW_FILE="~/dotfiles/Brewfile"
+    # php
+    export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
+    . /opt/homebrew/opt/asdf/libexec/asdf.sh
+    ;;
+  linux*)
+    # anyenv
+    export PATH=$HOME/.anyenv/bin${PATH+:$PATH}
+    eval "$(anyenv init -)"
+esac
+
+# shell config
+export EDITOR=nvim
+export TERM=xterm-256color
+
 # HISTORY
 export HISTSIZE=10000
 
@@ -38,8 +43,6 @@ export HISTSIZE=10000
 export GOPATH=$(go env GOPATH)
 export GOBIN=$(go env GOBIN)
 
-# anyenv
-eval "$(anyenv init -)"
 # direnv
 eval "$(direnv hook zsh)"
 # starship
@@ -183,4 +186,3 @@ nvim () {
 
 setopt incappendhistory
 setopt sharehistory
-
