@@ -25,33 +25,63 @@ let g:coc_global_extensions = [
   \'coc-highlight',
   \'coc-prisma',
   \'coc-clangd',
-  \'coc-deno'
+  \'coc-deno',
+  \'coc-graphql'
 \]
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+" " use <tab> for trigger completion and navigate to the next complete item
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~ '\s'
+" endfunction
+" inoremap <silent><expr> <TAB>
+"   \ coc#pum#visible() ? coc#_select_confirm() :
+"   \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+"   \ <SID>check_back_space() ? "\<TAB>" :
+"   \ coc#refresh()
+" inoremap <expr><S-TAB> coc#pum#visible() ? "\<C-p>" : "\<C-h>"
+" " navigate completion list
+" inoremap <expr> <C-j> coc#pum#visible() ? "\<C-n>" : "\<C-j>"
+" inoremap <expr> <C-k> coc#pum#visible() ? "\<C-p>" : "\<C-k>"
+" inoremap <expr> <Down> coc#pum#visible() ? "\<C-n>" : "\<Down>"
+" inoremap <expr> <Up> coc#pum#visible() ? "\<C-p>" : "\<Up>"
+" nnoremap <expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+" nnoremap <expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+" inoremap <expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+" inoremap <expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+" " Close preview window when completion is done
+" autocmd! CompleteDone * if coc#pum#visible() == 0 | pclose | endif
+" " confirm complete (select the first completion item and confirm completion when no item have selected)
+" inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : 
+"                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use tab for trigger completion with characters ahead and navigate
+" NOTE: There's always complete item selected by default, you may want to enable
+" no select by `"suggest.noselect": true` in your configuration file
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config
 inoremap <silent><expr> <TAB>
-  \ coc#pum#visible() ? coc#_select_confirm() :
-  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? "\<C-p>" : "\<C-h>"
-" navigate completion list
-inoremap <expr> <C-j> coc#pum#visible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> coc#pum#visible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <Down> coc#pum#visible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up> coc#pum#visible() ? "\<C-p>" : "\<Up>"
-nnoremap <expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-" Close preview window when completion is done
-autocmd! CompleteDone * if coc#pum#visible() == 0 | pclose | endif
-" confirm complete (select the first completion item and confirm completion when no item have selected)
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : 
-                                           \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
 nmap <silent> <Leader>c :CocList<Space>commands<CR>
 nmap <silent> <Leader>l :CocCommand<Space>fzf-preview.Lines<CR>
 nmap <silent> <Leader>f :CocCommand<Space>fzf-preview.ProjectFiles<CR>
@@ -78,18 +108,19 @@ nmap <silent> <Leader>I :CocCommand<Space>fzf-preview.CocImplementations<CR>
 nmap <silent> <Leader>q <Plug>(coc-fix-current)
 nmap <silent> <Leader>s :CocCommand fzf-preview.GitStatus<CR>
 nmap <silent> <Leader>k :CocCommand fzf-preview.GitActions<CR>
-nnoremap <silent> <Leader>K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
 autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>t :CocCommand<Space>jest.singleTest<CR>
 autocmd FileType javascript,typescript,javascriptreact,typescriptreact nnoremap <Leader>T :CocCommand<Space>jest.fileTest %<CR>
 
-function! s:show_documentation()
+function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
     call feedkeys('K', 'in')
   endif
 endfunction
+
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
