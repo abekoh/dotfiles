@@ -33,24 +33,24 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~ '\s'
 endfunction
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? coc#_select_confirm() :
+  \ coc#pum#visible() ? coc#_select_confirm() :
   \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
   \ <SID>check_back_space() ? "\<TAB>" :
   \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? "\<C-p>" : "\<C-h>"
 " navigate completion list
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-inoremap <expr> <Down> pumvisible() ? "\<C-n>" : "\<Down>"
-inoremap <expr> <Up> pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <C-j> coc#pum#visible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> coc#pum#visible() ? "\<C-p>" : "\<C-k>"
+inoremap <expr> <Down> coc#pum#visible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up> coc#pum#visible() ? "\<C-p>" : "\<Up>"
 nnoremap <expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
 nnoremap <expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 inoremap <expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
 inoremap <expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 " Close preview window when completion is done
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+autocmd! CompleteDone * if coc#pum#visible() == 0 | pclose | endif
 " confirm complete (select the first completion item and confirm completion when no item have selected)
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : 
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : 
                                            \"\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 nmap <silent> <Leader>c :CocList<Space>commands<CR>
 nmap <silent> <Leader>l :CocCommand<Space>fzf-preview.Lines<CR>
