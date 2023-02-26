@@ -22,6 +22,8 @@ set display=lastline
 " 不可視文字を表示,設定
 set list
 set listchars=tab:\ \ ,trail:-,extends:»,precedes:«,nbsp:%,eol:↲
+" ダイアログでは無効化
+set ideavimsupport=
 " クリップボードとヤンクを連携
 set clipboard=unnamedplus
 " EscEscでハイライト消去

@@ -186,3 +186,5 @@ nvim () {
 
 setopt incappendhistory
 setopt sharehistory
+
+source /Users/abekoh/.docker/init-zsh.sh || true # Added by Docker Desktop

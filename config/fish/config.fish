@@ -42,3 +42,5 @@ history-merge
 
 # direnv
 eval (direnv hook fish)
+
+source /Users/abekoh/.docker/init-fish.sh || true # Added by Docker Desktop
