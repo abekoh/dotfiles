@@ -66,6 +66,10 @@ def starship():
     print("setup starship")
     subprocess.run("ln -sf ~/dotfiles/config/starship/starship.toml ~/.config/starship.toml", shell=True)
 
+def asdf():
+    print("setup asdf")
+    subprocess.run("ln -sf ~/dotfiles/config/asdf/.asdfrc ~/.asdfrc", shell=True)
+
 
 if __name__ == "__main__":
     config_dir_path = os.path.join(os.environ["HOME"], ".config")
@@ -79,3 +83,4 @@ if __name__ == "__main__":
     aws()
     git()
     starship()
+    asdf()

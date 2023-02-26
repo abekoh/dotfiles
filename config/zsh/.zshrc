@@ -13,6 +13,8 @@ export PATH=$HOME/.local/bin:${PATH+:$PATH}
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 
+. $HOME/.asdf/asdf.sh
+
 case ${OSTYPE} in
   darwin*)
     # homebrew
@@ -24,12 +26,9 @@ case ${OSTYPE} in
     export HOMEBREW_FILE="~/dotfiles/Brewfile"
     # php
     export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
-    . /opt/homebrew/opt/asdf/libexec/asdf.sh
     ;;
   linux*)
-    # anyenv
-    export PATH=$HOME/.anyenv/bin${PATH+:$PATH}
-    eval "$(anyenv init -)"
+    ;;
 esac
 
 # shell config
