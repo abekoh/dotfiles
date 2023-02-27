@@ -187,3 +187,5 @@ nvim () {
 
 setopt incappendhistory
 setopt sharehistory
+
+source $HOME/.docker/init-zsh.sh || true
