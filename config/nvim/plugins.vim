@@ -145,6 +145,8 @@ Plug 'godlygeek/tabular'
 Plug 'preservim/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 
+Plug 'github/copilot.vim'
+
 call plug#end()
 
 " treesitte
