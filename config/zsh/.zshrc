@@ -128,12 +128,8 @@ alias para='printf "%s\0" {1..5} | xargs -0 -I {} -P 5 echo {}'
 abbr clear-session
 abbr import-aliases --quiet
 
-# prj
-prj () {
-  local prj_path=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -z "$prj_path" ]; then
-    return
-  fi
+_prj() {
+  local prj_path="$1"
   local prj_name=$(echo "$(basename $(dirname $prj_path))/$(basename $prj_path)" | sed -e 's/\./_/g')
   if ! tmux has-session -t $prj_name; then
     tmux new-session -c $prj_path -s $prj_name -d
@@ -144,6 +140,20 @@ prj () {
   else
     tmux switch-client -t $prj_name
   fi
+}
+
+# prj
+prj () {
+  local prj_path=$(ghq list -p | peco --query "$LBUFFER")
+  if [ -z "$prj_path" ]; then
+    return
+  fi
+  _prj $prj_path
+}
+
+c () {
+  local prj_path=$(pwd)
+  _prj $prj_path
 }
 
 cd () {
