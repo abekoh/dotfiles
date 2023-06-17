@@ -146,6 +146,10 @@ Plug 'preservim/vim-markdown'
 let g:vim_markdown_folding_disabled = 1
 
 Plug 'github/copilot.vim'
+inoremap <silent><script><expr> <S-Tab> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+inoremap <silent><script><expr> <S-N> copilot#Next()
+inoremap <silent><script><expr> <S-P> copilot#Previous()
 
 call plug#end()
 
