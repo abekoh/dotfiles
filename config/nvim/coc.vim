@@ -25,7 +25,8 @@ let g:coc_global_extensions = [
   \'coc-highlight',
   \'coc-prisma',
   \'coc-clangd',
-  \'coc-deno'
+  \'coc-deno',
+  \'@yaegassy/coc-astro'
 \]
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#confirm() :
