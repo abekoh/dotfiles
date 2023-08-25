@@ -151,6 +151,8 @@ let g:copilot_no_tab_map = v:true
 " inoremap <silent><script><expr> <S-N> copilot#Next()
 " inoremap <silent><script><expr> <S-P> copilot#Previous()
 
+Plug 'moro/vim-review'
+
 call plug#end()
 
 " treesitte
