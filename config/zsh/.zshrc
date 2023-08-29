@@ -128,66 +128,66 @@ alias para='printf "%s\0" {1..5} | xargs -0 -I {} -P 5 echo {}'
 abbr clear-session
 abbr import-aliases --quiet
 
-_prj() {
-  local prj_path="$1"
-  local prj_name=$(echo "$(basename $(dirname $prj_path))/$(basename $prj_path)" | sed -e 's/\./_/g')
-  if ! tmux has-session -t $prj_name; then
-    tmux new-session -c $prj_path -s $prj_name -d
-    tmux setenv -t $prj_name TMUX_SESSION_PATH $prj_path
-  fi
-  if [ -z "$TMUX" ]; then
-    tmux attach -t $prj_name
-  else
-    tmux switch-client -t $prj_name
-  fi
-}
+# _prj() {
+#   local prj_path="$1"
+#   local prj_name=$(echo "$(basename $(dirname $prj_path))/$(basename $prj_path)" | sed -e 's/\./_/g')
+#   if ! tmux has-session -t $prj_name; then
+#     tmux new-session -c $prj_path -s $prj_name -d
+#     tmux setenv -t $prj_name TMUX_SESSION_PATH $prj_path
+#   fi
+#   if [ -z "$TMUX" ]; then
+#     tmux attach -t $prj_name
+#   else
+#     tmux switch-client -t $prj_name
+#   fi
+# }
+#
+# # prj
+# prj () {
+#   local prj_path=$(ghq list -p | peco --query "$LBUFFER")
+#   if [ -z "$prj_path" ]; then
+#     return
+#   fi
+#   _prj $prj_path
+# }
+#
+# c () {
+#   local prj_path=$(pwd)
+#   _prj $prj_path
+# }
+#
+# cd () {
+#   if [ -n "$TMUX" -a -z "$@" ]; then
+#     local session_path=$(tmux show-environment | grep TMUX_SESSION_PATH | sed -e 's/TMUX_SESSION_PATH=//')
+#     if [ -n "$session_path" ]; then
+#       builtin cd $session_path
+#       return
+#     fi
+#   fi
+#   builtin cd "$@"
+# }
 
-# prj
-prj () {
-  local prj_path=$(ghq list -p | peco --query "$LBUFFER")
-  if [ -z "$prj_path" ]; then
-    return
-  fi
-  _prj $prj_path
-}
-
-c () {
-  local prj_path=$(pwd)
-  _prj $prj_path
-}
-
-cd () {
-  if [ -n "$TMUX" -a -z "$@" ]; then
-    local session_path=$(tmux show-environment | grep TMUX_SESSION_PATH | sed -e 's/TMUX_SESSION_PATH=//')
-    if [ -n "$session_path" ]; then
-      builtin cd $session_path
-      return
-    fi
-  fi
-  builtin cd "$@"
-}
-
-nvim () {
-    if [ -z "$TMUX" ]; then
-      command nvim $@
-      return
-    fi
-    # ソケットを設定
-    local socket_path=/tmp/$(echo $(tmux display-message -p '#S') | sed 's/\//_/g' )
-    if [ -S $socket_path ]; then
-        # すでにソケットが存在してたらそれに接続
-        nvr --remote-tab --servername $socket_path $argv 
-        # 該当のnvimに移動
-        local session_id=$(tmux list-panes -F '#{session_id}')
-        local pane_ids_str=$(tmux list-panes -a -F "#{session_id},#{window_index},#{pane_index},#{pane_current_command}" | grep "^$session_id,.*,nvim\$")
-        # 配列にする: https://gist.github.com/mattmc3/76ad634f362b5a9a54f1779a4737d5ae
-        local pane_ids=(${(@s:,:)pane_ids_str})
-        tmux select-window -t $pane_ids[2] && tmux select-pane -t $pane_ids[3]
-    else 
-      # ソケットがなければ作成して起動
-      NVIM_LISTEN_ADDRESS=$socket_path command nvim $@
-    fi
-}
+# nvim () {
+#     if [ -z "$TMUX" ]; then
+#       command nvim $@
+#       return
+#     fi
+#     # ソケットを設定
+#     local socket_path=/tmp/$(echo $(tmux display-message -p '#S') | sed 's/\//_/g' )
+#     if [ -S $socket_path ]; then
+#         # すでにソケットが存在してたらそれに接続
+#         nvr --remote-tab --servername $socket_path $argv
+#         # 該当のnvimに移動
+#         local session_id=$(tmux list-panes -F '#{session_id}')
+#         local pane_ids_str=$(tmux list-panes -a -F "#{session_id},#{window_index},#{pane_index},#{pane_current_command}" | grep "^$session_id,.*,nvim\$")
+#         # 配列にする: https://gist.github.com/mattmc3/76ad634f362b5a9a54f1779a4737d5ae
+#         local pane_ids=(${(@s:,:)pane_ids_str})
+#         tmux select-window -t $pane_ids[2] && tmux select-pane -t $pane_ids[3]
+#     else
+#       # ソケットがなければ作成して起動
+#       NVIM_LISTEN_ADDRESS=$socket_path command nvim $@
+#     fi
+# }
 
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
