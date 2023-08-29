@@ -8,6 +8,17 @@ def neovim():
     subprocess.run("ln -sf ~/dotfiles/config/nvim ~/.config/", shell=True)
     subprocess.run("ln -sf ~/dotfiles/config/nvim ~/.config/", shell=True)
 
+def astronvim():
+    print("setup astronvim")
+    nvim_path = os.path.join(os.environ["HOME"], ".config", "nvim")
+    if not os.path.exists(nvim_path):
+        os.makedirs(nvim_path)
+        subprocess.run(f"git clone --depth 1 https://github.com/AstroNvim/AstroNvim {nvim_path}", shell=True)
+    astro_nvim_path = os.path.join(os.environ["HOME"], ".config", "astronvim", "lua")
+    if not os.path.exists(astro_nvim_path):
+        os.makedirs(astro_nvim_path)
+    subprocess.run(f"ln -s ~/dotfiles/config/astronvim {os.path.join(astro_nvim_path, 'user')}", shell=True)
+
 
 def fish():
     print("setup fish")
@@ -70,12 +81,25 @@ def asdf():
     print("setup asdf")
     subprocess.run("ln -sf ~/dotfiles/config/asdf/.asdfrc ~/.asdfrc", shell=True)
 
+def zellij():
+    print("setup zellij")
+    os.makedirs(os.path.join(os.environ["HOME"], ".config", "zellij"), exist_ok=True)
+    subprocess.run("ln -sf ~/dotfiles/config/zellij/config.kdl ~/.config/zellij/config.kdl", shell=True)
+    subprocess.run("ln -sf ~/dotfiles/config/zellij/layouts ~/.config/zellij/layouts", shell=True)
+
+def alacritty():
+    print("setup alacritty")
+    os.makedirs(os.path.join(os.environ["HOME"], ".config", "alacritty"), exist_ok=True)
+    subprocess.run("ln -sf ~/dotfiles/config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml", shell=True)
+    subprocess.run("ln -sf ~/dotfiles/config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml", shell=True)
+
 
 if __name__ == "__main__":
     config_dir_path = os.path.join(os.environ["HOME"], ".config")
     if not os.path.exists(config_dir_path):
         os.mkdir(config_dir_path)
-    neovim()
+    # neovim()
+    astronvim()
     fish()
     zsh()
     tmux()
@@ -84,3 +108,5 @@ if __name__ == "__main__":
     git()
     starship()
     asdf()
+    zellij()
+    alacritty()
