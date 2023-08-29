@@ -17,7 +17,9 @@ def astronvim():
     astro_nvim_path = os.path.join(os.environ["HOME"], ".config", "astronvim", "lua")
     if not os.path.exists(astro_nvim_path):
         os.makedirs(astro_nvim_path)
-    subprocess.run(f"ln -s ~/dotfiles/config/astronvim {os.path.join(astro_nvim_path, 'user')}", shell=True)
+    astro_nvim_user_path = os.path.join(astro_nvim_path, "user")
+    if not os.path.exists(astro_nvim_user_path):
+        subprocess.run(f"ln -s ~/dotfiles/config/astronvim {astro_nvim_user_path}", shell=True)
 
 
 def fish():
@@ -85,7 +87,9 @@ def zellij():
     print("setup zellij")
     os.makedirs(os.path.join(os.environ["HOME"], ".config", "zellij"), exist_ok=True)
     subprocess.run("ln -sf ~/dotfiles/config/zellij/config.kdl ~/.config/zellij/config.kdl", shell=True)
-    subprocess.run("ln -sf ~/dotfiles/config/zellij/layouts ~/.config/zellij/layouts", shell=True)
+    layout_path = os.path.join(os.environ["HOME"], ".config", "zellij", "layouts")
+    if not os.path.exists(layout_path):
+        subprocess.run(f"ln -sf ~/dotfiles/config/zellij/layouts {layout_path}", shell=True)
 
 def alacritty():
     print("setup alacritty")
