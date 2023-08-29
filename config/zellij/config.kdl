@@ -1,0 +1,5 @@
+keybinds {
+  pane {
+    bind "N" { NewPane "Right"; SwitchToMode "Normal"; }
+  }
+}
