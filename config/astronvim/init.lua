@@ -9,30 +9,6 @@ return {
   colorscheme = "tender",
 
   lsp = {
-    servers = {
-      "ansiblels",
-      "astro",
-      "bashls",
-      "clangd",
-      "cmake",
-      "cssls",
-      "dockerls",
-      "gopls",
-      "html",
-      "jsonls",
-      "jdtls",        -- java
-      "tsserver",     -- javascript / typescript
-      "marksman",     -- markdown
-      "intelephense", -- php
-      "prismals",
-      "pyright",      -- python
-      "ruby_ls",
-      "taplo",        -- toml
-      "tailwindcss",
-      "terraformls",
-      "lemminx", -- xml
-      "yamlls",
-    },
     formatting = {
       format_on_save = {
         enabled = true,
@@ -44,6 +20,35 @@ return {
   },
 
   plugins = {
+    {
+      "williamboman/mason-lspconfig.nvim",
+      opts = function(_, opts)
+        opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
+          "ansiblels",
+          "astro",
+          "bashls",
+          "clangd",
+          "cmake",
+          "cssls",
+          "dockerls",
+          "gopls",
+          "html",
+          "jsonls",
+          "jdtls",        -- java
+          "tsserver",     -- javascript / typescript
+          "marksman",     -- markdown
+          "intelephense", -- php
+          "prismals",
+          "pyright",      -- python
+          "solargraph",   -- ruby
+          "taplo",        -- toml
+          "tailwindcss",
+          "terraformls",
+          "lemminx", -- xml
+          "yamlls",
+        })
+      end,
+    },
     {
       "nvim-neo-tree/neo-tree.nvim",
       opts = {
@@ -96,6 +101,9 @@ return {
       opts = {
         ensure_installed = { "python", "delve" }
       }
+    },
+    {
+      "imsnif/kdl.vim",
     },
   },
 
