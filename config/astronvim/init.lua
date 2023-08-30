@@ -48,6 +48,7 @@ return {
           "yamlls",
           "sqlls",
           "hls", -- haskell
+          "graphql",
         })
       end,
     },
