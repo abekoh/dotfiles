@@ -9,7 +9,7 @@ font:
   bold:
     family: Hack Nerd Font Mono
     style: Bold
-  size: 13.0
+  size: 13.5
 
 # https://github.com/huyvohcmc/tender-alacritty
 colors:
