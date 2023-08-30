@@ -47,6 +47,7 @@ return {
           "lemminx", -- xml
           "yamlls",
           "sqlls",
+          "hls", -- haskell
         })
       end,
     },
