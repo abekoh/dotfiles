@@ -155,7 +155,20 @@ abbr import-aliases --quiet
 #   local prj_path=$(pwd)
 #   _prj $prj_path
 # }
-#
+
+prj () {
+  local prj_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
+  if [ -z "$prj_path" ]; then
+    return
+  fi
+  local prj_name=$(echo "$(basename $(dirname $prj_path))/$(basename $prj_path)" | sed -e 's/\./_/g')
+  if zellij action query-tab-names | grep -Fxq $prj_name; then
+    zellij action go-to-tab-name $prj_name
+  else
+    zellij action new-tab --layout project --name $prj_name --cwd $prj_path
+  fi
+}
+
 # cd () {
 #   if [ -n "$TMUX" -a -z "$@" ]; then
 #     local session_path=$(tmux show-environment | grep TMUX_SESSION_PATH | sed -e 's/TMUX_SESSION_PATH=//')

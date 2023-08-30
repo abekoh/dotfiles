@@ -1,4 +1,12 @@
 keybinds {
+  normal {
+    unbind "Ctrl h"
+    unbind "Ctrl q"
+    bind "Ctrl y" { SwitchToMode "Move"; }
+  }
+  move {
+    bind "y" { MovePane "Down"; MoveFocus "Up"; SwitchToMode "Normal"; }
+  }
   pane {
     bind "N" { NewPane "Right"; SwitchToMode "Normal"; }
   }

@@ -46,6 +46,7 @@ return {
           "terraformls",
           "lemminx", -- xml
           "yamlls",
+          "sqlls",
         })
       end,
     },

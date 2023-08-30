@@ -34,3 +34,7 @@ colors:
     magenta: '0xd3b987'
     cyan: '0x73cef4'
     white: '0xfeffff'
+
+# https://github.com/zellij-org/zellij/issues/2051#issuecomment-1461519892
+window:
+  option_as_alt: Both
