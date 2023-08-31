@@ -1,10 +1,14 @@
-# !/usr/bin/ruby
+#!/usr/bin/ruby
 # frozen_string_literal: true
 
 require 'fileutils'
 
 DOTFILES_PATH = "#{ENV['HOME']}/dotfiles"
 CONFIG_PATH = ENV['XDG_CONFIG_HOME'] || "#{ENV['HOME']}/.config"
+
+def command_installed?(command)
+  `which #{command} > /dev/null 2>&1`
+end
 
 def astronvim
   puts 'setup astronvim'
@@ -45,16 +49,19 @@ end
 
 def starship
   puts 'setup starship'
+  `curl -sS https://starship.rs/install.sh | sh` unless command_installed?('starship')
   `ln -sf #{DOTFILES_PATH}/config/starship/starship.toml #{CONFIG_PATH}/starship.toml`
 end
 
 def asdf
   puts 'setup asdf'
+  `git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0` unless command_installed?('asdf')
   `ln -sf #{DOTFILES_PATH}/config/asdf/.asdfrc ~/.asdfrc`
 end
 
 def zellij
   puts 'setup zellij'
+  `cargo install --locked zellij` unless command_installed?('zellij')
   FileUtils.mkdir_p("#{CONFIG_PATH}/zellij")
   `ln -sf #{DOTFILES_PATH}/config/zellij/config.kdl #{CONFIG_PATH}/zellij/config.kdl`
   layout_path = "#{CONFIG_PATH}/zellij/layouts"
