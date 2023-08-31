@@ -2,6 +2,7 @@
 brew "fish"
 brew "starship"
 brew "tmux"
+brew "atuin"
 
 # editor
 brew "neovim"
