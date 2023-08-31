@@ -2,7 +2,9 @@ keybinds {
   normal {
     unbind "Ctrl h"
     unbind "Ctrl q"
+    unbind "Ctrl o"
     bind "Ctrl y" { SwitchToMode "Move"; }
+    bind "Ctrl e" { SwitchToMode "Session"; }
   }
   move {
     bind "y" { MovePane "Down"; MoveFocus "Up"; SwitchToMode "Normal"; }

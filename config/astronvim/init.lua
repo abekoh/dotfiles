@@ -48,14 +48,14 @@ return {
           "intelephense", -- php
           "prismals",
           "pyright",      -- python
-          "solargraph",   -- ruby
+          -- "solargraph",   -- ruby
           "taplo",        -- toml
           "tailwindcss",
           "terraformls",
           "lemminx", -- xml
           "yamlls",
           "sqlls",
-          "hls", -- haskell
+          -- "hls", -- haskell
           "graphql",
         })
       end,
