@@ -49,7 +49,6 @@ end
 
 def starship
   puts 'setup starship'
-  `curl -sS https://starship.rs/install.sh | sh` unless command_installed?('starship')
   `ln -sf #{DOTFILES_PATH}/config/starship/starship.toml #{CONFIG_PATH}/starship.toml`
 end
 
