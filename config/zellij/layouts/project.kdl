@@ -4,11 +4,11 @@ layout {
     }
     pane {
       pane size="80%" {
-        command "nvim"
+        name "zsh"
         focus true
       }
       pane size="20%" {
-        name "zsh"
+        command "nvim"
       }
     }
     pane size=2 borderless=true {
