@@ -22,15 +22,9 @@ return {
   plugins = {
     {
       "nvim-treesitter/nvim-treesitter",
-      auto_install = true,
-    },
-    {
-      "goolord/alpha-nvim",
-      opts = function()
-        local dashboard = require("alpha.themes.dashboard")
-        dashboard.section.header.val = {}
-        dashboard.section.buttons.val = {}
-      end
+      opts = {
+        auto_install = true,
+      }
     },
     {
       "williamboman/mason-lspconfig.nvim",
