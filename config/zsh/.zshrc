@@ -147,6 +147,8 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 # atuin
 eval "$(atuin init zsh --disable-up-arrow)"
+# github copilot
+eval "$(github-copilot-cli alias -- "$0")"
 
 export ZELLIJ_AUTO_ATTACH=true
 export ZELLIJ_AUTO_EXIT=true
