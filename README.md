@@ -2,39 +2,37 @@
 
 abekoh's dotfiles
 
-## Environments
-- Mac
-- WSL2 (Ubuntu)
-
 ## Setup
 
 ```
 cd ~/
 git clone https://github.com/abekoh/dotfiles.git
 cd dotfiles
-python3 make_links.py
+./setup.rb
 ```
 
-## Install
-```
-cd ~/dotfiles
+## Currently maintained
 
-# for mac
-brew bundle
-
-./lang_deps.sh
-```
-
-## Manual Install
-- rust
-- gcloud
-- aws
-- docker
-
-## Other Configs
-
-### iTerm2 theme
-https://gist.github.com/yads/a69cff702f0283bef2a3fa390650091a
-
-### iTerm2 font
-https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack
+- Shell
+  - [ ] fish
+  - [x] zsh
+    - [x] zinit
+- Editor
+  - [ ] Vim
+  - [x] Neovim
+    - [ ] dein.vim + coc.nvim
+    - [ ] vim-plug + coc.nvim
+    - [x] AstroNvim
+  - [x] JetBrains / IdeaVim
+- Terminal
+  - [ ] iTerm
+  - [x] Alacritty
+- Multiplexer
+  - [ ] tmux
+  - [x] Zellij
+- Environment management
+  - [ ] anyenv
+  - [x] asdf
+- Others
+  - [x] git
+  - [x] aws
