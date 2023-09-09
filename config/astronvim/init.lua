@@ -3,6 +3,7 @@ return {
     opt = {
       relativenumber = false,
       wrap = true,
+      swapfile = false,
     },
   },
 
