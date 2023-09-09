@@ -13,6 +13,9 @@ cd dotfiles
 
 ## Currently maintained
 
+- OS
+  - [x] Mac
+  - [ ] Linux / Ubuntu
 - Shell
   - [ ] fish
   - [x] zsh
