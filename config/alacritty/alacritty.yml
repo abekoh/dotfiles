@@ -34,7 +34,19 @@ colors:
     magenta: '0xd3b987'
     cyan: '0x73cef4'
     white: '0xfeffff'
-
+hints:
+  enabled:
+   - regex: "(ipfs:|ipns:|magnet:|mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)\
+             [^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
+     hyperlinks: true
+     command: open
+     post_processing: true
+     mouse:
+       enabled: true
+       mods: Shift
+     binding:
+       key: U
+       mods: Control|Shift
 # https://github.com/zellij-org/zellij/issues/2051#issuecomment-1461519892
 window:
   option_as_alt: Both
