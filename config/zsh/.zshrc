@@ -132,6 +132,19 @@ prj () {
   fi
 }
 
+
+cd() {
+    if [ "$#" -eq 0 ]; then
+        if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+            builtin cd "$(git rev-parse --show-toplevel)" || return 1
+        else
+            builtin cd ~ || return 1
+        fi
+    else
+        builtin cd "$@" || return 1
+    fi
+}
+
 [ -f $HOME/.zshrc_local ] && source $HOME/.zshrc_local
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.ghcup/env ] && source $HOME/.ghcup/env
