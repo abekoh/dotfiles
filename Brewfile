@@ -27,7 +27,7 @@ brew "git-delta"
 brew "ripgrep"   # grep
 brew "bat"       # cat
 brew "fd"        # find
-brew "exa"       # ls
+brew "eza"       # ls
 brew "htop"      # top
 brew "bottom"    # top
 brew "navi"      # man

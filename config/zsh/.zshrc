@@ -166,3 +166,10 @@ eval "$(github-copilot-cli alias -- "$0")"
 export ZELLIJ_AUTO_ATTACH=true
 export ZELLIJ_AUTO_EXIT=true
 eval "$(zellij setup --generate-auto-start zsh)"
+
+# bun completions
+[ -s "/Users/abekoh/.bun/_bun" ] && source "/Users/abekoh/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
