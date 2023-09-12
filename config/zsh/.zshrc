@@ -14,6 +14,8 @@ export PATH=$HOME/.dotnet:$HOME/.dotnet/tools:${PATH+:$PATH}
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 export DOTNET_ROOT=$HOME/.dotnet
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 . $HOME/.asdf/asdf.sh
 
@@ -150,7 +152,7 @@ cd() {
 [ -f $HOME/.ghcup/env ] && source $HOME/.ghcup/env
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh
-
+[ -s $HOME/.bun/_bun ] && source "/Users/kotaro_abe/.bun/_bun"
 
 # direnv
 eval "$(direnv hook zsh)"
@@ -163,6 +165,9 @@ eval "$(atuin init zsh --disable-up-arrow)"
 # github copilot
 eval "$(github-copilot-cli alias -- "$0")"
 
-export ZELLIJ_AUTO_ATTACH=true
-export ZELLIJ_AUTO_EXIT=true
-eval "$(zellij setup --generate-auto-start zsh)"
+if [[ -z "$IDEA_TERMINAL" ]]; then
+  export ZELLIJ_AUTO_ATTACH=true
+  export ZELLIJ_AUTO_EXIT=true
+  eval "$(zellij setup --generate-auto-start zsh)"
+fi
+
