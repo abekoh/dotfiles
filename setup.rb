@@ -10,6 +10,12 @@ def command_installed?(command)
   `which #{command} > /dev/null 2>&1`
 end
 
+def bin
+  puts 'copy bin/ to ~/.local/bin'
+  FileUtils.mkdir_p("#{ENV['HOME']}/.local/bin")
+  `ln -sf #{DOTFILES_PATH}/bin/* ~/.local/bin`
+end
+
 def astronvim
   puts 'setup astronvim'
   nvim_path = "#{CONFIG_PATH}/nvim"
@@ -76,6 +82,7 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   FileUtils.mkdir(CONFIG_PATH) unless Dir.exist?(CONFIG_PATH)
+  bin
   astronvim
   zsh
   ideavim

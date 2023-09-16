@@ -1,0 +1,57 @@
+#!/usr/bin/env ruby
+require 'yaml'
+
+# コマンドライン引数をチェック
+if ARGV.empty?
+  puts 'Error: Please specify the path to hosts.yml as the first argument.'
+  exit 1
+end
+
+file_path = ARGV[0]
+
+# YAML ファイルをロード
+begin
+  data = YAML.load(File.read(file_path))
+rescue StandardError => e
+  puts "Error reading the file: #{e.message}"
+  exit 1
+end
+
+def process_hosts(hosts)
+  config_str = ''
+  hosts.each do |host_name, host_info|
+    config_str += "Host #{host_name}\n"
+    config_str += "    HostName #{host_info['ansible_host']}\n" if host_info.key?('ansible_host')
+    config_str += "    User #{host_info['ansible_user']}\n" if host_info.key?('ansible_user')
+    config_str += "    Port #{host_info['ansible_port']}\n" if host_info.key?('ansible_port')
+    if host_info.key?('ansible_ssh_private_key_file')
+      config_str += "    IdentityFile #{host_info['ansible_ssh_private_key_file']}\n"
+    end
+
+    if host_info.key?('ansible_password')
+      config_str += "    # WARNING: SSH Config does not support password embedding. For host #{host_name}, use other authentication methods or input the password manually.\n"
+    end
+
+    config_str += "\n"
+  end
+  config_str
+end
+
+ssh_config = ''
+
+# グループが指定されている場合のホストを処理
+if data['all'].key?('children')
+  data['all']['children'].each do |group_name, group_info|
+    ssh_config += "# #{group_name.capitalize} Group\n"
+    ssh_config += process_hosts(group_info['hosts'])
+  end
+end
+
+# グループが指定されていない場合のホストを処理（存在する場合）
+if data['all'].key?('hosts')
+  ssh_config += "# Ungrouped Hosts\n"
+  ssh_config += process_hosts(data['all']['hosts'])
+end
+
+# 結果を表示
+puts ssh_config
