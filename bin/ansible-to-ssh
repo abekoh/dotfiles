@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+
 require 'yaml'
 
 # コマンドライン引数をチェック
@@ -39,18 +40,10 @@ end
 
 ssh_config = ''
 
-# グループが指定されている場合のホストを処理
-if data['all'].key?('children')
-  data['all']['children'].each do |group_name, group_info|
-    ssh_config += "# #{group_name.capitalize} Group\n"
-    ssh_config += process_hosts(group_info['hosts'])
-  end
-end
-
-# グループが指定されていない場合のホストを処理（存在する場合）
-if data['all'].key?('hosts')
-  ssh_config += "# Ungrouped Hosts\n"
-  ssh_config += process_hosts(data['all']['hosts'])
+# トップレベルの各セクションをグループとして処理
+data.each do |group_name, group_info|
+  ssh_config += "# #{group_name.capitalize} Group\n"
+  ssh_config += process_hosts(group_info['hosts']) if group_info.key?('hosts')
 end
 
 # 結果を表示
