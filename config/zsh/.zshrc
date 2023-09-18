@@ -171,3 +171,6 @@ if [[ -z "$IDEA_TERMINAL" ]]; then
   eval "$(zellij setup --generate-auto-start zsh)"
 fi
 
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
