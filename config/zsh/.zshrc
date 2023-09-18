@@ -152,7 +152,7 @@ cd() {
 [ -f $HOME/.ghcup/env ] && source $HOME/.ghcup/env
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh
-[ -s $HOME/.bun/_bun ] && source "/Users/kotaro_abe/.bun/_bun"
+[ -s $HOME/.bun/_bun ] && source $HOME/.bun/_bun
 
 # direnv
 eval "$(direnv hook zsh)"
