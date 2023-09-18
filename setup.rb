@@ -42,7 +42,7 @@ end
 
 def aws
   puts 'setup aws'
-  FileUtils.mkdir_p('~/.aws/cli')
+  FileUtils.mkdir_p("#{ENV['HOME']}/.aws/cli")
   `ln -sf #{DOTFILES_PATH}/config/aws/cli/alias ~/.aws/cli/alias`
 end
 
