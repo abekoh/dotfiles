@@ -1,4 +1,10 @@
 return {
+
+  vim.api.nvim_set_keymap("n", "sh", "<C-w>h", {}),
+  vim.api.nvim_set_keymap("n", "sj", "<C-w>j", {}),
+  vim.api.nvim_set_keymap("n", "sk", "<C-w>k", {}),
+  vim.api.nvim_set_keymap("n", "sl", "<C-w>l", {}),
+
   options = {
     opt = {
       relativenumber = false,
