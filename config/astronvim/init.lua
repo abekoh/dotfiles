@@ -10,6 +10,7 @@ return {
       relativenumber = false,
       wrap = true,
       swapfile = false,
+      scrolloff = 5,
     },
   },
 
