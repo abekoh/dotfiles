@@ -163,6 +163,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init zsh)"
 # atuin
 eval "$(atuin init zsh --disable-up-arrow)"
+zvm_after_init_commands=('bindkey '^r' _atuin_search_widget')
 # github copilot
 eval "$(github-copilot-cli alias -- "$0")"
 
@@ -171,3 +172,4 @@ if [[ -z "$IDEA_TERMINAL" ]]; then
   export ZELLIJ_AUTO_EXIT=true
   eval "$(zellij setup --generate-auto-start zsh)"
 fi
+
