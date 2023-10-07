@@ -1,24 +1,3 @@
-# path
-export PATH=/usr/local/bin${PATH+:$PATH}
-export PATH=$HOME/bin${PATH+:$PATH}
-export PATH=$HOME/.cargo/bin${PATH+:$PATH}
-export PATH=$HOME/flutter/bin${PATH+:$PATH}
-export PATH=$HOME/Library/Android/sdk/cmdline-tools/latest/bin${PATH+:$PATH}
-export PATH=/opt/homebrew/opt/bzip2/bin${PATH+:$PATH}
-export PATH=/opt/homebrew/opt/libiconv/bin${PATH+:$PATH}
-export PATH=/opt/homebrew/opt/llvm/bin${PATH+:$PATH}
-export PATH=/usr/local/go/bin:${PATH+:$PATH}
-export PATH=$HOME/.poetry/bin:${PATH+:$PATH}
-export PATH=$HOME/.local/bin:${PATH+:$PATH}
-export PATH=$HOME/.dotnet:$HOME/.dotnet/tools:${PATH+:$PATH}
-export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}
-export LD_LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-export DOTNET_ROOT=$HOME/.dotnet
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-. $HOME/.asdf/asdf.sh
-
 case ${OSTYPE} in
   darwin*)
     # homebrew
@@ -34,6 +13,28 @@ case ${OSTYPE} in
   linux*)
     ;;
 esac
+
+# path
+export PATH=/usr/local/bin${PATH+:$PATH}
+export PATH=$HOME/bin${PATH+:$PATH}
+export PATH=$HOME/.cargo/bin${PATH+:$PATH}
+export PATH=$HOME/flutter/bin${PATH+:$PATH}
+export PATH=$HOME/Library/Android/sdk/cmdline-tools/latest/bin${PATH+:$PATH}
+export PATH=/opt/homebrew/opt/bzip2/bin${PATH+:$PATH}
+export PATH=/opt/homebrew/opt/libiconv/bin${PATH+:$PATH}
+export PATH=/opt/homebrew/opt/llvm/bin${PATH+:$PATH}
+export PATH=/usr/local/go/bin:${PATH+:$PATH}
+export PATH=$HOME/.poetry/bin:${PATH+:$PATH}
+export PATH=$HOME/.local/bin:${PATH+:$PATH}
+export PATH=$HOME/.dotnet:$HOME/.dotnet/tools:${PATH+:$PATH}
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}
+export LD_LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+export DOTNET_ROOT=$HOME/.dotnet
+export BUN_INSTALL="$HOME/.bun"
+
+. $HOME/.asdf/asdf.sh
 
 # shell config
 export EDITOR=nvim
