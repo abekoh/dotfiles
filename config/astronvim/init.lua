@@ -8,7 +8,7 @@ return {
   options = {
     opt = {
       relativenumber = false,
-      -- wrap = true,
+      wrap = true,
       swapfile = false,
       scrolloff = 5,
     },
