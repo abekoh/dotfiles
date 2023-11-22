@@ -80,10 +80,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light olets/zsh-abbr
 
-# google cloud
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
-# The next line enables shell command completion for gcloud.
+# google cloud# The next line enables shell command completion for gcloud.
 if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # completion
@@ -174,3 +171,9 @@ if [[ -z "$IDEA_TERMINAL" ]]; then
   eval "$(zellij setup --generate-auto-start zsh)"
 fi
 
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kotaro_abe/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kotaro_abe/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kotaro_abe/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kotaro_abe/google-cloud-sdk/completion.zsh.inc'; fi

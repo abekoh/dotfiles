@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require 'net/http'
+require 'nokogiri'
+
+def fetch_title(url)
+  uri = URI(url)
+  response = Net::HTTP.get(uri)
+  doc = Nokogiri::HTML(response)
+  title = doc.title
+  title.nil? ? url : title
+rescue
+  url # エラーが発生した場合はURLをそのまま返す
+end
+
+def replace_urls_with_titles(content)
+  content.gsub(/(?<!\]\()(https?:\/\/[^\s]+)(?![^\[]*\])/) do |match|
+    title = fetch_title(match)
+    "[#{title}](#{match})"
+  end
+end
+
+content = ARGF.read
+puts replace_urls_with_titles(content)

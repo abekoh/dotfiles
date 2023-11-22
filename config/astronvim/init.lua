@@ -29,6 +29,23 @@ return {
 
   plugins = {
     {
+      "nvim-telescope/telescope.nvim",
+      opts = function(_, opts)
+        return require("astronvim.utils").extend_tbl(opts, {
+          pickers = {
+            find_files = {
+              hidden = true,
+              find_command = function(cfg)
+                local find_command = { "rg", "--files", "--color", "never" }
+                if not cfg.no_ignore then vim.list_extend(find_command, { "--glob", "!**/.git/**" }) end
+                return find_command
+              end,
+            },
+          },
+        })
+      end,
+    },
+    {
       "nvim-treesitter/nvim-treesitter",
       opts = {
         auto_install = true,
