@@ -7,6 +7,7 @@ return {
 
   options = {
     opt = {
+      ttyfast = true,
       relativenumber = false,
       wrap = true,
       swapfile = false,

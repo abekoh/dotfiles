@@ -1,3 +1,5 @@
+export TERM=xterm-256color
+
 case ${OSTYPE} in
   darwin*)
     # homebrew
@@ -9,6 +11,7 @@ case ${OSTYPE} in
     export HOMEBREW_FILE="~/dotfiles/Brewfile"
     # php
     export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
+    export TERM=alacritty
     ;;
   linux*)
     ;;
@@ -38,7 +41,6 @@ export BUN_INSTALL="$HOME/.bun"
 
 # shell config
 export EDITOR=nvim
-export TERM=xterm-256color
 
 # HISTORY
 export HISTSIZE=10000
