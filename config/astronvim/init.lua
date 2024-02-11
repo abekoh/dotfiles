@@ -81,6 +81,7 @@ return {
           "sqlls",
           -- "hls", -- haskell
           "graphql",
+          "biome",
         })
       end,
     },
