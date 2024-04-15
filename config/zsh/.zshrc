@@ -11,7 +11,7 @@ case ${OSTYPE} in
     export HOMEBREW_FILE="~/dotfiles/Brewfile"
     # php
     export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
-    export TERM=alacritty
+    # export TERM=alacritty
     ;;
   linux*)
     ;;
