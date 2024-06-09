@@ -11,7 +11,7 @@ case ${OSTYPE} in
     export HOMEBREW_FILE="~/dotfiles/Brewfile"
     # php
     export PHP_BUILD_CONFIGURE_OPTS="--with-bz2=$(brew --prefix bzip2) --with-iconv=$(brew --prefix libiconv)"
-    export TERM=alacritty
+    # export TERM=alacritty
     ;;
   linux*)
     ;;
@@ -31,6 +31,7 @@ export PATH=$HOME/.poetry/bin:${PATH+:$PATH}
 export PATH=$HOME/.local/bin:${PATH+:$PATH}
 export PATH=$HOME/.dotnet:$HOME/.dotnet/tools:${PATH+:$PATH}
 export PATH="$BUN_INSTALL/bin:$PATH"
+export PATH=$HOME/tinygo/bin:$PATH
 
 export LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/local/lib:/opt/homebrew/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
@@ -175,7 +176,10 @@ fi
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/kotaro_abe/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kotaro_abe/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/abekoh/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/abekoh/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/kotaro_abe/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/kotaro_abe/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/abekoh/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/abekoh/google-cloud-sdk/completion.zsh.inc'; fi
+
+# bun completions
+[ -s "/Users/abekoh/.bun/_bun" ] && source "/Users/abekoh/.bun/_bun"

@@ -59,7 +59,7 @@ return {
           -- "ansiblels",
           "astro",
           "bashls",
-          "clangd",
+          -- "clangd",
           "cmake",
           "cssls",
           "dockerls",
@@ -82,6 +82,7 @@ return {
           -- "hls", -- haskell
           "graphql",
           "biome",
+          "bufls",
         })
       end,
     },
