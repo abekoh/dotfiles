@@ -1,45 +1,44 @@
 shell = "zsh"
 
-apply = ["defer"]
-
 [plugins.zsh-defer]
 github = "romkatv/zsh-defer"
-apply = ["source"]
 
 [templates]
-defer = ""
+defer = "{{ hooks?.pre | nl }}{% for file in files %}zsh-defer source \"{{ file }}\"\n{% endfor %}{{ hooks?.post | nl }}"
 
 [plugins.compinit]
 inline = 'autoload -Uz compinit && zsh-defer compinit'
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
+apply = ["defer"]
 
 [plugins.zsh-completions]
 github = "zsh-users/zsh-completions"
+apply = ["defer"]
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
-apply = ["source"]
 
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
 
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
-apply = ["source"]
 
 [plugins.zsh-better-npm-completion]
 github = "lukechilds/zsh-better-npm-completion"
+apply = ["defer"]
 
 [plugins.aws_zsh_completer]
 remote = "https://raw.githubusercontent.com/aws/aws-cli/v2/bin/aws_zsh_completer.sh"
-
-[plugins.async]
-local = "~/dotfiles/config/zsh"
-use = ["env.zsh", "go.zsh"]
+apply = ["defer"]
 
 [plugins.sync]
 local = "~/dotfiles/config/zsh"
-use = ["alias.zsh", "funcs.zsh"]
-apply = ["source"]
+use = ["sync.zsh"]
+
+[plugins.async]
+local = "~/dotfiles/config/zsh"
+use = ["async.zsh"]
+apply = ["defer"]
