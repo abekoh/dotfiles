@@ -26,10 +26,11 @@ github = "jeffreytse/zsh-vi-mode"
 
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
-
-
-[plugins.zsh-better-npm-completion]
-github = "lukechilds/zsh-better-npm-completion"
+# github = "lukechilds/zsh-better-npm-completion"
 
 [plugins.aws_zsh_completer]
 remote = "https://raw.githubusercontent.com/aws/aws-cli/v2/bin/aws_zsh_completer.sh"
+
+[plugins.configs]
+local = "~/.config/sheldon/config"
+use = ["*.zsh"]

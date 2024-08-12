@@ -1,0 +1,21 @@
+alias d='docker'
+alias dc='docker compose'
+alias g='git'
+alias gs='git status'
+alias gcm='git checkout main'
+alias gpl='git pull'
+alias gps='git push origin HEAD'
+alias gc='git checkout'
+alias gcb='git checkout -b'
+alias ghrepov='gh repo view --web'
+alias ghprc='gh pr create'
+alias ghprv='gh pr view --web'
+alias v='nvim'
+alias vim='nvim'
+alias k='kubectl'
+alias ks='kubens'
+alias kx='kubectx'
+alias para='printf "%s\0" {1..5} | xargs -0 -I {} -P 5 echo {}'
+
+# abbr clear-session
+# abbr import-aliases --quiet
