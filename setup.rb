@@ -36,7 +36,6 @@ def zsh
   sheldon_path = "#{CONFIG_PATH}/sheldon"
   FileUtils.mkdir_p(sheldon_path) unless Dir.exist?(sheldon_path)
   `ln -sf #{DOTFILES_PATH}/config/zsh/sheldon.plugins.toml #{sheldon_path}/plugins.toml`
-  `ln -sf #{DOTFILES_PATH}/config/zsh/config #{sheldon_path}/config`
 end
 
 def ideavim

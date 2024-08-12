@@ -20,17 +20,26 @@ github = "zsh-users/zsh-completions"
 
 [plugins.zsh-autosuggestions]
 github = "zsh-users/zsh-autosuggestions"
+apply = ["source"]
 
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
 
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
-# github = "lukechilds/zsh-better-npm-completion"
+apply = ["source"]
+
+[plugins.zsh-better-npm-completion]
+github = "lukechilds/zsh-better-npm-completion"
 
 [plugins.aws_zsh_completer]
 remote = "https://raw.githubusercontent.com/aws/aws-cli/v2/bin/aws_zsh_completer.sh"
 
-[plugins.configs]
-local = "~/.config/sheldon/config"
-use = ["*.zsh"]
+[plugins.async]
+local = "~/dotfiles/config/zsh"
+use = ["env.zsh", "go.zsh"]
+
+[plugins.sync]
+local = "~/dotfiles/config/zsh"
+use = ["alias.zsh", "funcs.zsh"]
+apply = ["source"]
