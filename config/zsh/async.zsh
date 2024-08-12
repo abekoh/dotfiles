@@ -4,15 +4,6 @@ export GOTOOLCHAIN=$(curl -s -L "https://go.dev/VERSION?m=text" | head -n 1)+aut
 
 # direnv
 eval "$(direnv hook zsh)"
-# atuin
-eval "$(atuin init zsh --disable-up-arrow)"
-zvm_after_init_commands=('bindkey '^r' _atuin_search_widget')
-
-# ignore ctrl-d
-set -o ignoreeof
-
-# save history immediately
-setopt incappendhistory
 
 # 大文字小文字無視
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
@@ -87,3 +78,8 @@ cd() {
     fi
 }
 
+
+
+# atuin
+eval "$(atuin init zsh --disable-up-arrow)"
+zvm_after_init_commands=('bindkey '^r' _atuin_search_widget')

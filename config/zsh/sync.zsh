@@ -37,3 +37,9 @@ fi
 
 # starship
 eval "$(starship init zsh)"
+
+# ignore ctrl-d
+set -o ignoreeof
+
+# save history immediately
+setopt incappendhistory

@@ -22,6 +22,7 @@ github = "zsh-users/zsh-autosuggestions"
 
 [plugins.zsh-vi-mode]
 github = "jeffreytse/zsh-vi-mode"
+apply = ["defer"]
 
 [plugins.zsh-abbr]
 github = "olets/zsh-abbr"
