@@ -21,7 +21,7 @@ zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:
 [ -f $HOME/.ghcup/env ] && source $HOME/.ghcup/env
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 [ -f $HOME/.docker/init-zsh.sh ] && source $HOME/.docker/init-zsh.sh
-[ -f $HOME/.local/bin/mise ] && eval $(~/.local/bin/mise activate zsh)
+[ -f $HOME/.local/bin/mise ] && eval "$($HOME/.local/bin/mise activate zsh)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/abekoh/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/abekoh/google-cloud-sdk/path.zsh.inc'; fi
