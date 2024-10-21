@@ -1,0 +1,33 @@
+#!/bin/bash
+# volume$1の内容をvolume$2に（ほぼ完全に）コピーする
+# https://gist.github.com/ikapper/dfad2aacc07d8c98d81a5952d8218f0c
+
+check_will() {
+    echo "${1}の内容を${2}にコピーします。"
+    echo "2つのvolumeは予め作成されていることを想定しています。"
+    echo "${2}の内容は空であることを想定しています。そうでない場合はどうなるか不明です。"
+    echo -n "本当に実行しますか？(y/n) -> "
+    read will
+    [ $will = "y" -o $will = "yes" ]
+    return $?
+}
+
+
+if [ -z $1 ]; then
+    echo "コピー元となるvolumeを指定してください"
+    exit 1
+fi
+
+if [ -z $2 ]; then
+    echo "コピー先のvolumeを指定してください"
+    exit 2
+fi
+
+if check_will $1 $2; then
+    echo "コピー…"
+    docker run --rm -v ${1}:/source -v ${2}:/dest alpine sh -c "cd /source && cp -av . /dest"
+    echo "終わり！"
+else
+    echo "コピーせずに終わります"
+    exit -1
+fi
