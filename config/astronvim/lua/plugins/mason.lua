@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- Customize Mason plugins
 
 ---@type LazySpec
@@ -11,6 +9,33 @@ return {
     opts = {
       ensure_installed = {
         "lua_ls",
+        -- "ansiblels",
+        "astro",
+        "bashls",
+        -- "clangd",
+        "cmake",
+        "cssls",
+        "dockerls",
+        "gopls",
+        "html",
+        "jsonls",
+        "jdtls",        -- java
+        "tsserver",     -- javascript / typescript
+        "marksman",     -- markdown
+        "intelephense", -- php
+        "prismals",
+        "pyright",      -- python
+        -- "solargraph",   -- ruby
+        "taplo",        -- toml
+        "tailwindcss",
+        "terraformls",
+        "lemminx", -- xml
+        "yamlls",
+        "sqlls",
+        -- "hls", -- haskell
+        "graphql",
+        "biome",
+        "bufls",
         -- add more arguments for adding more language servers
       },
     },
