@@ -20,7 +20,7 @@ return {
         "html",
         "jsonls",
         "jdtls",        -- java
-        "tsserver",     -- javascript / typescript
+        "ts_ls",        -- javascript / typescript
         "marksman",     -- markdown
         "intelephense", -- php
         "prismals",
