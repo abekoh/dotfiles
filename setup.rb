@@ -18,15 +18,7 @@ end
 
 def astronvim
   puts 'setup astronvim'
-  nvim_path = "#{CONFIG_PATH}/nvim"
-  unless Dir.exist?(nvim_path)
-    FileUtils.mkdir_p(nvim_path)
-    `git clone --depth 1 https://github.com/AstroNvim/AstroNvim #{nvim_path}`
-  end
-  astro_nvim_path = "#{CONFIG_PATH}/astronvim/lua"
-  FileUtils.mkdir_p(astro_nvim_path) unless Dir.exist?(astro_nvim_path)
-  astro_nvim_user_path = "#{astro_nvim_path}/user"
-  `ln -s #{DOTFILES_PATH}/config/astronvim #{astro_nvim_user_path}` unless Dir.exist?(astro_nvim_user_path)
+  `ln -s #{DOTFILES_PATH}/config/astronvim #{CONFIG_PATH}/nvim`
 end
 
 def zsh
