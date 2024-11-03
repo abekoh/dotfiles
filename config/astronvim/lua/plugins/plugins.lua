@@ -9,7 +9,7 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()
-      require("copilot").setup({
+      require("copilot").setup {
         suggestion = {
           enabled = true,
           auto_trigger = true,
@@ -18,8 +18,8 @@ return {
             next = "<C-[>",
             dismiss = "<Esc>",
           },
-        }
-      })
+        },
+      }
     end,
   },
   {
@@ -35,14 +35,16 @@ return {
       vim.api.nvim_set_keymap("x", "<Leader>m", "<Plug>(quickhl-manual-this)", { silent = true })
       vim.api.nvim_set_keymap("n", "<Leader>M", "<Plug>(quickhl-manual-reset)", { silent = true })
       vim.api.nvim_set_keymap("x", "<Leader>M", "<Plug>(quickhl-manual-reset)", { silent = true })
-    end
+    end,
   },
   {
     "imsnif/kdl.vim",
   },
   {
     "iamcco/markdown-preview.nvim",
-    ft = "markdown",
-    run = "cd app && yarn install",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && yarn install",
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
   },
 }
