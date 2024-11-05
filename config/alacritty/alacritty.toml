@@ -2,15 +2,15 @@
 size = 13.5
 
 [font.normal]
-family = "Hack Nerd Font Mono"
+family = "HackGen25 Console NF"
 style = "Regular"
 
 [font.italic]
-family = "Hack Nerd Font Mono"
+family = "HackGen25 Console NF"
 style = "Italic"
 
 [font.bold]
-family = "Hack Nerd Font Mono"
+family = "HackGen25 Console NF"
 style = "Bold"
 
 [colors.primary]
