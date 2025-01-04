@@ -72,7 +72,6 @@ def alacritty
   puts 'setup alacritty'
   FileUtils.mkdir_p("#{CONFIG_PATH}/alacritty")
   `ln -sf #{DOTFILES_PATH}/config/alacritty/alacritty.toml #{CONFIG_PATH}/alacritty/alacritty.toml`
-  `ln -sf #{DOTFILES_PATH}/config/alacritty/alacritty.yml #{CONFIG_PATH}/alacritty/alacritty.yml`
 end
 
 if __FILE__ == $PROGRAM_NAME
