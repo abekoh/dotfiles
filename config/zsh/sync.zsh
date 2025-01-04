@@ -28,3 +28,5 @@ set -o ignoreeof
 
 # save history immediately
 setopt incappendhistory
+
+setopt share_history
