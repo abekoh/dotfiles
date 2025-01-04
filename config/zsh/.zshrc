@@ -17,4 +17,6 @@ if [ -f ~/.zshrc_local ]; then
   source ~/.zshrc_local
 fi
 
+fpath=(~/.zsh.d/ $fpath)
+
 eval "$(sheldon source)"
