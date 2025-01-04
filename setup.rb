@@ -18,7 +18,8 @@ end
 
 def astronvim
   puts 'setup astronvim'
-  `ln -s #{DOTFILES_PATH}/config/astronvim #{CONFIG_PATH}/nvim`
+  `unlink #{CONFIG_PATH}/nvim` if File.symlink?("#{CONFIG_PATH}/nvim")
+  `ln -sf #{DOTFILES_PATH}/config/astronvim #{CONFIG_PATH}/nvim`
 end
 
 def zsh
