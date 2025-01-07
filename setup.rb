@@ -75,6 +75,12 @@ def alacritty
   `ln -sf #{DOTFILES_PATH}/config/alacritty/alacritty.toml #{CONFIG_PATH}/alacritty/alacritty.toml`
 end
 
+def ghostty
+  puts 'setup ghostty'
+  FileUtils.mkdir_p("#{CONFIG_PATH}/ghostty")
+  `ln -sf #{DOTFILES_PATH}/config/ghostty/config ${CONFIG_PATH}/ghostty/config`
+end
+
 if __FILE__ == $PROGRAM_NAME
   FileUtils.mkdir(CONFIG_PATH) unless Dir.exist?(CONFIG_PATH)
   bin
@@ -87,4 +93,5 @@ if __FILE__ == $PROGRAM_NAME
   asdf
   zellij
   alacritty
+  ghostty
 end

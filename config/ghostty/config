@@ -1,0 +1,8 @@
+theme = catppuccin-macchiato
+
+font-family = "UDEV Gothic 35NF"
+font-family-bold = "UDEV Gothic 35NF"
+font-family-italic = "UDEV Gothic 35NF"
+font-family-bold-italic = "UDEV Gothic 35NF"
+macos-option-as-alt = true
+
