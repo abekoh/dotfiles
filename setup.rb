@@ -78,7 +78,7 @@ end
 def ghostty
   puts 'setup ghostty'
   FileUtils.mkdir_p("#{CONFIG_PATH}/ghostty")
-  `ln -sf #{DOTFILES_PATH}/config/ghostty/config ${CONFIG_PATH}/ghostty/config`
+  `ln -sf #{DOTFILES_PATH}/config/ghostty/config #{CONFIG_PATH}/ghostty/config`
 end
 
 if __FILE__ == $PROGRAM_NAME
