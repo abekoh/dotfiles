@@ -14,12 +14,6 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export HISTSIZE=10000
 
-if [[ -z "$IDEA_TERMINAL" ]]; then
-  export ZELLIJ_AUTO_ATTACH=true
-  export ZELLIJ_AUTO_EXIT=true
-  eval "$(zellij setup --generate-auto-start zsh)"
-fi
-
 # starship
 eval "$(starship init zsh)"
 
