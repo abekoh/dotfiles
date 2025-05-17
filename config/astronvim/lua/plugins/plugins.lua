@@ -3,25 +3,25 @@ return {
   {
     "jacoborus/tender.vim",
   },
-  {
-    "zbirenbaum/copilot.lua",
-    lazy = true,
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup {
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<C-]>",
-            next = "<C-[>",
-            dismiss = "<Esc>",
-          },
-        },
-      }
-    end,
-  },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   lazy = true,
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --     require("copilot").setup {
+  --       suggestion = {
+  --         enabled = true,
+  --         auto_trigger = true,
+  --         keymap = {
+  --           accept = "<C-]>",
+  --           next = "<C-[>",
+  --           dismiss = "<Esc>",
+  --         },
+  --       },
+  --     }
+  --   end,
+  -- },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
