@@ -6,3 +6,4 @@ font-feature = "-liga"
 font-feature = "-dlig"
 macos-option-as-alt = true
 link-url = true
+keybind = shift+enter=text:\n
