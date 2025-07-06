@@ -81,6 +81,12 @@ def ghostty
   `ln -sf #{DOTFILES_PATH}/config/ghostty/config #{CONFIG_PATH}/ghostty/config`
 end
 
+def claude
+  puts 'setup claude'
+  FileUtils.mkdir_p("#{ENV['HOME']}/.claude")
+  `ln -sf #{DOTFILES_PATH}/config/claude/settings.json #{ENV['HOME']}/.claude/settings.json`
+end
+
 if __FILE__ == $PROGRAM_NAME
   FileUtils.mkdir(CONFIG_PATH) unless Dir.exist?(CONFIG_PATH)
   bin
@@ -94,4 +100,5 @@ if __FILE__ == $PROGRAM_NAME
   zellij
   alacritty
   ghostty
+  claude
 end
