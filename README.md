@@ -11,31 +11,11 @@ cd dotfiles
 ./setup.rb
 ```
 
-## Currently maintained
+## Claude code
 
-- OS
-  - [x] Mac
-  - [ ] Linux / Ubuntu
-- Shell
-  - [ ] fish
-  - [x] zsh
-    - [x] zinit
-- Editor
-  - [ ] Vim
-  - [x] Neovim
-    - [ ] dein.vim + coc.nvim
-    - [ ] vim-plug + coc.nvim
-    - [x] AstroNvim
-  - [x] JetBrains / IdeaVim
-- Terminal
-  - [ ] iTerm
-  - [x] Alacritty
-- Multiplexer
-  - [ ] tmux
-  - [x] Zellij
-- Environment management
-  - [ ] anyenv
-  - [x] asdf
-- Others
-  - [x] git
-  - [x] aws
+in global
+
+```sh
+claude mcp add --scope user context7 -- npx y @upstash/context7-mcp
+claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context=claude-code --project-from-cwd
+```

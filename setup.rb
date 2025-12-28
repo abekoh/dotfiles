@@ -85,6 +85,7 @@ def claude
   puts 'setup claude'
   FileUtils.mkdir_p("#{ENV['HOME']}/.claude")
   `ln -sf #{DOTFILES_PATH}/config/claude/settings.json #{ENV['HOME']}/.claude/settings.json`
+  `ln -sf #{DOTFILES_PATH}/config/claude/CLAUDE.md #{ENV['HOME']}/.claude/CLAUDE.md`
 end
 
 if __FILE__ == $PROGRAM_NAME
