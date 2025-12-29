@@ -16,6 +16,6 @@ cd dotfiles
 in global
 
 ```sh
-claude mcp add --scope user context7 -- npx y @upstash/context7-mcp
+claude mcp add --scope user context7 -- npx -y @upstash/context7-mcp
 claude mcp add --scope user serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --context=claude-code --project-from-cwd
 ```

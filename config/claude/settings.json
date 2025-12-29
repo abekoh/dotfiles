@@ -1,4 +1,7 @@
 {
+	"env": {
+		"USE_BUILTIN_RIPGREP": "1"
+	},
 	"permissions": {
 		"allow": [
 			"Bash(ls:*)",
@@ -6,6 +9,10 @@
 			"Bash(fd:*)",
 			"Bash(rg:*)",
 			"Bash(grep:*)",
+			"Bash(go build:*)",
+			"Bash(go mod tidy:*)",
+			"Bash(go generate:*)",
+			"Bash(go test:*)",
 			"mcp__serena",
 			"mcp__context7"
 		],
@@ -31,7 +38,8 @@
 			"Bash(git rebase:*)"
 		]
 	},
-	"env": {
-		"USE_BUILTIN_RIPGREP": 1
+	"enabledPlugins": {
+		"gopls-lsp@claude-plugins-official": true,
+		"commit-commands@claude-plugins-official": true
 	}
 }
