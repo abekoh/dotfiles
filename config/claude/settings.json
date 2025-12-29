@@ -13,6 +13,7 @@
 			"Bash(go mod tidy:*)",
 			"Bash(go generate:*)",
 			"Bash(go test:*)",
+			"Bash(go tool:*)",
 			"mcp__serena",
 			"mcp__context7"
 		],
