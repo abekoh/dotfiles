@@ -85,9 +85,7 @@ if __FILE__ == $PROGRAM_NAME
   aws
   git
   starship
-  asdf
   zellij
-  alacritty
   ghostty
   claude
 end
