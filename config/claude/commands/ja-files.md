@@ -1,0 +1,1 @@
+Translate the following files into Japanese, and save: $1

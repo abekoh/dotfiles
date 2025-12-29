@@ -1,0 +1,1 @@
+Translate the following into English: $1
