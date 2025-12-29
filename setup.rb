@@ -54,12 +54,6 @@ def starship
   `ln -sf #{DOTFILES_PATH}/config/starship/starship.toml #{CONFIG_PATH}/starship.toml`
 end
 
-def asdf
-  puts 'setup asdf'
-  `git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0` unless command_installed?('asdf')
-  `ln -sf #{DOTFILES_PATH}/config/asdf/.asdfrc ~/.asdfrc`
-end
-
 def zellij
   puts 'setup zellij'
   `cargo install --locked zellij` unless command_installed?('zellij')
