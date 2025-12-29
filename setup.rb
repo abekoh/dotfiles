@@ -69,12 +69,6 @@ def zellij
   `ln -sf #{DOTFILES_PATH}/config/zellij/layouts #{layout_path}` unless Dir.exist?(layout_path)
 end
 
-def alacritty
-  puts 'setup alacritty'
-  FileUtils.mkdir_p("#{CONFIG_PATH}/alacritty")
-  `ln -sf #{DOTFILES_PATH}/config/alacritty/alacritty.toml #{CONFIG_PATH}/alacritty/alacritty.toml`
-end
-
 def ghostty
   puts 'setup ghostty'
   FileUtils.mkdir_p("#{CONFIG_PATH}/ghostty")
