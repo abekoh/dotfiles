@@ -43,5 +43,39 @@
 	"enabledPlugins": {
 		"gopls-lsp@claude-plugins-official": true,
 		"commit-commands@claude-plugins-official": true
+	},
+	"language": "Japanese",
+	"hooks": {
+		"PreToolUse": [],
+		"Notification": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "afplay /System/Library/Sounds/Ping.aiff"
+					},
+					{
+						"type": "command",
+						"command": "osascript -e 'display notification \"Claude Code is waiting for you.\" with title \"Claude Code\"'"
+					}
+				]
+			}
+		],
+		"Stop": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "afplay /System/Library/Sounds/Funk.aiff"
+					},
+					{
+						"type": "command",
+						"command": "osascript -e 'display notification \"Claude Code completed tasks.\" with title \"Claude Code\"'"
+					}
+				]
+			}
+		]
 	}
 }
