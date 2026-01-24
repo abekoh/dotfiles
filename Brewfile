@@ -1,7 +1,5 @@
 # shell 
-brew "fish"
 brew "starship"
-brew "tmux"
 brew "atuin"
 
 # editor
@@ -46,9 +44,6 @@ brew "gsed"
 brew "openssl"
 
 # languages and its tools
-brew "ninja"
-brew "llvm"
-brew "deno"
 brew "rust-analyzer"
 brew "golangci-lint"
 
@@ -64,11 +59,4 @@ brew "tflint"
 
 # others
 brew "tokei"
-brew "circleci"
 brew "protobuf"
-brew "flatbuffers"
-
-# for build php
-brew "bzip2"
-brew "libiconv"
-brew "tidy-html5"
