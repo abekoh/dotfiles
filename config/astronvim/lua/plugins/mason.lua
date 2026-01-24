@@ -19,15 +19,15 @@ return {
         "gopls",
         "html",
         "jsonls",
-        "jdtls",        -- java
-        "ts_ls",        -- javascript / typescript
-        "kotlin_lsp",   -- kotlin
-        "marksman",     -- markdown
+        "jdtls", -- java
+        "ts_ls", -- javascript / typescript
+        "kotlin_language_server", -- kotlin
+        "marksman", -- markdown
         "intelephense", -- php
         "prismals",
-        "pyright",      -- python
+        "pyright", -- python
         -- "solargraph",   -- ruby
-        "taplo",        -- toml
+        "taplo", -- toml
         "tailwindcss",
         "terraformls",
         "lemminx", -- xml
