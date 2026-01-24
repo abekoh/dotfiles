@@ -1,6 +1,7 @@
 # shell 
 brew "starship"
 brew "atuin"
+brew "terminal-notifier"
 
 # editor
 brew "neovim"

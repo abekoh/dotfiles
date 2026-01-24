@@ -10,12 +10,12 @@ return {
   opts = {
     -- Configure core features of AstroNvim
     features = {
-      large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
-      autopairs = true, -- enable autopairs at start
-      cmp = true, -- enable completion at start
+      large_buf = { size = 1024 * 256, lines = 10000 },             -- set global limits for large files for disabling features like treesitter
+      autopairs = true,                                             -- enable autopairs at start
+      cmp = true,                                                   -- enable completion at start
       diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic configuration on start
-      highlighturl = true, -- highlight URLs at start
-      notifications = true, -- enable notifications at start
+      highlighturl = true,                                          -- highlight URLs at start
+      notifications = true,                                         -- enable notifications at start
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
@@ -24,12 +24,12 @@ return {
     },
     -- vim options can be configured here
     options = {
-      opt = { -- vim.opt.<key>
+      opt = {                   -- vim.opt.<key>
         relativenumber = false, -- sets vim.opt.relativenumber
-        number = true, -- sets vim.opt.number
-        spell = false, -- sets vim.opt.spell
-        signcolumn = "yes", -- sets vim.opt.signcolumn to yes
-        wrap = true, -- sets vim.opt.wrap
+        number = true,          -- sets vim.opt.number
+        spell = false,          -- sets vim.opt.spell
+        signcolumn = "yes",     -- sets vim.opt.signcolumn to yes
+        wrap = true,            -- sets vim.opt.wrap
         ttyfast = true,
         swapfile = false,
         scrolloff = 5,
@@ -68,10 +68,10 @@ return {
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
 
-        ["<Leader>sl"] = { "<C-w>w", desc = "Right window" },
-        ["<Leader>sh"] = { "<C-w>W", desc = "Left window" },
-        ["<Leader>sj"] = { "<C-w>j", desc = "Below window" },
-        ["<Leader>sk"] = { "<C-w>k", desc = "Above window" },
+        ["<Right>"] = { "<C-w>w", desc = "Right window" },
+        ["<Left>"] = { "<C-w>W", desc = "Left window" },
+        ["<Up>"] = { "<C-w>j", desc = "Below window" },
+        ["<Down>"] = { "<C-w>k", desc = "Above window" },
       },
     },
   },
