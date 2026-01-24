@@ -2,63 +2,42 @@
 
 ---@type LazySpec
 return {
-  -- use mason-lspconfig to configure LSP installations
+  -- use mason-tool-installer to configure package installations
   {
-    "williamboman/mason-lspconfig.nvim",
-    -- overrides `require("mason-lspconfig").setup(...)`
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
       ensure_installed = {
-        "lua_ls",
-        -- "ansiblels",
-        "astro",
-        "bashls",
-        -- "clangd",
-        "cmake",
-        "cssls",
-        "dockerls",
+        -- Language Servers
+        "lua-language-server",
+        "astro-language-server",
+        "bash-language-server",
+        "cmake-language-server",
+        "css-lsp",
+        "dockerfile-language-server",
         "gopls",
-        "html",
-        "jsonls",
+        "html-lsp",
+        "json-lsp",
         "jdtls", -- java
-        "ts_ls", -- javascript / typescript
-        "kotlin_language_server", -- kotlin
+        "typescript-language-server", -- javascript / typescript
+        "kotlin-language-server", -- kotlin
         "marksman", -- markdown
         "intelephense", -- php
-        "prismals",
+        "prisma-language-server",
         "pyright", -- python
-        -- "solargraph",   -- ruby
         "taplo", -- toml
-        "tailwindcss",
-        "terraformls",
+        "tailwindcss-language-server",
+        "terraform-ls",
         "lemminx", -- xml
-        "yamlls",
+        "yaml-language-server",
         "sqlls",
-        -- "hls", -- haskell
-        "graphql",
+        "graphql-language-service-cli",
         "biome",
-        -- "bufls",
-        -- add more arguments for adding more language servers
-      },
-    },
-  },
-  -- use mason-null-ls to configure Formatters/Linter installation for null-ls sources
-  {
-    "jay-babu/mason-null-ls.nvim",
-    -- overrides `require("mason-null-ls").setup(...)`
-    opts = {
-      ensure_installed = {
+
+        -- Formatters/Linters
         "stylua",
-        -- add more arguments for adding more null-ls sources
-      },
-    },
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    -- overrides `require("mason-nvim-dap").setup(...)`
-    opts = {
-      ensure_installed = {
-        "python",
-        -- add more arguments for adding more debuggers
+
+        -- Debuggers
+        "debugpy", -- python debugger
       },
     },
   },
