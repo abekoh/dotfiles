@@ -5,6 +5,9 @@ export GOTOOLCHAIN=$(curl -s -L "https://go.dev/VERSION?m=text" | head -n 1)+aut
 # direnv
 eval "$(direnv hook zsh)"
 
+# git-wt
+eval "$(git wt --init zsh)"
+
 # 大文字小文字無視
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 # 大文字のときは小文字を無視
