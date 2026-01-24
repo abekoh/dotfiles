@@ -82,7 +82,7 @@ _prj () {
   local new_tab=$2
 
   if [ -z "${repo_path}" ]; then
-    repo_path=$(ghq list -p | peco --query "$LBUFFER")
+    repo_path=$(ghq root)/$(ghq list | peco --query "$LBUFFER")
   fi
   if [ -z "${repo_path}" ]; then
     return
