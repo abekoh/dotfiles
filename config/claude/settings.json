@@ -1,81 +1,82 @@
 {
-	"env": {
-		"USE_BUILTIN_RIPGREP": "1"
-	},
-	"permissions": {
-		"allow": [
-			"Bash(ls:*)",
-			"Bash(find:*)",
-			"Bash(fd:*)",
-			"Bash(rg:*)",
-			"Bash(grep:*)",
-			"Bash(go build:*)",
-			"Bash(go mod tidy:*)",
-			"Bash(go generate:*)",
-			"Bash(go test:*)",
-			"Bash(go tool:*)",
-			"Bash(git add:*)",
-			"mcp__serena",
-			"mcp__context7"
-		],
-		"deny": [
-			"Bash(sudo:*)",
-			"Bash(rm -rf:*)",
-			"Read(.env*)",
-			"Bash(id_rsa)",
-			"Bash(id_ed25519)",
-			"Bash(**/.ssh/**)",
-			"Write(.env*)",
-			"Write(**/.ssh/**)"
-		],
-		"ask": [
-			"Bash(curl:*)",
-			"Bash(chmod:*)",
-			"Bash(git commit:*)",
-			"Bash(git branch:*)",
-			"Bash(git merge:*)",
-			"Bash(git stash:*)",
-			"Bash(git pull:*)",
-			"Bash(git reset:*)",
-			"Bash(git rebase:*)"
-		]
-	},
-	"enabledPlugins": {
-		"gopls-lsp@claude-plugins-official": true,
-		"commit-commands@claude-plugins-official": true
-	},
-	"language": "Japanese",
-	"hooks": {
-		"PreToolUse": [],
-		"Notification": [
-			{
-				"matcher": "",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "afplay /System/Library/Sounds/Ping.aiff"
-					},
-					{
-						"type": "command",
-						"command": "osascript -e 'display notification \"Claude Code is waiting for you.\" with title \"Claude Code\"'"
-					}
-				]
-			}
-		],
-		"Stop": [
-			{
-				"matcher": "",
-				"hooks": [
-					{
-						"type": "command",
-						"command": "afplay /System/Library/Sounds/Funk.aiff"
-					},
-					{
-						"type": "command",
-						"command": "osascript -e 'display notification \"Claude Code completed tasks.\" with title \"Claude Code\"'"
-					}
-				]
-			}
-		]
-	}
+  "env": {
+    "USE_BUILTIN_RIPGREP": "1"
+  },
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(fd:*)",
+      "Bash(rg:*)",
+      "Bash(grep:*)",
+      "Bash(go build:*)",
+      "Bash(go mod tidy:*)",
+      "Bash(go generate:*)",
+      "Bash(go test:*)",
+      "Bash(go tool:*)",
+      "Bash(git add:*)",
+      "mcp__serena",
+      "mcp__context7"
+    ],
+    "deny": [
+      "Bash(sudo:*)",
+      "Bash(rm -rf:*)",
+      "Read(.env*)",
+      "Bash(id_rsa)",
+      "Bash(id_ed25519)",
+      "Bash(**/.ssh/**)",
+      "Write(.env*)",
+      "Write(**/.ssh/**)"
+    ],
+    "ask": [
+      "Bash(curl:*)",
+      "Bash(chmod:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git merge:*)",
+      "Bash(git stash:*)",
+      "Bash(git pull:*)",
+      "Bash(git reset:*)",
+      "Bash(git rebase:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Ping.aiff"
+          },
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code is waiting for you.\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Funk.aiff"
+          },
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude Code completed tasks.\" with title \"Claude Code\"'"
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "gopls-lsp@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": true
+  },
+  "language": "Japanese",
+  "model": "sonnet"
 }
