@@ -109,8 +109,11 @@ _prj () {
   fi
 
   local repo_escaped=$(echo "$(basename $(dirname ${repo_path}))/$(basename ${repo_path})" | sed -e 's/\./_/g')
-  local branch_escaped=$(echo "${branch}" | sed -e 's/\./_/g')
-  local prj_name="${repo_escaped}[${branch_escaped}]"
+  local prj_subname=$(echo "${branch}" | sed -e 's/\./_/g')
+  if [[ $prj_subname == $default_branch ]]; then
+    prj_subname="HOME"
+  fi
+  local prj_name="${repo_escaped}[${prj_subname}]"
 
   if zellij action query-tab-names | grep -Fxq $prj_name; then
     zellij action go-to-tab-name $prj_name
@@ -119,7 +122,7 @@ _prj () {
       zellij action new-tab --layout default --name $prj_name --cwd $repo_path
 
       if [[ $branch == $default_branch ]]; then
-        _zellij_run "git checkout $default_branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
+        _zellij_run "git checkout $default_branch || zellij action rename-tab \"${repo_escaped}[HOME]\""
       else
         _zellij_run "git wt $branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
       fi
@@ -127,8 +130,11 @@ _prj () {
       zellij action rename-tab $prj_name
       cd $repo_path
 
-      local fallback_branch_escaped=$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')
-      local fallback_prj_name="${repo_escaped}[${fallback_branch_escaped}]"
+      local fallback_prj_subname=$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')
+      if [[ $fallback_prj_subname == $default_branch ]]; then
+        fallback_prj_subname="HOME"
+      fi
+      local fallback_prj_name="${repo_escaped}[${fallback_prj_subname}]"
       if [[ $branch == $default_branch ]]; then
         git checkout $default_branch \
           || zellij action rename-tab $fallback_prj_name
