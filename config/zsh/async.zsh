@@ -72,6 +72,11 @@ prjv1 () {
   fi
 }
 
+_zellij_run () {
+  zellij action write-chars "$1"
+  zellij action write 13  # Enter key
+}
+
 _prj () {
   local repo_path=$1
   local new_tab=$2
@@ -114,11 +119,9 @@ _prj () {
       zellij action new-tab --layout default --name $prj_name --cwd $repo_path
 
       if [[ $branch == $default_branch ]]; then
-        zellij action write-chars "git checkout $default_branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
-        zellij action write 13  # Enter key
+        _zellij_run "git checkout $default_branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
       else
-        zellij action write-chars "git wt $branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
-        zellij action write 13  # Enter key
+        _zellij_run "git wt $branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
       fi
     else
       zellij action rename-tab $prj_name
