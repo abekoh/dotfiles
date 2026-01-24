@@ -8,13 +8,16 @@ if [ "$STOP_HOOK_ACTIVE" = "true" ]; then
     exit 0
 fi
 
-# プロジェクト名を取得
-PROJECT_NAME=$(basename "$PWD")
+COMMON_GIT_PATH=$(realpath $(git rev-parse --git-common-dir) | sed -E 's#(\.git)?/?$##')
+ORG_NAME=$(basename $(dirname "${COMMON_GIT_PATH}") | sed -e 's/\./_/g')
+REPO_NAME=$(basename "${COMMON_GIT_PATH}" | sed -e 's/\./_/g')
+BRANCH=$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')
+PRJ_NAME="${ORG_NAME}/${REPO_NAME}[${BRANCH}]"
 
-# 詳細な通知を送信
 terminal-notifier \
     -title "Claude Code 🤖" \
-    -subtitle "プロジェクト: $PROJECT_NAME" \
-    -message "処理が完了しました" \
+    -subtitle "$PRJ_NAME" \
+    -message "Completed job." \
     -sound "Blow" \
-    -group "claude-code-completion"
+    -group "claude-code-completion" \
+    -execute "~/.cargo/bin/zelli go-to-tab ${PRJ_NAME}"
