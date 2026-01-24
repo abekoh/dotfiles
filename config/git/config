@@ -20,4 +20,4 @@
 [wt]
 	basedir = .worktrees
 	copy = .env*
-	hook = direnv allow .
+	hook = direnv allow . || true
