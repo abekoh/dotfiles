@@ -59,7 +59,7 @@ alias para='printf "%s\0" {1..5} | xargs -0 -I {} -P 5 echo {}'
 abbr clear-session
 abbr import-aliases --quiet
 
-prj () {
+prjv1 () {
   local prj_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
   if [ -z "$prj_path" ]; then
     return
@@ -70,6 +70,55 @@ prj () {
   else
     zellij action new-tab --layout project --name $prj_name --cwd $prj_path
   fi
+}
+
+_prj () {
+  local repo_path=$1
+  local new_tab=$2
+
+  if [ -z "${repo_path}" ]; then
+    repo_path=$(ghq list -p | peco --query "$LBUFFER")
+  fi
+  if [ -z "${repo_path}" ]; then
+    return
+  fi
+  local branch=$(git -C "${repo_path}" branch -a --format='%(refname:short)' | peco --query "$LBUFFER")
+  if [ -z "${branch}" ]; then
+    return
+  fi
+
+  local repo_escaped=$(echo "$(basename $(dirname ${repo_path}))/$(basename ${repo_path})" | sed -e 's/\./_/g')
+  local branch_escaped=$(echo "${branch}" | sed -e 's/\./_/g')
+  local prj_name="${repo_escaped}[${branch_escaped}]"
+
+  if zellij action query-tab-names | grep -Fxq $prj_name; then
+    zellij action go-to-tab-name $prj_name
+  else
+    if [[ $new_tab == "true" ]]; then
+      zellij action new-tab --layout default --name $prj_name --cwd $repo_path
+    else
+      zellij action rename-tab $prj_name
+      cd $repo_path
+    fi
+    git wt $branch
+  fi
+}
+
+nprj () {
+  _prj "" "true"
+}
+
+cprj () {
+  _prj "" "false"
+}
+
+nwt () {
+  _prj "${PWD}" "true"
+}
+
+
+cwt () {
+  _prj "${PWD}" "false"
 }
 
 
