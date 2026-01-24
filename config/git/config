@@ -13,3 +13,11 @@
 
 [diff]
     colorMoved = default
+
+[ghq]
+	root = ~/src
+
+[wt]
+	basedir = .worktrees
+	copy = .env*
+	hook = direnv allow .
