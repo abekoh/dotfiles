@@ -78,6 +78,12 @@ def claude
   `ln -sf #{DOTFILES_PATH}/config/claude/commands/* #{ENV['HOME']}/.claude/commands/`
 end
 
+def peco
+  puts 'setup peco'
+  FileUtils.mkdir_p("#{CONFIG_PATH}/peco")
+  `ln -sf #{DOTFILES_PATH}/config/peco/config.json #{CONFIG_PATH}/peco/config.json`
+end
+
 if __FILE__ == $PROGRAM_NAME
   FileUtils.mkdir(CONFIG_PATH) unless Dir.exist?(CONFIG_PATH)
   bin
@@ -90,4 +96,5 @@ if __FILE__ == $PROGRAM_NAME
   zellij
   ghostty
   claude
+  peco
 end
