@@ -121,8 +121,10 @@ _prj () {
     fi
 
     if [[ $branch == $default_branch ]]; then
+      local fallback_branch_escaped=$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')
+      local fallback_prj_name="${repo_escaped}[${fallback_branch_escaped}]"
       git checkout $default_branch \
-        || zellij action rename-tab $(git rev-parse --abbrev-ref HEAD)
+        || zellij action rename-tab $fallback_prj_name
     else
       git wt $branch
     fi
@@ -137,7 +139,7 @@ cprj () {
   _prj "" "false"
 }
 
-GIT_COMMON_PATH='$(git rev-parse --git-common-dir | sed 's/\.git$//' | sed 's/\/$//')'
+GIT_COMMON_PATH='$(realpath $(git rev-parse --git-common-dir) | sed -E '\''s#(\.git)?/?$##'\'')'
 
 nwt () {
   local common_path=${(e)GIT_COMMON_PATH}
