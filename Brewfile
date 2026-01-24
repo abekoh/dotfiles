@@ -1,4 +1,5 @@
 # shell 
+brew "zellij"
 brew "starship"
 brew "atuin"
 brew "terminal-notifier"

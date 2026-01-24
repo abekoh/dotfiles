@@ -22,4 +22,4 @@ terminal-notifier \
     -message "Completed job." \
     -sound "Blow" \
     -group "claude-code-completion" \
-    -execute "${HOME}/.cargo/bin/zellij action go-to-tab-name ${PRJ_NAME}"
+    -execute "/opt/homebrew/bin/zellij action go-to-tab-name ${PRJ_NAME}"
