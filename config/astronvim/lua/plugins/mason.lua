@@ -21,7 +21,7 @@ return {
         "jsonls",
         "jdtls",        -- java
         "ts_ls",        -- javascript / typescript
-        "kotlin-lsp",   -- kotlin
+        "kotlin_lsp",   -- kotlin
         "marksman",     -- markdown
         "intelephense", -- php
         "prismals",
