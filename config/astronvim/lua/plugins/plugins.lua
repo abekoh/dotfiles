@@ -1,8 +1,5 @@
 ---@type LazySpec
 return {
-  {
-    "jacoborus/tender.vim",
-  },
   -- {
   --   "zbirenbaum/copilot.lua",
   --   lazy = true,
