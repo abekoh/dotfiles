@@ -1,5 +1,7 @@
 #!/bin/bash
 
+jq . > /tmp/claude_code_notification.json
+
 SESSION_ID=$(jq -r '.session_id')
 STOP_HOOK_ACTIVE=$(jq -r '.stop_hook_active')
 

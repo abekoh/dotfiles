@@ -41,6 +41,17 @@
 		]
 	},
 	"hooks": {
+		"Notification": [
+			{
+				"matcher": "",
+				"hooks": [
+					{
+						"type": "command",
+						"command": "~/.config/claude/scripts/notify.sh"
+					}
+				]
+			}
+		],
 		"Stop": [
 			{
 				"matcher": "",
