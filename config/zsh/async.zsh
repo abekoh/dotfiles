@@ -94,11 +94,7 @@ _prj () {
   local branch=$(
     {
       [[ -n $default_branch ]] && echo "$default_branch"
-      git -C "${repo_path}" branch --format='%(refname:short)' | grep -v "^${default_branch}$"
-      git -C "${repo_path}" branch -r --format='%(refname:short)' \
-        | grep -v 'HEAD' \
-        | sed 's@^origin/@@' \
-        | grep -v "^${default_branch}$"
+      git -C "${repo_path}" branch -a --format='%(refname:short)' | grep -v "^${default_branch}$"
     } | awk '!seen[$0]++' | peco --query "$LBUFFER"
   )
   
@@ -115,18 +111,27 @@ _prj () {
   else
     if [[ $new_tab == "true" ]]; then
       zellij action new-tab --layout default --name $prj_name --cwd $repo_path
+
+      if [[ $branch == $default_branch ]]; then
+        zellij action write-chars "git checkout $default_branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
+        zellij action write 13  # Enter key
+      else
+        zellij action write-chars "git wt $branch || zellij action rename-tab \"${repo_escaped}[\$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')]\""
+        zellij action write 13  # Enter key
+      fi
     else
       zellij action rename-tab $prj_name
       cd $repo_path
-    fi
 
-    if [[ $branch == $default_branch ]]; then
       local fallback_branch_escaped=$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')
       local fallback_prj_name="${repo_escaped}[${fallback_branch_escaped}]"
-      git checkout $default_branch \
-        || zellij action rename-tab $fallback_prj_name
-    else
-      git wt $branch
+      if [[ $branch == $default_branch ]]; then
+        git checkout $default_branch \
+          || zellij action rename-tab $fallback_prj_name
+      else
+        git wt $branch \
+          || zellij action rename-tab $fallback_prj_name
+      fi
     fi
   fi
 }
