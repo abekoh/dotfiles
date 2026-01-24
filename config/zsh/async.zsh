@@ -96,7 +96,7 @@ _prj () {
   fi
   
   # ブランチ一覧: ローカルのみ、デフォルトブランチを先頭に
-  git fetch -C ${repo_path}
+  git -C ${repo_path} fetch
   local branch=$(
     {
       [[ -n $default_branch ]] && echo "$default_branch"
