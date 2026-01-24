@@ -74,10 +74,11 @@ prjv1 () {
 
 _prj () {
   local repo_path=$1
-  local new_tab=$2
+  local branch=$2
+  local new_tab=$3
 
   if [ -z "${repo_path}" ]; then
-    repo_path=$(ghq list -p | peco --query "$LBUFFER")
+    repo_path=$(ghq root)/$(ghq list | peco --query "$LBUFFER")
   fi
   if [ -z "${repo_path}" ]; then
     return
@@ -90,14 +91,16 @@ _prj () {
     default_branch=$(git -C "${repo_path}" branch --list main master | head -1 | tr -d ' *')
   fi
   
-  # ブランチ一覧: ローカルのみ、デフォルトブランチを先頭に
-  git fetch -C ${repo_path}
-  local branch=$(
-    {
-      [[ -n $default_branch ]] && echo "$default_branch"
-      git -C "${repo_path}" branch -a --format='%(refname:short)' | grep -v "^${default_branch}$"
-    } | awk '!seen[$0]++' | peco --query "$LBUFFER"
-  )
+  if [ -z "${branch}" ]; then
+    # ブランチ一覧: ローカルのみ、デフォルトブランチを先頭に
+    git fetch -C ${repo_path}
+    branch=$(
+      {
+        [[ -n $default_branch ]] && echo "$default_branch"
+        git -C "${repo_path}" branch -a --format='%(refname:short)' | grep -v "^${default_branch}$"
+      } | awk '!seen[$0]++' | peco --query "$LBUFFER"
+    )
+  fi
   
   if [ -z "${branch}" ]; then
     return
@@ -138,31 +141,44 @@ _prj () {
 }
 
 nprj () {
-  _prj "" "true"
+  _prj "" "" "true"
 }
 
 cprj () {
-  _prj "" "false"
+  _prj "" "" "false" ""
 }
 
 GIT_COMMON_PATH='$(realpath $(git rev-parse --git-common-dir) | sed -E '\''s#(\.git)?/?$##'\'')'
 
 nwt () {
+  local branch=$1
   local common_path=${(e)GIT_COMMON_PATH}
   if [ -z "${common_path}" ]; then
     return
   fi
-  _prj "${common_path}" "true"
+  _prj "${common_path}" "${branch}" "true"
 }
 
 cwt () {
+  local branch=$1
   local common_path=${(e)GIT_COMMON_PATH}
   if [ -z "${common_path}" ]; then
     return
   fi
-  _prj "${common_path}" "false"
+  _prj "${common_path}" "${branch}" "false"
 }
 
+nwtb () {
+  local branch=$1
+  git checkout -b ${branch} || return 1
+  nwt ${branch}
+}
+
+cwtb () {
+  local branch=$1
+  git checkout -b ${branch} || return 1
+  cwt ${branch}
+}
 
 cd() {
     if [ "$#" -eq 0 ]; then
