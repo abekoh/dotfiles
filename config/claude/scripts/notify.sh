@@ -20,4 +20,4 @@ terminal-notifier \
     -message "Completed job." \
     -sound "Blow" \
     -group "claude-code-completion" \
-    -execute "~/.cargo/bin/zelli go-to-tab ${PRJ_NAME}"
+    -execute "${HOME}/.cargo/bin/zellij action go-to-tab-name ${PRJ_NAME}"
