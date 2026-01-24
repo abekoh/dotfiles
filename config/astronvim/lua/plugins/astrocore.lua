@@ -67,6 +67,11 @@ return {
 
         -- setting a mapping to false will disable it
         -- ["<C-S>"] = false,
+
+        ["<Leader>sl"] = { "<C-w>w", desc = "Right window" },
+        ["<Leader>sh"] = { "<C-w>W", desc = "Left window" },
+        ["<Leader>sj"] = { "<C-w>j", desc = "Below window" },
+        ["<Leader>sk"] = { "<C-w>k", desc = "Above window" },
       },
     },
   },
