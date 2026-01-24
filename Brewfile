@@ -18,6 +18,7 @@ brew "gh"
 brew "ghq"
 brew "tig"
 brew "git-delta"
+brew "k1LoW/tap/git-wt"
 
 # gorgeous shell tools (replace from...)
 brew "ripgrep"   # grep
