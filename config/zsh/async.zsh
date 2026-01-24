@@ -82,7 +82,26 @@ _prj () {
   if [ -z "${repo_path}" ]; then
     return
   fi
-  local branch=$(git -C "${repo_path}" branch -a --format='%(refname:short)' | peco --query "$LBUFFER")
+  
+  # デフォルトブランチを取得（main or master）
+  local default_branch=$(git -C "${repo_path}" symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+  if [ -z "${default_branch}" ]; then
+    # フォールバック: main か master があれば使う
+    default_branch=$(git -C "${repo_path}" branch --list main master | head -1 | tr -d ' *')
+  fi
+  
+  # ブランチ一覧: ローカルのみ、デフォルトブランチを先頭に
+  local branch=$(
+    {
+      [[ -n $default_branch ]] && echo "$default_branch"
+      git -C "${repo_path}" branch --format='%(refname:short)' | grep -v "^${default_branch}$"
+      git -C "${repo_path}" branch -r --format='%(refname:short)' \
+        | grep -v 'HEAD' \
+        | sed 's@^origin/@@' \
+        | grep -v "^${default_branch}$"
+    } | awk '!seen[$0]++' | peco --query "$LBUFFER"
+  )
+  
   if [ -z "${branch}" ]; then
     return
   fi
@@ -100,7 +119,13 @@ _prj () {
       zellij action rename-tab $prj_name
       cd $repo_path
     fi
-    git wt $branch
+
+    if [[ $branch == $default_branch ]]; then
+      git checkout $default_branch \
+        || zellij action rename-tab $(git rev-parse --abbrev-ref HEAD)
+    else
+      git wt $branch
+    fi
   fi
 }
 
@@ -112,13 +137,22 @@ cprj () {
   _prj "" "false"
 }
 
+GIT_COMMON_PATH='$(git rev-parse --git-common-dir | sed 's/\.git$//' | sed 's/\/$//')'
+
 nwt () {
-  _prj "${PWD}" "true"
+  local common_path=${(e)GIT_COMMON_PATH}
+  if [ -z "${common_path}" ]; then
+    return
+  fi
+  _prj "${common_path}" "true"
 }
 
-
 cwt () {
-  _prj "${PWD}" "false"
+  local common_path=${(e)GIT_COMMON_PATH}
+  if [ -z "${common_path}" ]; then
+    return
+  fi
+  _prj "${common_path}" "false"
 }
 
 
