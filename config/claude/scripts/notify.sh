@@ -16,11 +16,11 @@ ORG_NAME=$(basename $(dirname "${COMMON_GIT_PATH}") | sed -e 's/\./_/g')
 REPO_NAME=$(basename "${COMMON_GIT_PATH}" | sed -e 's/\./_/g')
 BRANCH=$(git rev-parse --abbrev-ref HEAD | sed -e 's/\./_/g')
 
-PRJ_SUBNAME=$BRANCH
+PRJ_SUFFIX="[${BRANCH}]"
 if [[ "$(basename $(dirname $PWD))" != ".worktrees" ]]; then
-    PRJ_SUBNAME="HOME"
+    PRJ_SUFFIX=""
 fi
-PRJ_NAME="${ORG_NAME}/${REPO_NAME}[${PRJ_SUBNAME}]"
+PRJ_NAME="${ORG_NAME}/${REPO_NAME}${PRJ_SUFFIX}"
 
 terminal-notifier \
     -title "Claude Code 🤖" \
