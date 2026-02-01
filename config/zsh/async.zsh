@@ -59,7 +59,7 @@ alias para='printf "%s\0" {1..5} | xargs -0 -I {} -P 5 echo {}'
 abbr clear-session
 abbr import-aliases --quiet
 
-prjv1 () {
+prj () {
   local prj_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
   if [ -z "$prj_path" ]; then
     return
@@ -68,7 +68,7 @@ prjv1 () {
   if zellij action query-tab-names | grep -Fxq $prj_name; then
     zellij action go-to-tab-name $prj_name
   else
-    zellij action new-tab --layout project --name $prj_name --cwd $prj_path
+    zellij action new-tab --layout default --name $prj_name --cwd $prj_path
   fi
 }
 
