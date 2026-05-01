@@ -15,6 +15,7 @@
 			"Bash(go test:*)",
 			"Bash(go tool:*)",
 			"Bash(git add:*)",
+			"Bash(git diff:*)",
 			"mcp__serena",
 			"mcp__context7"
 		],
@@ -40,6 +41,7 @@
 			"Bash(git rebase:*)"
 		]
 	},
+	"model": "opus",
 	"hooks": {
 		"Notification": [
 			{
@@ -66,8 +68,21 @@
 	},
 	"enabledPlugins": {
 		"gopls-lsp@claude-plugins-official": true,
-		"commit-commands@claude-plugins-official": true
+		"commit-commands@claude-plugins-official": true,
+		"feature-dev@claude-plugins-official": true,
+		"code-review@claude-plugins-official": true,
+		"security-guidance@claude-plugins-official": true,
+		"claude-md-management@claude-plugins-official": true,
+		"obsidian@obsidian-skills": true
+	},
+	"extraKnownMarketplaces": {
+		"obsidian-skills": {
+			"source": {
+				"source": "github",
+				"repo": "kepano/obsidian-skills"
+			}
+		}
 	},
 	"language": "Japanese",
-	"model": "sonnet"
+	"voiceEnabled": true
 }
