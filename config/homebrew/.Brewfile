@@ -4,8 +4,6 @@ tap "cloudflare/cloudflare"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
-# Run your GitHub Actions locally
-brew "act"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Clone of cat(1) with syntax highlighting and Git integration
