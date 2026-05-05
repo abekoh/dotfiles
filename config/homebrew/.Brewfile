@@ -2,8 +2,6 @@ tap "1password/tap"
 tap "aws/tap"
 tap "cloudflare/cloudflare"
 tap "hashicorp/tap"
-tap "homebrew/bundle"
-tap "homebrew/services"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -76,6 +74,9 @@ brew "zellij"
 brew "hashicorp/tap/terraform"
 # Terraform Language Server
 brew "hashicorp/tap/terraform-ls"
+
+brew "sheldon"
+
 # Command-line interface for 1Password
 cask "1password-cli"
 go "github.com/go-delve/delve/cmd/dlv"
