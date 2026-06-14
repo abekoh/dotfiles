@@ -74,8 +74,8 @@ def claude
   FileUtils.mkdir_p("#{ENV['HOME']}/.claude")
   `ln -sf #{DOTFILES_PATH}/config/claude/settings.json #{ENV['HOME']}/.claude/settings.json`
   `ln -sf #{DOTFILES_PATH}/config/claude/CLAUDE.md #{ENV['HOME']}/.claude/CLAUDE.md`
-  FileUtils.mkdir_p("#{ENV['HOME']}/.claude/commands")
-  `ln -sf #{DOTFILES_PATH}/config/claude/commands/* #{ENV['HOME']}/.claude/commands/`
+  FileUtils.mkdir_p("#{ENV['HOME']}/.claude/skills")
+  `ln -sf #{DOTFILES_PATH}/config/claude/skills/* #{ENV['HOME']}/.claude/skills/`
   FileUtils.mkdir_p("#{CONFIG_PATH}/claude/scripts")
   `ln -sf #{DOTFILES_PATH}/config/claude/scripts/notify.sh #{CONFIG_PATH}/claude/scripts/notify.sh`
 end

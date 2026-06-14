@@ -5,6 +5,8 @@
   "permissions": {
     "allow": [
       "Bash(ls:*)",
+      "Write(/Users/abekoh/obsidian/**)",
+      "Read(/Users/abekoh/obsidian/**)",
       "Bash(find:*)",
       "Bash(fd:*)",
       "Bash(rg:*)",
