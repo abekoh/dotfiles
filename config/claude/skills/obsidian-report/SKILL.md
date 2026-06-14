@@ -90,6 +90,7 @@ The daily note path is: `~/obsidian/abekoh/_daily/YYYY/MM/YYYY-MM-DD.md`
 Append this block to the end of the file (the `---` delimiters are part of the format):
 
 ```
+
 ---
 #reports
 
