@@ -89,6 +89,7 @@ Append this block to the end of the file (the `---` delimiters are part of the f
 #reports
 
 [[YYYY-MM-DD-{title}]]
+
 ---
 ```
 
