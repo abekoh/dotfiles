@@ -23,7 +23,11 @@ Derive a concise English title from the session's main topic. Use lowercase hyph
 
 The final filename will be: `YYYY-MM-DD-{title}.md`
 
-### 3. Compose the report content
+### 3. Get the current model ID
+
+Read the model ID from the system prompt (e.g. `claude-sonnet-4-6`). It appears as "The exact model ID is `<id>`". Use this value for the `model` frontmatter field.
+
+### 4. Compose the report content
 
 Use this exact structure:
 
@@ -31,6 +35,7 @@ Use this exact structure:
 ---
 tags: [reports]
 date: YYYY-MM-DD
+model: {claude-model-id}
 ---
 
 # {タイトル（日本語でOK）}
@@ -48,7 +53,7 @@ date: YYYY-MM-DD
 - （参照したURL、ドキュメント、文献を箇条書きで。なければ省略）
 ```
 
-### 4. Save the report
+### 5. Save the report
 
 **Prefer obsidian-cli** when Obsidian is running (test with `obsidian daily:read 2>/dev/null`). Fall back to direct file operations if it fails.
 
@@ -78,7 +83,7 @@ mkdir -p ~/obsidian/abekoh/_reports/YYYY/MM
 
 Target path: `~/obsidian/abekoh/_reports/YYYY/MM/YYYY-MM-DD-{title}.md`
 
-### 5. Append link to today's daily note
+### 6. Append link to today's daily note
 
 The daily note path is: `~/obsidian/abekoh/_daily/YYYY/MM/YYYY-MM-DD.md`
 
@@ -90,7 +95,6 @@ Append this block to the end of the file (the `---` delimiters are part of the f
 
 [[YYYY-MM-DD-{title}]]
 
----
 ```
 
 #### With obsidian-cli:
