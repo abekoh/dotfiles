@@ -8,6 +8,7 @@
       "Write(/Users/abekoh/obsidian/**)",
       "Read(/Users/abekoh/obsidian/**)",
       "Bash(obsidian:*)",
+      "Bash(mkdir:*/obsidian/**)",
       "Bash(find:*)",
       "Bash(fd:*)",
       "Bash(rg:*)",
