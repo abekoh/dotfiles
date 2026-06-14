@@ -72,14 +72,19 @@
     "code-review@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "claude-md-management@claude-plugins-official": true,
-    "obsidian@obsidian-skills": true
+    "obsidian@obsidian-skills": true,
+    "pyright-lsp@claude-plugins-official": true,
+    "playwright@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "obsidian-skills": {
       "source": {
         "source": "github",
         "repo": "kepano/obsidian-skills"
-      }
+      },
+      "autoUpdate": true
     }
   },
   "language": "Japanese",

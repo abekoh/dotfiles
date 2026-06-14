@@ -1,1 +1,0 @@
-Translate the following into Japanese: $1
