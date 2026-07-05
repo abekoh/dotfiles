@@ -1,0 +1,24 @@
+# herdr configuration
+# https://herdr.dev/docs/configuration/
+
+onboarding = false
+
+[theme]
+# catppuccin-macchiatoは組み込みに無いため、catppuccinをベースにMacchiatoの色へ寄せる
+name = "catppuccin"
+
+[theme.custom]
+# Catppuccin Macchiato palette
+accent = "#8aadf4"
+red = "#ed8796"
+green = "#a6da95"
+blue = "#8aadf4"
+yellow = "#eed49f"
+
+[keys]
+# zellijのSession mode (Ctrl+e) 相当: workspace pickerを直接開く
+workspace_picker = ["prefix+w", "ctrl+e"]
+
+[worktrees]
+# nprj/nwt (herdr worktree create) が作るworktreeの置き場所
+directory = "~/.herdr/worktrees"

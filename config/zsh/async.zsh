@@ -59,7 +59,7 @@ alias para='printf "%s\0" {1..5} | xargs -0 -I {} -P 5 echo {}'
 abbr clear-session
 abbr import-aliases --quiet
 
-prj () {
+prj_zellij () {
   local prj_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
   if [ -z "$prj_path" ]; then
     return
@@ -77,7 +77,7 @@ _zellij_run () {
   zellij action write 13  # Enter key
 }
 
-_prj () {
+_prj_zellij () {
   local repo_path=$1
   local new_tab=$2
 
@@ -146,22 +146,106 @@ _prj () {
   fi
 }
 
-nprj () {
-  _prj "" "true"
+nprj_zellij () {
+  _prj_zellij "" "true"
 }
 
-cprj () {
-  _prj "" "false"
+cprj_zellij () {
+  _prj_zellij "" "false"
 }
 
 GIT_COMMON_PATH='$(realpath $(git rev-parse --git-common-dir) | sed -E '\''s#(\.git)?/?$##'\'')'
+
+nwt_zellij () {
+  local common_path=${(e)GIT_COMMON_PATH}
+  if [ -z "${common_path}" ]; then
+    return
+  fi
+  _prj_zellij "${common_path}" "true"
+}
+
+cwt_zellij () {
+  local common_path=${(e)GIT_COMMON_PATH}
+  if [ -z "${common_path}" ]; then
+    return
+  fi
+  _prj_zellij "${common_path}" "false"
+}
+
+prj () {
+  local prj_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
+  if [ -z "$prj_path" ]; then
+    return
+  fi
+  local prj_name="$(basename $(dirname $prj_path))/$(basename $prj_path)"
+  # すでに開いているworkspaceがあればfocus（worktree listのopen_workspace_idで判定）
+  local ws_id=$(herdr worktree list --cwd "$prj_path" --json 2>/dev/null \
+    | jq -r --arg p "$prj_path" '.result.worktrees[] | select(.path == $p) | .open_workspace_id // empty' | head -1)
+  if [ -n "$ws_id" ]; then
+    herdr workspace focus "$ws_id"
+  else
+    herdr workspace create --cwd "$prj_path" --label "$prj_name" --focus
+  fi
+}
+
+_prj_herdr () {
+  local repo_path=$1
+  local mode=$2  # workspace: worktreeをworkspaceとして開く / cd: 現在ペインで移動
+
+  if [ -z "${repo_path}" ]; then
+    repo_path=$(ghq root)/$(ghq list | peco --query "$LBUFFER")
+  fi
+  if [ -z "${repo_path}" ]; then
+    return
+  fi
+
+  # デフォルトブランチを取得（main or master）
+  local default_branch=$(git -C "${repo_path}" symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
+  if [ -z "${default_branch}" ]; then
+    # フォールバック: main か master があれば使う
+    default_branch=$(git -C "${repo_path}" branch --list main master | head -1 | tr -d ' *')
+  fi
+
+  # ブランチ一覧: デフォルトブランチを先頭に
+  git -C ${repo_path} fetch
+  local branch=$(
+    {
+      [[ -n $default_branch ]] && echo "$default_branch"
+      git -C "${repo_path}" branch -a --format='%(refname:short)' | grep -v "^${default_branch}$"
+    } | awk '!seen[$0]++' | peco --query "$LBUFFER"
+  )
+
+  if [ -z "${branch}" ]; then
+    return
+  fi
+
+  if [[ $mode == "workspace" ]]; then
+    herdr worktree open --cwd "${repo_path}" --branch "${branch}" 2>/dev/null \
+      || herdr worktree create --cwd "${repo_path}" --branch "${branch}"
+  else
+    cd "${repo_path}"
+    if [[ $branch == $default_branch ]]; then
+      git checkout $default_branch
+    else
+      git wt $branch
+    fi
+  fi
+}
+
+nprj () {
+  _prj_herdr "" "workspace"
+}
+
+cprj () {
+  _prj_herdr "" "cd"
+}
 
 nwt () {
   local common_path=${(e)GIT_COMMON_PATH}
   if [ -z "${common_path}" ]; then
     return
   fi
-  _prj "${common_path}" "true"
+  _prj_herdr "${common_path}" "workspace"
 }
 
 cwt () {
@@ -169,7 +253,7 @@ cwt () {
   if [ -z "${common_path}" ]; then
     return
   fi
-  _prj "${common_path}" "false"
+  _prj_herdr "${common_path}" "cd"
 }
 
 
