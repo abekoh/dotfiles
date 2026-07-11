@@ -1,12 +1,14 @@
 {
-  "skill_name": "rikakei",
+  "skill_name": "rikakei-writing",
   "evals": [
     {
       "id": 0,
       "name": "revise-incident-report",
       "prompt": "この障害報告書のドラフトを読みやすく直してください。内容は変えず、文章だけ改善してほしいです。ファイル: incident_report_draft.md",
       "expected_output": "重点先行(結論が冒頭)、ぼかし表現の排除、受動態の能動化、逆茂木型の文の分割、かな書き(為→ため 等)が適用された改善版。どの原則に基づく修正かの説明があるとなお良い。",
-      "files": ["evals/files/incident_report_draft.md"],
+      "files": [
+        "evals/files/incident_report_draft.md"
+      ],
       "assertions": [
         "重点先行: 冒頭(第1パラグラフ)で障害の概要と結論(何が起きて、原因は何で、復旧したか)がわかる",
         "ぼかし表現の排除: 「〜ではないかと思われる」「〜した模様である」「〜ものと考えられる」が消え、事実の断定または主体を明示した意見に置き換えられている",
