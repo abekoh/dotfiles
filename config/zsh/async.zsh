@@ -99,14 +99,22 @@ wt () {
     return
   fi
 
-  # 既存 worktree があれば open、なければ create
-  herdr worktree open --cwd "${repo_path}" --branch "${branch}" 2>/dev/null && return
+  # すでに開いているworkspaceがあればfocusのみ（worktree listのopen_workspace_idで判定）
+  local ws_id=$(herdr worktree list --cwd "${repo_path}" --json 2>/dev/null \
+    | jq -r --arg b "${branch}" '.result.worktrees[] | select(.branch == $b) | .open_workspace_id // empty' | head -1)
+  if [ -n "$ws_id" ]; then
+    herdr workspace focus "$ws_id"
+    return
+  fi
+
+  # 既存 worktree があれば open、なければ create（いずれもfocus）
+  herdr worktree open --cwd "${repo_path}" --branch "${branch}" --focus 2>/dev/null && return
   if git -C "${repo_path}" show-ref --verify --quiet "refs/heads/${branch}"; then
-    herdr worktree create --cwd "${repo_path}" --branch "${branch}"
+    herdr worktree create --cwd "${repo_path}" --branch "${branch}" --focus
   elif git -C "${repo_path}" show-ref --verify --quiet "refs/remotes/origin/${branch}"; then
-    herdr worktree create --cwd "${repo_path}" --branch "${branch}" --base "origin/${branch}"
+    herdr worktree create --cwd "${repo_path}" --branch "${branch}" --base "origin/${branch}" --focus
   else
-    herdr worktree create --cwd "${repo_path}" --branch "${branch}"
+    herdr worktree create --cwd "${repo_path}" --branch "${branch}" --focus
   fi
 }
 

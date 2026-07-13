@@ -82,5 +82,6 @@
   },
   "language": "Japanese",
   "theme": "dark",
-  "voiceEnabled": true
+  "voiceEnabled": true,
+  "model": "claude-fable-5"
 }
