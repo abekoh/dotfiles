@@ -15,10 +15,8 @@ green = "#a6da95"
 blue = "#8aadf4"
 yellow = "#eed49f"
 
-[keys]
-# zellijのSession mode (Ctrl+e) 相当: workspace pickerを直接開く
-workspace_picker = ["prefix+w", "ctrl+e"]
-
 [worktrees]
-# nprj/nwt (herdr worktree create) が作るworktreeの置き場所
 directory = "~/.herdr/worktrees"
+
+[ui.toast]
+delivery = "terminal"

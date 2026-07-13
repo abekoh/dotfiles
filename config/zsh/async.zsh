@@ -9,9 +9,6 @@ export GOBIN=$(go env GOBIN)
 # direnv
 eval "$(direnv hook zsh)"
 
-# git-wt
-eval "$(git wt --init zsh)"
-
 # 大文字小文字無視
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 # 大文字のときは小文字を無視
@@ -62,7 +59,7 @@ abbr import-aliases --quiet
 GIT_COMMON_PATH='$(realpath $(git rev-parse --git-common-dir) | sed -E '\''s#(\.git)?/?$##'\'')'
 
 prj () {
-  local prj_path=$(ghq list -p | sk --layout reverse --query "$LBUFFER")
+  local prj_path=$(ghq list -p | peco --query "$LBUFFER")
   if [ -z "$prj_path" ]; then
     return
   fi
@@ -77,72 +74,40 @@ prj () {
   fi
 }
 
-_prj_herdr () {
-  local repo_path=$1
-  local mode=$2  # workspace: worktreeをworkspaceとして開く / cd: 現在ペインで移動
-
-  if [ -z "${repo_path}" ]; then
-    repo_path=$(ghq root)/$(ghq list | peco --query "$LBUFFER")
+wt () {
+  if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    return
   fi
+  local repo_path=${(e)GIT_COMMON_PATH}
   if [ -z "${repo_path}" ]; then
     return
   fi
 
-  # デフォルトブランチを取得（main or master）
-  local default_branch=$(git -C "${repo_path}" symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@^refs/remotes/origin/@@')
-  if [ -z "${default_branch}" ]; then
-    # フォールバック: main か master があれば使う
-    default_branch=$(git -C "${repo_path}" branch --list main master | head -1 | tr -d ' *')
-  fi
+  git -C "${repo_path}" fetch
 
-  # ブランチ一覧: デフォルトブランチを先頭に
-  git -C ${repo_path} fetch
-  local branch=$(
+  # ブランチ一覧: local + remote（origin/ を剥がして重複排除、HEAD は除外）
+  # --print-query: 1行目がクエリ、2行目が選択候補。候補なしで決定すると1行のみ → 新規ブランチ名として扱う
+  local out=$(
     {
-      [[ -n $default_branch ]] && echo "$default_branch"
-      git -C "${repo_path}" branch -a --format='%(refname:short)' | grep -v "^${default_branch}$"
-    } | awk '!seen[$0]++' | peco --query "$LBUFFER"
+      git -C "${repo_path}" branch --format='%(refname:short)'
+      git -C "${repo_path}" branch -r --format='%(refname:lstrip=3)' | grep -v '^HEAD$'
+    } | awk '!seen[$0]++' | peco --print-query --query "$LBUFFER"
   )
-
-  if [ -z "${branch}" ]; then
+  local branch=$(echo "$out" | sed -n 2p)
+  [ -z "$branch" ] && branch=$(echo "$out" | sed -n 1p)
+  if [ -z "$branch" ]; then
     return
   fi
 
-  if [[ $mode == "workspace" ]]; then
-    herdr worktree open --cwd "${repo_path}" --branch "${branch}" 2>/dev/null \
-      || herdr worktree create --cwd "${repo_path}" --branch "${branch}"
+  # 既存 worktree があれば open、なければ create
+  herdr worktree open --cwd "${repo_path}" --branch "${branch}" 2>/dev/null && return
+  if git -C "${repo_path}" show-ref --verify --quiet "refs/heads/${branch}"; then
+    herdr worktree create --cwd "${repo_path}" --branch "${branch}"
+  elif git -C "${repo_path}" show-ref --verify --quiet "refs/remotes/origin/${branch}"; then
+    herdr worktree create --cwd "${repo_path}" --branch "${branch}" --base "origin/${branch}"
   else
-    cd "${repo_path}"
-    if [[ $branch == $default_branch ]]; then
-      git checkout $default_branch
-    else
-      git wt $branch
-    fi
+    herdr worktree create --cwd "${repo_path}" --branch "${branch}"
   fi
-}
-
-nprj () {
-  _prj_herdr "" "workspace"
-}
-
-cprj () {
-  _prj_herdr "" "cd"
-}
-
-nwt () {
-  local common_path=${(e)GIT_COMMON_PATH}
-  if [ -z "${common_path}" ]; then
-    return
-  fi
-  _prj_herdr "${common_path}" "workspace"
-}
-
-cwt () {
-  local common_path=${(e)GIT_COMMON_PATH}
-  if [ -z "${common_path}" ]; then
-    return
-  fi
-  _prj_herdr "${common_path}" "cd"
 }
 
 
