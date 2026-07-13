@@ -276,15 +276,17 @@ eval "$(atuin init zsh --disable-up-arrow)"
 zvm_after_init_commands=('bindkey '^r' _atuin_search_widget')
 
 
-# sgpt
-_sgpt_zsh() {
+# claude によるコマンド生成
+_claude_shell_zsh() {
 if [[ -n "$BUFFER" ]]; then
-    _sgpt_prev_cmd=$BUFFER
+    _claude_prev_cmd=$BUFFER
     BUFFER+="⌛"
     zle -I && zle redisplay
-    BUFFER=$(sgpt --shell <<< "$_sgpt_prev_cmd" --no-interaction)
+    BUFFER=$(claude -p --model haiku \
+      --system-prompt "You are a shell command generator for zsh on macOS. Convert the user's request into a single shell command. Output only the raw command, no explanation, no markdown, no code fences." \
+      <<< "$_claude_prev_cmd" 2>/dev/null | sed -e 's/^```.*$//' -e '/^$/d')
     zle end-of-line
 fi
 }
-zle -N _sgpt_zsh
-bindkey ^] _sgpt_zsh
+zle -N _claude_shell_zsh
+bindkey ^] _claude_shell_zsh
