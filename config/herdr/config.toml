@@ -19,4 +19,7 @@ yellow = "#eed49f"
 directory = "~/.herdr/worktrees"
 
 [ui.toast]
-delivery = "terminal"
+delivery = "herdr"
+
+[ui.toast.herdr]
+position = "bottom-right"
