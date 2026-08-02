@@ -20,7 +20,7 @@ brew "sk"    # fzf
 brew "gh"
 brew "ghq"
 brew "tig"
-brew "git-delta"
+brew "hunk"
 brew "k1LoW/tap/git-wt"
 
 # gorgeous shell tools (replace from...)

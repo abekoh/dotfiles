@@ -1,18 +1,18 @@
 [core]
-    pager = delta
+    pager = hunk pager
 
-[interactive]
-    diffFilter = delta --color-only
+[diff]
+    tool = hunk
+    colorMoved = default
 
-[delta]
-    navigate = true
-    line-numbers = true
+[difftool "hunk"]
+    cmd = hunk difftool "$LOCAL" "$REMOTE" "$MERGED"
+
+[difftool]
+    prompt = false
 
 [merge]
     conflictstyle = diff3
-
-[diff]
-    colorMoved = default
 
 [ghq]
 	root = ~/src
