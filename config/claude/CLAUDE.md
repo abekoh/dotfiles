@@ -1,9 +1,8 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code, that is across projects.
+## 日本語文書
 
-## Documents
+日本語の文書を執筆または推敲するときは、次のスキルを併用する。
 
-Always use context7 when I need code generation, setup or configuration steps, or
-library/API documentation. This means you should automatically use the Context7 MCP
-tools to resolve library id and get library docs without me having to explicitly ask.
+- `japanese-tech-writing`
+- `cognitive-rhythm-writing`
