@@ -79,6 +79,12 @@ def herdr
   `ln -sf #{DOTFILES_PATH}/config/herdr/config.toml #{CONFIG_PATH}/herdr/config.toml`
 end
 
+def hunk
+  puts 'setup hunk'
+  FileUtils.mkdir_p("#{CONFIG_PATH}/hunk")
+  `ln -sf #{DOTFILES_PATH}/config/hunk/config.toml #{CONFIG_PATH}/hunk/config.toml`
+end
+
 def ghostty
   puts 'setup ghostty'
   FileUtils.mkdir_p("#{CONFIG_PATH}/ghostty")
@@ -159,6 +165,7 @@ if __FILE__ == $PROGRAM_NAME
   starship
   zellij
   herdr
+  hunk
   ghostty
   claude
   codex
