@@ -87,6 +87,12 @@ def claude
   `ln -sf #{DOTFILES_PATH}/config/claude/scripts/notify.sh #{CONFIG_PATH}/claude/scripts/notify.sh`
 end
 
+def codex
+  puts 'setup codex'
+  FileUtils.mkdir_p("#{ENV['HOME']}/.codex")
+  `ln -sf #{DOTFILES_PATH}/config/codex/config.toml #{ENV['HOME']}/.codex/config.toml`
+end
+
 def peco
   puts 'setup peco'
   FileUtils.mkdir_p("#{CONFIG_PATH}/peco")
@@ -106,5 +112,6 @@ if __FILE__ == $PROGRAM_NAME
   herdr
   ghostty
   claude
+  codex
   peco
 end
