@@ -135,8 +135,11 @@ end
 
 def codex
   puts 'setup codex'
+  FileUtils.mkdir_p("#{ENV['HOME']}/.agents/skills")
+  `ln -sf #{ENV['HOME']}/.claude/skills/* #{ENV['HOME']}/.agents/skills/`
   FileUtils.mkdir_p("#{ENV['HOME']}/.codex")
   `ln -sf #{DOTFILES_PATH}/config/codex/config.toml #{ENV['HOME']}/.codex/config.toml`
+  `ln -sf #{ENV['HOME']}/.claude/CLAUDE.md #{ENV['HOME']}/.codex/AGENTS.md`
 end
 
 def peco
