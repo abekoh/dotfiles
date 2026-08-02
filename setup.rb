@@ -2,9 +2,18 @@
 # frozen_string_literal: true
 
 require 'fileutils'
+require 'open-uri'
+require 'tempfile'
 
 DOTFILES_PATH = "#{ENV['HOME']}/dotfiles"
 CONFIG_PATH = ENV['XDG_CONFIG_HOME'] || "#{ENV['HOME']}/.config"
+
+CLAUDE_MANAGED_SKILLS = {
+  'herdr' => 'https://raw.githubusercontent.com/herdrdev/herdr/master/skills/herdr/SKILL.md',
+  'japanese-tech-writing' => 'https://gist.githubusercontent.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d/raw/SKILL.md',
+  'cognitive-rhythm-writing' => 'https://gist.githubusercontent.com/k16shikano/eb2929f13ed19c97188393d297be8432/raw/SKILL.md',
+  'hunk-review' => 'https://raw.githubusercontent.com/modem-dev/hunk/main/skills/hunk-review/SKILL.md'
+}.freeze
 
 def command_installed?(command)
   `which #{command} > /dev/null 2>&1`
@@ -76,8 +85,45 @@ def ghostty
   `ln -sf #{DOTFILES_PATH}/config/ghostty/config #{CONFIG_PATH}/ghostty/config`
 end
 
+def update_claude_skills
+  puts 'check managed claude skills'
+
+  CLAUDE_MANAGED_SKILLS.each do |name, url|
+    skill_dir = "#{DOTFILES_PATH}/config/claude/skills/#{name}"
+    skill_path = "#{skill_dir}/SKILL.md"
+    content = URI.open(
+      url,
+      'User-Agent' => 'dotfiles-setup',
+      open_timeout: 10,
+      read_timeout: 15
+    ).read
+
+    unless content.match?(/^name:\s*["']?#{Regexp.escape(name)}["']?\s*$/)
+      warn "skip #{name}: downloaded content has an unexpected skill name"
+      next
+    end
+
+    if File.exist?(skill_path) && File.binread(skill_path) == content.b
+      puts "  #{name}: up to date"
+      next
+    end
+
+    FileUtils.mkdir_p(skill_dir)
+    Tempfile.create(['SKILL', '.md'], skill_dir) do |tempfile|
+      tempfile.binmode
+      tempfile.write(content)
+      tempfile.close
+      FileUtils.mv(tempfile.path, skill_path)
+    end
+    puts "  #{name}: updated"
+  rescue OpenURI::HTTPError, SocketError, SystemCallError, Timeout::Error => e
+    warn "skip #{name}: #{e.message}"
+  end
+end
+
 def claude
   puts 'setup claude'
+  update_claude_skills
   FileUtils.mkdir_p("#{ENV['HOME']}/.claude")
   `ln -sf #{DOTFILES_PATH}/config/claude/settings.json #{ENV['HOME']}/.claude/settings.json`
   `ln -sf #{DOTFILES_PATH}/config/claude/CLAUDE.md #{ENV['HOME']}/.claude/CLAUDE.md`
