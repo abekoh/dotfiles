@@ -5,12 +5,13 @@
   "permissions": {
     "allow": [
       "Bash(ls:*)",
-      "Write(/Users/abekoh/obsidian/**)",
-      "Read(/Users/abekoh/obsidian/**)",
       "Bash(obsidian:*)",
       "Bash(find:*)",
       "Bash(fd:*)",
       "Bash(rg:*)",
+      "Bash(sed:*)",
+      "Bash(gsed:*)",
+      "Bash(awk:*)",
       "Bash(grep:*)",
       "Bash(go build:*)",
       "Bash(go mod tidy:*)",
