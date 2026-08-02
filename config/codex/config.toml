@@ -1,1 +1,4 @@
 project_doc_fallback_filenames = ["CLAUDE.md"]
+
+[projects."/Users/abekoh/dotfiles"]
+trust_level = "trusted"
