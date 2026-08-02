@@ -1,4 +1,19 @@
 project_doc_fallback_filenames = ["CLAUDE.md"]
+developer_instructions = "Respond in Japanese."
+default_permissions = "claude-compatible"
+
+[permissions.claude-compatible]
+description = "Workspace access with Claude-compatible sensitive-file restrictions."
+extends = ":workspace"
+
+[permissions.claude-compatible.workspace_roots]
+"~/obsidian" = true
+
+[permissions.claude-compatible.filesystem]
+"~/.ssh" = "deny"
+
+[permissions.claude-compatible.filesystem.":workspace_roots"]
+"**/.env*" = "deny"
 
 [projects."/Users/abekoh/dotfiles"]
 trust_level = "trusted"
