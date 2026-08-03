@@ -20,6 +20,8 @@
       "Bash(go tool:*)",
       "Bash(git add:*)",
       "Bash(git diff:*)",
+      "Bash(herdr:*)",
+      "Bash(hunk:*)",
       "mcp__serena",
       "mcp__context7"
     ],
