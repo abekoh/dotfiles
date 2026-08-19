@@ -76,7 +76,9 @@
     "playwright@claude-plugins-official": true,
     "pyright-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "cloudflare@cloudflare": true,
+    "codex@openai-codex": true
   },
   "extraKnownMarketplaces": {
     "obsidian-skills": {
@@ -85,9 +87,24 @@
         "repo": "kepano/obsidian-skills"
       },
       "autoUpdate": true
+    },
+    "cloudflare": {
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      },
+      "autoUpdate": true
+    },
+    "openai-codex": {
+      "source": {
+        "source": "github",
+        "repo": "openai/codex-plugin-cc"
+      },
+      "autoUpdate": true
     }
   },
   "language": "Japanese",
+  "effortLevel": "high",
   "theme": "dark",
   "voiceEnabled": true
 }

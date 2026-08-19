@@ -9,11 +9,11 @@ extends = ":workspace"
 [permissions.claude-compatible.workspace_roots]
 "~/obsidian" = true
 
-[permissions.claude-compatible.filesystem]
-"~/.ssh" = "deny"
-
-[permissions.claude-compatible.filesystem.":workspace_roots"]
-"**/.env*" = "deny"
-
 [projects."/Users/abekoh/dotfiles"]
+trust_level = "trusted"
+
+[projects."/Users/abekoh/obsidian/abekoh"]
+trust_level = "trusted"
+
+[projects."/Users/abekoh/src/github.com/abekoh/newspapers"]
 trust_level = "trusted"
