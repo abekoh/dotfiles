@@ -32,6 +32,13 @@ navigate_workspace_down = "j"
 next_agent = "prefix+a"
 previous_agent = "prefix+shift+a"
 
+[experimental]
+# macOSでAI Agent TUIがカーソルを隠すため日本語変換候補ウィンドウが追従しない問題への対応
+reveal_hidden_cursor_for_cjk_ime = true
+cjk_ime_agents = ["claude", "codex"]
+# prefixキー入力中(ctrl+b以降)は一時的にASCII入力ソースへ切り替える
+switch_ascii_input_source_in_prefix = true
+
 [[keys.command]]
 key = "prefix+f"
 type = "popup"
