@@ -16,7 +16,7 @@ CLAUDE_MANAGED_SKILLS = {
   'herdr' => 'https://raw.githubusercontent.com/herdrdev/herdr/master/skills/herdr/SKILL.md',
   'japanese-tech-writing' => 'https://gist.githubusercontent.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d/raw/SKILL.md',
   'cognitive-rhythm-writing' => 'https://gist.githubusercontent.com/k16shikano/eb2929f13ed19c97188393d297be8432/raw/SKILL.md',
-  'hunk-review' => 'https://raw.githubusercontent.com/modem-dev/hunk/main/skills/hunk-review/SKILL.md',
+  'hunk-review' => 'https://raw.githubusercontent.com/modem-dev/hunk/main/packages/hunk/skills/hunk-review/SKILL.md',
   'grill-me' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/productivity/grill-me' },
   'grilling' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/productivity/grilling' }
 }.freeze
