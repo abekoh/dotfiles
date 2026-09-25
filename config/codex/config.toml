@@ -17,3 +17,9 @@ trust_level = "trusted"
 
 [projects."/Users/abekoh/src/github.com/abekoh/newspapers"]
 trust_level = "trusted"
+
+[tui]
+screen_reader_detection_done = true
+
+[tui.model_availability_nux]
+gpt-6-astra = 1
