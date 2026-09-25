@@ -18,7 +18,9 @@ CLAUDE_MANAGED_SKILLS = {
   'cognitive-rhythm-writing' => 'https://gist.githubusercontent.com/k16shikano/eb2929f13ed19c97188393d297be8432/raw/SKILL.md',
   'hunk-review' => 'https://raw.githubusercontent.com/modem-dev/hunk/main/packages/hunk/skills/hunk-review/SKILL.md',
   'grill-me' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/productivity/grill-me' },
-  'grilling' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/productivity/grilling' }
+  'grilling' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/productivity/grilling' },
+  'grill-with-docs' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/engineering/grill-with-docs' },
+  'domain-modeling' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/engineering/domain-modeling' }
 }.freeze
 
 def command_installed?(command)
