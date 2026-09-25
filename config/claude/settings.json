@@ -32,9 +32,7 @@
       "Bash(id_rsa)",
       "Bash(id_ed25519)",
       "Bash(**/.ssh/**)",
-      "Write(.env*)",
       "Edit(.env*)",
-      "Write(**/.ssh/**)",
       "Edit(**/.ssh/**)"
     ],
     "ask": [
