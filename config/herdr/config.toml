@@ -24,6 +24,14 @@ delivery = "herdr"
 [ui.toast.herdr]
 position = "bottom-right"
 
+[keys]
+prefix = "ctrl+b"
+# workspace選択時の上下移動をvim風のk/jに変更(デフォルトはup/down)
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+next_agent = "prefix+a"
+previous_agent = "prefix+shift+a"
+
 [[keys.command]]
 key = "prefix+f"
 type = "popup"
