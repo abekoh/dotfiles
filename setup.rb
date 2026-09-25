@@ -4,15 +4,21 @@
 require 'fileutils'
 require 'open-uri'
 require 'tempfile'
+require 'json'
 
 DOTFILES_PATH = "#{ENV['HOME']}/dotfiles"
 CONFIG_PATH = ENV['XDG_CONFIG_HOME'] || "#{ENV['HOME']}/.config"
 
+# Each entry is either:
+#   - a String: raw URL to a single SKILL.md file
+#   - a Hash { repo:, path:, ref: } : a directory in a GitHub repo, copied recursively
 CLAUDE_MANAGED_SKILLS = {
   'herdr' => 'https://raw.githubusercontent.com/herdrdev/herdr/master/skills/herdr/SKILL.md',
   'japanese-tech-writing' => 'https://gist.githubusercontent.com/k16shikano/fd287c3133457c4fd8f5601d34aa817d/raw/SKILL.md',
   'cognitive-rhythm-writing' => 'https://gist.githubusercontent.com/k16shikano/eb2929f13ed19c97188393d297be8432/raw/SKILL.md',
-  'hunk-review' => 'https://raw.githubusercontent.com/modem-dev/hunk/main/skills/hunk-review/SKILL.md'
+  'hunk-review' => 'https://raw.githubusercontent.com/modem-dev/hunk/main/skills/hunk-review/SKILL.md',
+  'grill-me' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/productivity/grill-me' },
+  'grilling' => { repo: 'mattpocock/skills', ref: 'main', path: 'skills/productivity/grilling' }
 }.freeze
 
 def command_installed?(command)
@@ -91,38 +97,92 @@ def ghostty
   `ln -sf #{DOTFILES_PATH}/config/ghostty/config #{CONFIG_PATH}/ghostty/config`
 end
 
+def fetch_url(url)
+  URI.open(
+    url,
+    'User-Agent' => 'dotfiles-setup',
+    open_timeout: 10,
+    read_timeout: 15
+  ).read
+end
+
+# Recursively lists files under a GitHub repo directory via the contents API.
+# Returns an array of { relative_path:, download_url: }.
+def github_dir_files(repo, path, ref)
+  api_url = "https://api.github.com/repos/#{repo}/contents/#{path}?ref=#{ref}"
+  entries = JSON.parse(fetch_url(api_url))
+
+  entries.flat_map do |entry|
+    if entry['type'] == 'dir'
+      github_dir_files(repo, entry['path'], ref).map do |file|
+        file.merge(relative_path: "#{entry['name']}/#{file[:relative_path]}")
+      end
+    else
+      [{ relative_path: entry['name'], download_url: entry['download_url'] }]
+    end
+  end
+end
+
+def write_skill_file(skill_dir, relative_path, content)
+  dest_path = File.join(skill_dir, relative_path)
+  return true if File.exist?(dest_path) && File.binread(dest_path) == content.b
+
+  FileUtils.mkdir_p(File.dirname(dest_path))
+  Tempfile.create(['skill', File.extname(relative_path)], File.dirname(dest_path)) do |tempfile|
+    tempfile.binmode
+    tempfile.write(content)
+    tempfile.close
+    FileUtils.mv(tempfile.path, dest_path)
+  end
+  false
+end
+
+def update_claude_skill_from_url(name, url, skill_dir)
+  content = fetch_url(url)
+
+  unless content.match?(/^name:\s*["']?#{Regexp.escape(name)}["']?\s*$/)
+    warn "skip #{name}: downloaded content has an unexpected skill name"
+    return
+  end
+
+  up_to_date = write_skill_file(skill_dir, 'SKILL.md', content)
+  puts "  #{name}: #{up_to_date ? 'up to date' : 'updated'}"
+end
+
+def update_claude_skill_from_dir(name, source, skill_dir)
+  files = github_dir_files(source[:repo], source[:path], source[:ref])
+  skill_md = files.find { |f| f[:relative_path] == 'SKILL.md' }
+
+  unless skill_md
+    warn "skip #{name}: no SKILL.md found under #{source[:path]}"
+    return
+  end
+
+  skill_md_content = fetch_url(skill_md[:download_url])
+  unless skill_md_content.match?(/^name:\s*["']?#{Regexp.escape(name)}["']?\s*$/)
+    warn "skip #{name}: downloaded content has an unexpected skill name"
+    return
+  end
+
+  all_up_to_date = files.reduce(true) do |acc, file|
+    content = file[:relative_path] == 'SKILL.md' ? skill_md_content : fetch_url(file[:download_url])
+    write_skill_file(skill_dir, file[:relative_path], content) && acc
+  end
+  puts "  #{name}: #{all_up_to_date ? 'up to date' : 'updated'}"
+end
+
 def update_claude_skills
   puts 'check managed claude skills'
 
-  CLAUDE_MANAGED_SKILLS.each do |name, url|
+  CLAUDE_MANAGED_SKILLS.each do |name, source|
     skill_dir = "#{DOTFILES_PATH}/config/claude/skills/#{name}"
-    skill_path = "#{skill_dir}/SKILL.md"
-    content = URI.open(
-      url,
-      'User-Agent' => 'dotfiles-setup',
-      open_timeout: 10,
-      read_timeout: 15
-    ).read
 
-    unless content.match?(/^name:\s*["']?#{Regexp.escape(name)}["']?\s*$/)
-      warn "skip #{name}: downloaded content has an unexpected skill name"
-      next
+    if source.is_a?(Hash)
+      update_claude_skill_from_dir(name, source, skill_dir)
+    else
+      update_claude_skill_from_url(name, source, skill_dir)
     end
-
-    if File.exist?(skill_path) && File.binread(skill_path) == content.b
-      puts "  #{name}: up to date"
-      next
-    end
-
-    FileUtils.mkdir_p(skill_dir)
-    Tempfile.create(['SKILL', '.md'], skill_dir) do |tempfile|
-      tempfile.binmode
-      tempfile.write(content)
-      tempfile.close
-      FileUtils.mv(tempfile.path, skill_path)
-    end
-    puts "  #{name}: updated"
-  rescue OpenURI::HTTPError, SocketError, SystemCallError, Timeout::Error => e
+  rescue OpenURI::HTTPError, SocketError, SystemCallError, Timeout::Error, JSON::ParserError => e
     warn "skip #{name}: #{e.message}"
   end
 end
