@@ -33,7 +33,9 @@
       "Bash(id_ed25519)",
       "Bash(**/.ssh/**)",
       "Write(.env*)",
-      "Write(**/.ssh/**)"
+      "Edit(.env*)",
+      "Write(**/.ssh/**)",
+      "Edit(**/.ssh/**)"
     ],
     "ask": [
       "Bash(curl:*)",
@@ -73,7 +75,7 @@
     "feature-dev@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "obsidian@obsidian-skills": true,
-    "playwright@claude-plugins-official": true,
+    "playwright@claude-plugins-official": false,
     "pyright-lsp@claude-plugins-official": true,
     "security-guidance@claude-plugins-official": true,
     "skill-creator@claude-plugins-official": true,
@@ -101,10 +103,23 @@
         "repo": "openai/codex-plugin-cc"
       },
       "autoUpdate": true
+    },
+    "duckdb-skills": {
+      "source": {
+        "source": "github",
+        "repo": "duckdb/duckdb-skills"
+      }
     }
   },
   "language": "Japanese",
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-sonnet-5": {
+      "effortLevel": "low"
+    }
+  },
   "theme": "dark",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
   "voiceEnabled": true
 }
