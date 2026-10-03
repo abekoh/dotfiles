@@ -1,6 +1,8 @@
 project_doc_fallback_filenames = ["CLAUDE.md"]
 developer_instructions = "Respond in Japanese."
 default_permissions = "claude-compatible"
+model = "gpt-6-sol"
+model_reasoning_effort = "medium"
 
 [permissions.claude-compatible]
 description = "Workspace access with Claude-compatible sensitive-file restrictions."
@@ -18,8 +20,42 @@ trust_level = "trusted"
 [projects."/Users/abekoh/src/github.com/abekoh/newspapers"]
 trust_level = "trusted"
 
+[projects."/Users/abekoh/src/github.com/abekoh/workoutman"]
+trust_level = "trusted"
+
 [tui]
 screen_reader_detection_done = true
 
 [tui.model_availability_nux]
-gpt-6-astra = 1
+gpt-6-astra = 4
+
+[sandbox_workspace_write]
+writable_roots = [
+    "/Users/abekoh/.agents/skills/agmsg/db",
+    "/Users/abekoh/.agents/skills/agmsg/teams",
+    "/Users/abekoh/.agents/skills/agmsg/run",
+    "/Users/abekoh/.agents/skills/agmsg/ext-tools",
+]
+
+[marketplaces.android-skills]
+source_type = "git"
+source = "https://github.com/android/skills.git"
+
+[marketplaces.goland-codex-marketplace]
+source_type = "git"
+source = "https://github.com/JetBrains/go-modern-guidelines.git"
+
+[plugins."android-skills@android-skills"]
+enabled = true
+
+[plugins."modern-go-guidelines@goland-codex-marketplace"]
+enabled = true
+
+[hooks.state."/Users/abekoh/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:51cb5dde040ad0da0509d192ed67469317df8e8b14e3c34e413ce6f56a9d51bc"
+
+[shell_environment_policy]
+inherit = "core"
+
+[shell_environment_policy.set]
+USE_BUILTIN_RIPGREP = "1"
