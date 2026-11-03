@@ -14,6 +14,9 @@ export TERM=xterm-256color
 export EDITOR=nvim
 export HISTSIZE=10000
 
+# 1Password SSH agent
+export SSH_AUTH_SOCK=~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock
+
 # starship
 eval "$(starship init zsh)"
 
